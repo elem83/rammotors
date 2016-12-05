@@ -25,7 +25,10 @@ SECRET_KEY = '0qsd*-ysb@43fqy10*#&86c0iqko7s6=(3wo9dhh8p8jt_h2m0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'rammotors.netsamir.webfactional.com',
+    'localhost'
+]
 
 
 # Application definition
