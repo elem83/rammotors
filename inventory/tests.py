@@ -1,12 +1,16 @@
 """Unit test for Inventory"""
 
+from django.urls import resolve
 from django.test import TestCase
+from inventory.views import vehicules
+
 
 # Create your tests here.
 
-class SmokeTest(TestCase):
-    """ Unit test for Inventory """
-    def test_bad_maths(self):
-        """ Test the django testing module """
-        self.assertEqual(1+1, 3)
+class VehiculeTest(TestCase):
+    """Testing the vehicules application """
 
+    def test_vehicules_url_resolve(self):
+        """Resolve the vehicules URL"""
+        found = resolve('/vehicules/')
+        self.assertEqual(found.func, vehicules)
