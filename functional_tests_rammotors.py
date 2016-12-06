@@ -21,10 +21,10 @@ class NewAdminTest(unittest.TestCase):
 
     def test_can_add_vehicule_check(self):
         """ Docstring """
-        self.browser.get('http://localhost:8000/vehicules')
+        self.browser.get('http://localhost:8000/')
 
         # The Customer check that the title refer to his company
-        assert 'Vehicules' in self.browser.title,\
+        assert 'Ram Motors' in self.browser.title,\
         'Browse title was: ' + self.browser.title
 
         # He is invited to add a new car

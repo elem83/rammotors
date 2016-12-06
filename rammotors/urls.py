@@ -20,6 +20,6 @@ from inventory import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^vehicules/$', views.vehicules, name='vehicules'),
+    url(r'^$', views.vehicules_list, name='vehicules_list'),
 
 ]

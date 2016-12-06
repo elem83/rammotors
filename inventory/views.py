@@ -4,5 +4,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def vehicules(request):
-    return HttpResponse('<html><title>Vehicules</title></html>')
+def vehicules_list(request):
+    return HttpResponse('<html><title>Ram Motors</title></html>')

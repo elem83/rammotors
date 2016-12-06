@@ -4,7 +4,7 @@ from django.urls import resolve
 from django.test import TestCase
 from django.http import HttpRequest
 
-from inventory.views import vehicules
+from inventory.views import vehicules_list
 
 
 # Create your tests here.
@@ -14,15 +14,15 @@ class VehiculeTest(TestCase):
 
     def test_vehicules_url_resolve(self):
         """Resolve the vehicules URL"""
-        found = resolve('/vehicules/')
-        self.assertEqual(found.func, vehicules)
+        found = resolve('/')
+        self.assertEqual(found.func, vehicules_list)
 
     def test_vehicules_return_html(self):
         """Testing that we get an html"""
         request = HttpRequest()
-        response = vehicules(request)
+        response = vehicules_list(request)
         self.assertTrue(response.content.startswith(b'<html>'))
-        self.assertIn(b'<title>Vehicules</title>', response.content)
+        self.assertIn(b'<title>Ram Motors</title>', response.content)
         self.assertTrue(response.content.endswith(b'</html>'))
 
 
