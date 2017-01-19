@@ -30,3 +30,7 @@ class VehiculeTest(TestCase):
         """Testing the wsdl query to fetch the list of cars"""
         response = services.wsdl_findallarticles()
         self.assertTrue(response.status_code, 200)
+        self.assertTrue(response.content.startswith(b'<s:Envelope'))
+        self.assertTrue(\
+        response.content.endswith(\
+            b'</FindArticlesResponse></s:Body></s:Envelope>'))
