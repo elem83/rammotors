@@ -9,338 +9,43 @@
 <script src="{% static 'assets/js/custom.js' %}"></script>
 {% endblock %}
 
-<!-- context = {'vehicles': vehicles, 'images_uri': images_uri} -->
+<!-- context = {'vehicles': vehicles, 'images_uri': images_uri}
+
+        self.brand_id = None
+        self.price = None
+        self.currency = 'EUR'
+        self.uri_image_feature = None
+
+-->
 {% block content %}
   <!--=== Content Part ===-->
   <div class="jumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg);">
 </div>
   <div class="content container">
       <div class="row">
-          <div class="col-md-3 filter-by-block md-margin-bottom-60">
-              <h1>Filtrer par</h1>
-              <div class="panel-group" id="accordion">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <h2 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-Marque<i class="fa fa-angle-down"></i></a></h2>
-                      </div>
-                      <div id="collapseOne" class="panel-collapse collapse in">
-                          <div class="panel-body">
-                              <ul class="list-unstyled checkbox-list">
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" checked />
-                                          <i></i>
-                                          Dacia
-                                          <small><a href="#">(23)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" checked />
-                                          <i></i>
-                                          Skoda
-                                          <small><a href="#">(4)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Toyota
-                                          <small><a href="#">(11)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Mercedes
-                                          <small><a href="#">(3)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Nissan
-                                          <small><a href="#">(87)</a></small>
-                                      </label>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!--/end panel group-->
-              <div class="panel-group" id="accordion-v2">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <h2 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-v2" href="#collapseTwo">
-Transmission<i class="fa fa-angle-down"></i></a></h2>
-                      </div>
-                      <div id="collapseTwo" class="panel-collapse collapse in">
-                          <div class="panel-body">
-                              <ul class="list-unstyled checkbox-list">
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" checked />
-                                          <i></i>
-                                          Boîte automatique
-                                          <small><a href="#">(23)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" checked />
-                                          <i></i>
-                                          Boîte manuelle
-                                          <small><a href="#">(4)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Semi-automatique
-                                          <small><a href="#">(11)</a></small>
-                                      </label>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!--/end panel group-->
-              <div class="panel-group" id="accordion-v3">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <h2 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-v3" href="#collapseThree">
-Véhicule<i class="fa fa-angle-down"></i></a></h2>
-                      </div>
-                      <div id="collapseThree" class="panel-collapse collapse in">
-                          <div class="panel-body">
-                              <ul class="list-unstyled checkbox-list">
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Citadine
-                                          <small><a href="#">(23)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" checked />
-                                          <i></i>
-                                          Monospace
-                                          <small><a href="#">(4)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Utilitaire
-                                          <small><a href="#">(11)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Cabriolet
-                                          <small><a href="#">(3)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Coupé
-                                          <small><a href="#">(3)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          SUV/4x4
-                                          <small><a href="#">(3)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Break
-                                          <small><a href="#">(3)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Berline
-                                          <small><a href="#">(3)</a></small>
-                                      </label>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!--/end panel group-->
-              <div class="panel-group" id="accordion-v4">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <h2 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-v4" href="#collapseFour">
-Prix<i class="fa fa-angle-down"></i></a></h2>
-                      </div>
-                      <div id="collapseFour" class="panel-collapse collapse in">
-                          <div class="panel-body">
-                              <div class="slider-snap"></div>
-                              <p class="slider-snap-text"><span class="slider-snap-value-lower"></span><span class="slider-snap-value-upper"></span></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!--/end panel group-->
-              <div class="panel-group" id="accordion-v5">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <h2 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-v5" href="#collapseFive">
-Coleur<i class="fa fa-angle-down"></i></a></h2>
-                      </div>
-                      <div id="collapseFive" class="panel-collapse collapse in">
-                          <div class="panel-body">
-                              <ul class="list-inline product-color-list">
-                                  <li>
-                                      <a href="#">
-                                        <img src="/static/assets/img/colors/01.jpg" alt="">
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#">
-                                        <img src="/static/assets/img/colors/02.jpg" alt="">
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#">
-                                        <img src="/static/assets/img/colors/03.jpg" alt="">
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#">
-                                        <img src="/static/assets/img/colors/04.jpg" alt="">
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#">
-                                        <img src="/static/assets/img/colors/05.jpg" alt="">
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#">
-                                        <img src="/static/assets/img/colors/06.jpg" alt="">
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#">
-                                        <img src="/static/assets/img/colors/07.jpg" alt="">
-                                      </a>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!--/end panel group-->
-              <div class="panel-group margin-bottom-30" id="accordion-v6">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <h2 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-v6" href="#collapseSix">
-Etat<i class="fa fa-angle-down"></i></a></h2>
-                      </div>
-                      <div id="collapseSix" class="panel-collapse collapse in">
-                          <div class="panel-body">
-                              <div class="stars-ratings stars-ratings-label">
-                                  <input type="radio" name="stars-rating" id="stars-rating-5">
-                                  <label for="stars-rating-5">
-                                      <i class="fa fa-star"></i>
-                                  </label>
-                                  <input type="radio" name="stars-rating" id="stars-rating-4">
-                                  <label for="stars-rating-4">
-                                      <i class="fa fa-star"></i>
-                                  </label>
-                                  <input type="radio" name="stars-rating" id="stars-rating-3">
-                                  <label for="stars-rating-3">
-                                      <i class="fa fa-star"></i>
-                                  </label>
-                                  <input type="radio" name="stars-rating" id="stars-rating-2">
-                                  <label for="stars-rating-2">
-                                      <i class="fa fa-star"></i>
-                                  </label>
-                                  <input type="radio" name="stars-rating" id="stars-rating-1">
-                                  <label for="stars-rating-1">
-                                      <i class="fa fa-star"></i>
-                                  </label>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!--/end panel group-->
-              <button type="button" class="btn-u btn-brd btn-brd-hover btn-u-lg btn-u-sea-shop btn-block">réinitialiser</button>
-          </div>
+        {% include "inventory/filter.html" %}
           <div class="col-md-9">
-              <div class="row margin-bottom-5">
-                  <div class="col-sm-12">
-                      <ul class="list-inline clear-both">
-                          <li class="grid-list-icons">
-                              <a href="shop-ui-filter-list.html"><i class="fa fa-th-list"></i></a>
-                              <a href="shop-ui-filter-grid.html"><i class="fa fa-th"></i></a>
-                          </li>
-                          <li class="sort-list-btn">
-                              <h3>Show :</h3>
-                              <div class="btn-group">
-                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                      20
-                                      <span class="caret"></span>
-                                  </button>
-                                  <ul class="dropdown-menu" role="menu">
-                                      <li>
-                                          <a href="#">All</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">10</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">5</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">3</a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-              <!--/end result category-->
+            {% include "inventory/show.html" %}
+
               <div class="filter-results">
+                <!-- Start product -->
+                {% for vehicle in vehicles %}
+                  {% if not forloop.last %}
                   <div class="list-product-description product-description-brd margin-bottom-30">
+                  {% else %}
+                  <div class="list-product-description product-description-brd">
+                    {% endif %}
                       <div class="row">
                           <div class="col-sm-4">
                               <a href="shop-ui-inner.html">
-                                <img class="img-responsive sm-margin-bottom-20" src='/media/rammotors/voiture_1.jpg' alt="">
+                                <img class="img-responsive sm-margin-bottom-20" src='{{images_uri}}{{vehicle.uri_image_feature}}' alt="">
                               </a>
                           </div>
                           <div class="col-sm-8 product-description">
                               <div class="overflow-h margin-bottom-5">
                                   <ul class="list-inline overflow-h">
                                       <li>
-                                          <h4 class="title-price"><a href="shop-ui-inner.html">Dacia</a></h4>
+                                      <h4 class="title-price"><a href="shop-ui-inner.html">{{vehicle.brand_id}}</a></h4>
                                       </li>
                                       <li class="pull-right">
                                           <ul class="list-inline product-ratings">
@@ -363,63 +68,23 @@ Etat<i class="fa fa-angle-down"></i></a></h2>
                                       </li>
                                   </ul>
                                   <div class="margin-bottom-10">
-                                      <span class="title-price margin-right-10">EUR 3.400,-</span>
+                                    <span class="title-price margin-right-10">{{vehicle.currency}} {{vehicle.price }},-</span>
                                       <span class="title-price line-through">EUR 3.800,-</span>
                                   </div>
-                                  <p class="margin-bottom-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin erat nec ornarevolu tpat. Etiam ut felis nec nisl eleifend lobortis. Aenean nibh est, hendrerit non conva.</p>
-                                  <ul class="list-inline add-to-wishlist margin-bottom-20">
-</ul>
+                                  <p class="margin-bottom-20">
+                                  
+                                  {{vehicle.model_id}} -- {{vehicle.mileage}}
+                                  </p>
+                                  <ul class="list-inline add-to-wishlist margin-bottom-20"> </ul>
                                   <button type="button" class="btn-u btn-u-sea-shop">View</button>
                               </div>
                           </div>
                       </div>
                   </div>
-                  <div class="list-product-description product-description-brd">
-                      <div class="row">
-                          <div class="col-sm-4">
-                              <a href="shop-ui-inner.html">
-                                <img class="img-responsive sm-margin-bottom-20" src="/media/rammotors/voiture_2_1.jpg" alt="">
-                              </a>
-                          </div>
-                          <div class="col-sm-8 product-description">
-                              <div class="overflow-h margin-bottom-5">
-                                  <ul class="list-inline overflow-h">
-                                      <li>
-                                          <h4 class="title-price"><a href="shop-ui-inner.html">Skoda</a></h4>
-                                      </li>
-                                      <li class="pull-right">
-                                          <ul class="list-inline product-ratings">
-                                              <li>
-                                                  <i class="rating-selected fa fa-star"></i>
-                                              </li>
-                                              <li>
-                                                  <i class="rating-selected fa fa-star"></i>
-                                              </li>
-                                              <li>
-                                                  <i class="rating-selected fa fa-star"></i>
-                                              </li>
-                                              <li>
-                                                  <i class="rating fa fa-star"></i>
-                                              </li>
-                                              <li>
-                                                  <i class="rating fa fa-star"></i>
-                                              </li>
-                                          </ul>
-                                      </li>
-                                  </ul>
-                                  <div class="margin-bottom-10">
-                                      <span class="title-price margin-right-10">EUR 4.900,-</span>
-                                      <span class="title-price line-through">EUR 5.200,-</span>
-                                  </div>
-                                  <p class="margin-bottom-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin erat nec ornarevolu tpat. Etiam ut felis nec nisl eleifend lobortis. Aenean nibh est, hendrerit non conva.</p>
-                                  <ul class="list-inline add-to-wishlist margin-bottom-20">
-</ul>
-                                  <button type="button" class="btn-u btn-u-sea-shop">View</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                  <!-- end product -->
+                  {% endfor %}
               </div>
+
               <!--/end filter resilts-->
               <div class="text-center">
                   <ul class="pagination pagination-v2">
@@ -445,9 +110,4 @@ Etat<i class="fa fa-angle-down"></i></a></h2>
       </div>
       <!--/end row-->
   </div>
-  <!--/end container-->
-  <!--=== End Content Part ===-->
-  <!--=== Shop Suvbscribe ===-->
-  <!--=== End Shop Suvbscribe ===-->
-
 {% endblock %}
