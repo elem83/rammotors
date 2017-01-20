@@ -35,9 +35,12 @@
     </head>
     <body class="header-fixed">
 
+    <div class="wrapper">
+        {% include 'navbar.html' %}
         {% block content %}
-
         {% endblock %}
+    </div>
+        {% include 'footer.html' %}
 
         <!--/wrapper-->
         <!-- JS Global Compulsory -->
