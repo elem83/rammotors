@@ -46,11 +46,22 @@ class VehiculeTest(TestCase):
         self.assertEqual(type(etree_vehicles), list)
 
     def test_vehicles_factory(self):
-        """ Return a list of id """
+        """ test the factory """
         etree_vehicles = self.wsdl_autoscout24.etree_vehicles()
         vehicles = self.wsdl_autoscout24.vehicles_factory(etree_vehicles)
         self.assertNotEqual(len(vehicles), 0)
         self.assertEqual(type(vehicles[0]), services.Vehicle)
         self.assertEqual(type(vehicles[0].brand_id), str)
 
+    def test_uri(self):
+        """ Test the uri_images method """
+        images_uri = self.wsdl_autoscout24.uri_images('main')
+        self.assertEqual(images_uri, 'http://pic.autoscout24.net/images/')
 
+    def test_call(self):
+        """ Return the call method  """
+        autoscout = services.WsdlAutoscout24()
+        vehicles = autoscout()
+        self.assertNotEqual(len(vehicles), 0)
+        self.assertEqual(type(vehicles[0]), services.Vehicle)
+        self.assertEqual(type(vehicles[0].brand_id), str)

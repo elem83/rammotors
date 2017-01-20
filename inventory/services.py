@@ -66,6 +66,26 @@ class WsdlAutoscout24(object):
 
         return name_spaces
 
+    def uri_images(self, size):
+        """ Return the base URI for the images
+
+        Input:
+            size :: [big|main|small|thumbnails] :: String
+
+        Return:
+            uri :: String
+        """
+        if size == 'big':
+            return 'http://pic.autoscout24.net/images-big/'
+        elif size == 'main':
+            return 'http://pic.autoscout24.net/images/'
+        elif size == 'small':
+            return 'http://pic.autoscout24.net/images-small/'
+        elif size == 'thumbnails':
+            return 'http://pic.autoscout24.net/thumbnails-big/'
+        else:
+            raise ValueError('Not a correct size parameter')
+
     def wsdl_find_articles(self):
         """ Searching all the articles correspondings to a dealer
 
