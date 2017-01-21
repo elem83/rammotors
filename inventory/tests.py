@@ -3,6 +3,7 @@
 from django.urls import resolve
 from django.test import TestCase
 from django.http import HttpRequest
+from django.template.loader import render_to_string
 
 from inventory.views import vehicules_list
 from inventory import services
@@ -31,6 +32,17 @@ class VehiculeTest(TestCase):
         self.assertTrue(response.content.startswith(b'\n<!DOCTYPE html>'))
         self.assertIn(b'<title>Ram Motors</title>', response.content)
         self.assertTrue(response.content.endswith(b'</html>\n'))
+
+    def test_vehicules_return_html2(self):
+        """Testing that we get an html"""
+        request = HttpRequest()
+        response = vehicules_list(request)
+        autoscout = services.WsdlAutoscout24()
+        images_uri = autoscout.uri_images('main')
+        vehicles = autoscout()
+        context = {'vehicles': vehicles, 'images_uri': images_uri}
+        expected_html = render_to_string('inventory/list_cars.html', context)
+        self.assertEqual(response.content.decode(), expected_html)
 
     def test_wsdl_findallarticles(self):
         """Testing the wsdl query to fetch the list of cars"""

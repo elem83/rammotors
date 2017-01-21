@@ -1,3 +1,9 @@
+""" Models containing mainly data from autoscout"""
+
 from django.db import models
 
-# Create your models here.
+"""
+class Brands(models.Model):
+    "" The Brands of the cars""
+    pass
+"""
