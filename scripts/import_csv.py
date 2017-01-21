@@ -9,6 +9,14 @@ This script can be tested in Django with ipython:
 
 
 import csv
+import os
+import sys
+
+import django
+
+sys.path.append('.')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rammotors.settings")
+django.setup()
 
 from inventory import models
 
