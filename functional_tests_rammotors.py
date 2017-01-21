@@ -27,7 +27,7 @@ class NewAdminTest(unittest.TestCase):
         assert 'Ram Motors' in self.browser.title,\
         'Browse title was: ' + self.browser.title
 
-        # The user is happy because the devloper did not need
+        # The user is happy because the developer did not need
         # any input from him.  All the cars are retrieved from
         # the websites through wsdl.
         # He goes to the site and check that all the cars are there

@@ -10,6 +10,8 @@ application: https://www.soapui.org/soap-and-wsdl/working-with-wsdls.html
 import xml.etree.ElementTree as ET
 import requests
 
+from inventory.models import Brands
+
 
 URL = 'http://api.autoscout24.com/AS24_WS_Search'
 
@@ -193,3 +195,8 @@ class Vehicle(object):
     def __str__(self):
         """ Representation of the object"""
         return self.brand_id
+    
+    @property
+    def brand(self):
+        """ Return name of the brand (not the id) """
+        return Brands.objects.get(brand_id=self.brand_id).description
