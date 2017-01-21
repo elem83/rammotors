@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load humanize %}
 {% block css_custom %}
 <link rel="stylesheet" href="{% static 'rammotors/css/custom.css' %}">
 {% endblock %}
@@ -47,6 +47,7 @@
                                       <li>
                                       <h4 class="title-price"><a href="shop-ui-inner.html">{{vehicle.brand_id}}</a></h4>
                                       </li>
+                                      <li><span class="gender text-uppercase">{{vehicle.model_id}}</span></li>
                                       <li class="pull-right">
                                           <ul class="list-inline product-ratings">
                                               <li>
@@ -68,15 +69,16 @@
                                       </li>
                                   </ul>
                                   <div class="margin-bottom-10">
-                                    <span class="title-price margin-right-10">{{vehicle.currency}} {{vehicle.price }},-</span>
-                                      <span class="title-price line-through">EUR 3.800,-</span>
+                                    <span class="title-price margin-right-10">{{vehicle.currency}} {{vehicle.price|intcomma}},-</span>
+                                     <!-- <span class="title-price line-through">EUR 3.800,-</span> -->
                                   </div>
-                                  <p class="margin-bottom-20">
-                                  
-                                  {{vehicle.model_id}} -- {{vehicle.mileage}}
-                                  </p>
-                                  <ul class="list-inline add-to-wishlist margin-bottom-20"> </ul>
-                                  <button type="button" class="btn-u btn-u-sea-shop">View</button>
+                                  <p class="margin-bottom-20"></p>
+                                   <ul class="list-inline add-to-wishlist margin-bottom-20">
+                                    <li class="features">
+                                      <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
+                                    </li>
+                                   </ul>
+                                  <button type="button" class="btn-u btn-u-sea-shop">Voir</button>
                               </div>
                           </div>
                       </div>
@@ -85,16 +87,16 @@
                   {% endfor %}
               </div>
 
-              <!--/end filter resilts-->
+              <!--/end filter results-->
               <div class="text-center">
                   <ul class="pagination pagination-v2">
                       <li>
                           <a href="#"><i class="fa fa-angle-left"></i></a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="#">1</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="#">2</a>
                       </li>
                       <li>
