@@ -1,0 +1,12 @@
+fuel_type_id,Description
+B,Gasoline
+D,Diesel
+G,Gas
+M,Ethanol
+E,Electric
+H,Hydrogene
+L,LPG
+C,CNG
+2,Hybrid
+O,Others
+3,Hybrid (Electric/Diesel)

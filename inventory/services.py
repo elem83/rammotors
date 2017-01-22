@@ -156,6 +156,24 @@ class WsdlAutoscout24(object):
         etree_vehicles = root.findall(".//a:vehicle", self.name_spaces)
         return etree_vehicles
 
+    def attr_lookup(self, etree, tag):
+        """ Extract the value of the tag if it exists
+
+        Input:
+            etree :: xml.etree.ElementTree.Element
+            tag :: Xpath expression
+
+        Return:
+            value :: String
+            The value of the Xpath expression
+        """
+        value = ""
+        item = etree.find(tag, self.name_spaces)
+        if item != None:
+            value = item.text
+
+        return value
+
     def vehicles_factory(self, etree_vehicles):
         """ Build a list of vehicules of type Vehicle
 
@@ -165,37 +183,88 @@ class WsdlAutoscout24(object):
         Returns:
             vehicules :: [v0 :: Vehicule, ...]
         """
-        name_spaces = self.name_spaces
         vehicles = list()
         for etree_v in etree_vehicles:
+            find = lambda tag: self.attr_lookup(etree_v, tag)
             vehicle = Vehicle()
-            vehicle.brand_id = etree_v.find('a:brand_id', name_spaces).text
-            vehicle.model_id = etree_v.find('a:model_id', name_spaces).text
-            vehicle.mileage = etree_v.find('a:mileage', name_spaces).text
-            vehicle.price = etree_v.find('.//a:value', name_spaces).text
-            vehicle.uri_image_feature = \
-                    etree_v.find('.//a:uri', name_spaces).text
+
+            vehicle.accident_free = find('a:accident_free')
+            vehicle.body_colorgroup_id = find('a:body_colorgroup_id')
+            vehicle.body_id = find('a:body_id')
+            vehicle.body_painting_id = find('a:body_painting_id')
+            vehicle.brand_id = find('a:brand_id')
+            vehicle.category_id = find('a:category_id')
+#            vehicle.equipments = find('a:equipments')
+#            vehicle.equipments = self.equipments_factory(etree_equipments)
+            vehicle.fuel_type_id = find('a:fuel_type_id')
+            vehicle.gear_type_id = find('a:gear_type_id')
+            vehicle.initial_registration = find('a:initial_registration')
+            vehicle.kilowatt = find('a:kilowatt')
+            vehicle.media_image_feature = find('a:media/a:images/a:image/a:uri')
+            vehicle.media_image_count = find('a:media/a:x_code/a:image_count')
+            vehicle.mileage = find('a:mileage')
+            vehicle.model_id = find('a:model_id')
+            vehicle.owners_offer_key = find('a:owners_offer_key')
+            vehicle.prices = find('a:prices/a:price/a:value')
+            vehicle.currency = find('a:prices/a:price/a:currency_id')
+            vehicle.title = find('a:title')
+            vehicle.vehicle_guid = find('a:vehicle_guid')
+            vehicle.vehicle_id = find('a:vehicle_id')
+            vehicle.version = find('a:version')
+            vehicle.consumption = find('./a:consumption/a:liquid/a:combined')
+            vehicle.emiss_class_id = find('./a:emission/a:class_id')
+            vehicle.emiss_co2_liquid = find('./a:emission/a:co2_liquid')
+            vehicle.avail_begin = find('./a:availability/a:begin')
+            vehicle.avail_last_change = find('./a:availability/a:last_change')
             vehicles.append(vehicle)
 
         return vehicles
 
+    def equipments_factory(self, etree_equipments):
+        """ Return a list of equipments
+
+        Input:
+            etree_equipments :: [e0 :: xml.etree.ElementTree.Element, ...]
+        """
+        return [e.text for e in etree_equipments.findall('a:equipment_id', self.name_spaces)]
 
 class Vehicle(object):
     """ Object storing all the necessary information related to a car"""
 
     def __init__(self):
         """ """
+        self.accident_free = None
+        self.body_colorgroup_id = None
+        self.body_id = None
+        self.body_painting_id = None
         self.brand_id = None
-        self.model_id = None
+        self.category_id = None
+        self.equipments = None
+        self.fuel_type_id = None
+        self.gear_type_id = None
+        self.initial_registration = None
+        self.kilowatt = None
+        self.media_image_feature = None
+        self.media_image_count = None
         self.mileage = None
-        self.price = None
-        self.currency = 'EUR'
-        self.uri_image_feature = None
+        self.model_id = None
+        self.owners_offer_key = None
+        self.prices = None
+        self.currency = None
+        self.title = None
+        self.vehicle_guid = None
+        self.vehicle_id = None
+        self.version = None
+        self.consumption = None
+        self.emiss_class_id = None
+        self.emiss_co2_liquid = None
+        self.avail_begin = None
+        self.avail_last_change = None
 
     def __str__(self):
         """ Representation of the object"""
         return self.brand_id
-    
+
     @property
     def brand(self):
         """ Return name of the brand (not the id) """
