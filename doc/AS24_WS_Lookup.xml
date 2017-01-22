@@ -1,0 +1,57 @@
+<wsdl:definitions name="LookupFacade" targetNamespace="http://www.autoscout24.com/webapi/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.autoscout24.com/webapi/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.autoscout24.com/webapi/Imports">
+            <xsd:import namespace="http://www.autoscout24.com/webapi/" schemaLocation="http://api.autoscout24.com/ssg/wsdl/Lookup.svc?serviceoid=147488777&amp;servdocoid=147881997"/>
+            <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="http://api.autoscout24.com/ssg/wsdl/Lookup.svc?serviceoid=147488777&amp;servdocoid=147881995"/>
+            <xsd:import namespace="http://www.autoscout24.com/webapi/data/" schemaLocation="http://api.autoscout24.com/ssg/wsdl/Lookup.svc?serviceoid=147488777&amp;servdocoid=147881996"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ILookup_GetLookupData_InputMessage">
+        <wsdl:part element="tns:GetLookupData" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="ILookup_GetLookupData_OutputMessage">
+        <wsdl:part element="tns:GetLookupDataResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="ILookup_GetMakeModelTree_InputMessage">
+        <wsdl:part element="tns:GetMakeModelTree" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="ILookup_GetMakeModelTree_OutputMessage">
+        <wsdl:part element="tns:GetMakeModelTreeResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="ILookup">
+        <wsdl:operation name="GetLookupData">
+            <wsdl:input message="tns:ILookup_GetLookupData_InputMessage" wsaw:Action="http://www.autoscout24.com/webapi/ILookup/GetLookupData"/>
+            <wsdl:output message="tns:ILookup_GetLookupData_OutputMessage" wsaw:Action="http://www.autoscout24.com/webapi/ILookup/GetLookupDataResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetMakeModelTree">
+            <wsdl:input message="tns:ILookup_GetMakeModelTree_InputMessage" wsaw:Action="http://www.autoscout24.com/webapi/ILookup/GetMakeModelTree"/>
+            <wsdl:output message="tns:ILookup_GetMakeModelTree_OutputMessage" wsaw:Action="http://www.autoscout24.com/webapi/ILookup/GetMakeModelTreeResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_ILookup" type="tns:ILookup">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetLookupData">
+            <soap:operation soapAction="http://www.autoscout24.com/webapi/ILookup/GetLookupData" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetMakeModelTree">
+            <soap:operation soapAction="http://www.autoscout24.com/webapi/ILookup/GetMakeModelTree" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="LookupFacade">
+        <wsdl:port binding="tns:BasicHttpBinding_ILookup" name="BasicHttpBinding_ILookup">
+            <soap:address location="http://api.autoscout24.com/AS24_WS_Lookup"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

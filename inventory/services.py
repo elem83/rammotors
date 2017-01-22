@@ -6,11 +6,11 @@ Note that in order to help me to create the requests I have used the
 application: https://www.soapui.org/soap-and-wsdl/working-with-wsdls.html
 """
 
-
+from datetime import datetime
 import xml.etree.ElementTree as ET
 import requests
 
-from inventory.models import Brands
+from inventory.models import Brands, Equipments, Color, Fuel, Gear, Painting, Category, Body
 
 
 URL = 'http://api.autoscout24.com/AS24_WS_Search'
@@ -195,10 +195,10 @@ class WsdlAutoscout24(object):
             vehicle.brand_id = find('a:brand_id')
             vehicle.category_id = find('a:category_id')
             etree_equipment_ids = etree_v.findall('a:equipments/a:equipment_id', self.name_spaces)
-            vehicle.equipments = self.equipments_factory(etree_equipment_ids)
+            vehicle.equipment_ids = self.equipments_factory(etree_equipment_ids)
             vehicle.fuel_type_id = find('a:fuel_type_id')
             vehicle.gear_type_id = find('a:gear_type_id')
-            vehicle.initial_registration = find('a:initial_registration')
+            vehicle.initial_registration_raw = find('a:initial_registration')
             vehicle.kilowatt = find('a:kilowatt')
             vehicle.media_image_feature = find('a:media/a:images/a:image/a:uri')
             vehicle.media_image_count = find('a:media/a:x_code/a:image_count')
@@ -207,7 +207,6 @@ class WsdlAutoscout24(object):
             vehicle.owners_offer_key = find('a:owners_offer_key')
             vehicle.price = find('a:prices/a:price/a:value')
             vehicle.currency = find('a:prices/a:price/a:currency_id')
-            vehicle.title = find('a:title')
             vehicle.vehicle_guid = find('a:vehicle_guid')
             vehicle.vehicle_id = find('a:vehicle_id')
             vehicle.version = find('a:version')
@@ -240,10 +239,10 @@ class Vehicle(object):
         self.body_painting_id = None
         self.brand_id = None
         self.category_id = None
-        self.equipments = None
+        self.equipment_ids = None
         self.fuel_type_id = None
         self.gear_type_id = None
-        self.initial_registration = None
+        self.initial_registration_raw = None
         self.kilowatt = None
         self.media_image_feature = None
         self.media_image_count = None
@@ -252,7 +251,6 @@ class Vehicle(object):
         self.owners_offer_key = None
         self.price = None
         self.currency = None
-        self.title = None
         self.vehicle_guid = None
         self.vehicle_id = None
         self.version = None
@@ -269,4 +267,43 @@ class Vehicle(object):
     @property
     def brand(self):
         """ Return name of the brand (not the id) """
-        return Brands.objects.get(brand_id=self.brand_id).description
+        return Brands.objects.get(item_id=self.brand_id).description
+
+    @property
+    def equipments(self):
+        """ Return name of the equipments (not the id) """
+        return [Equipments.objects.get(item_id=eid).description for eid in self.equipment_ids]
+
+    @property
+    def fuel(self):
+        """ Return name of the fuel (not the id) """
+        return Fuel.objects.get(item_id=self.fuel_type_id).description
+
+    @property
+    def gear(self):
+        """ Return name of the fuel (not the id) """
+        return Gear.objects.get(item_id=self.gear_type_id).description
+
+    @property
+    def color(self):
+        """ Return name of the fuel (not the id) """
+        return Color.objects.get(item_id=self.body_colorgroup_id).description
+
+    @property
+    def body(self):
+        """ Return name of the body (not the id) """
+        return Body.objects.get(item_id=self.body_id).description
+
+    @property
+    def painting(self):
+        """ Return name of the painting (not the id) """
+        return Painting.objects.get(item_id=self.body_painting_id).description
+
+    @property
+    def category(self):
+        """ Return name of the body (not the id) """
+        return Category.objects.get(item_id=self.category_id).description
+    
+    @property
+    def initial_registration(self):
+        return datetime.strptime(self.initial_registration_raw,'%Y-%m-%dT%H:%M:%S').strftime('%m/%y')

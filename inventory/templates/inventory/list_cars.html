@@ -72,10 +72,29 @@
                                     <span class="title-price margin-right-10">{{vehicle.currency}} {{vehicle.price|intcomma}}</span>
                                      <!-- <span class="title-price line-through">EUR 3.800,-</span> -->
                                   </div>
-                                  <p class="margin-bottom-20"></p>
+                                  <p class="margin-bottom-20">{{vehicle.version}}</p>
                                    <ul class="list-inline add-to-wishlist margin-bottom-20">
                                     <li class="features">
                                       <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
+                                    </li>
+                                    <li class="features">
+                                    {{vehicule.category}} <i class="fa fa-calendar" aria-hidden="true"> {{vehicle.initial_registration}}</i>
+                                    </li>
+
+                                    <li class="features">
+                                    {{vehicle.category}} 
+                                    {{vehicle.fuel}}
+                                    {{vehicle.gear}}
+                                    {{vehicle.color}}
+                                    {{vehicle.body}}
+                                    {{vehicle.painting}}
+                                    </li>
+                                    <li>
+                                      {{vehicle.kilowatt}}
+                                      {{vehicle.media_image_count}}
+                                      {{vehicle.consumption}}
+                                      {{vehicle.emiss_class_id}}
+                                      {{vehicle.emiss_co2_liquid}}
                                     </li>
                                    </ul>
 
@@ -86,7 +105,7 @@
                                     </li>
                                     {% endfor %}
                                    </ul>
-                                  <button type="button" class="btn-u btn-u-sea-shop">Voir</button>
+                                  <button type="button" class="btn-u btn-u-sea-shop">Voir {{vehicle.vehicle_id}} </button>
                               </div>
                           </div>
                       </div>
