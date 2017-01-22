@@ -38,7 +38,7 @@
                       <div class="row">
                           <div class="col-sm-4">
                               <a href="shop-ui-inner.html">
-                                <img class="img-responsive sm-margin-bottom-20" src='{{images_uri}}{{vehicle.uri_image_feature}}' alt="">
+                                <img class="img-responsive sm-margin-bottom-20" src='{{images_uri}}{{vehicle.media_image_feature}}' alt="">
                               </a>
                           </div>
                           <div class="col-sm-8 product-description">
@@ -77,6 +77,14 @@
                                     <li class="features">
                                       <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
                                     </li>
+                                   </ul>
+
+                                   <ul class="list-inline add-to-wishlist margin-bottom-20">
+                                    {% for equiment in vehicle.equipments %}
+                                    <li class="features">
+                                      {{equiment}}
+                                    </li>
+                                    {% endfor %}
                                    </ul>
                                   <button type="button" class="btn-u btn-u-sea-shop">Voir</button>
                               </div>

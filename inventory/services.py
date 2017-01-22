@@ -165,7 +165,7 @@ class WsdlAutoscout24(object):
 
         Return:
             value :: String
-            The value of the Xpath expression
+            The value of the Xpath expression or the empty string ""
         """
         value = ""
         item = etree.find(tag, self.name_spaces)
@@ -194,8 +194,8 @@ class WsdlAutoscout24(object):
             vehicle.body_painting_id = find('a:body_painting_id')
             vehicle.brand_id = find('a:brand_id')
             vehicle.category_id = find('a:category_id')
-#            vehicle.equipments = find('a:equipments')
-#            vehicle.equipments = self.equipments_factory(etree_equipments)
+            etree_equipment_ids = etree_v.findall('a:equipments/a:equipment_id', self.name_spaces)
+            vehicle.equipments = self.equipments_factory(etree_equipment_ids)
             vehicle.fuel_type_id = find('a:fuel_type_id')
             vehicle.gear_type_id = find('a:gear_type_id')
             vehicle.initial_registration = find('a:initial_registration')
@@ -205,7 +205,7 @@ class WsdlAutoscout24(object):
             vehicle.mileage = find('a:mileage')
             vehicle.model_id = find('a:model_id')
             vehicle.owners_offer_key = find('a:owners_offer_key')
-            vehicle.prices = find('a:prices/a:price/a:value')
+            vehicle.price = find('a:prices/a:price/a:value')
             vehicle.currency = find('a:prices/a:price/a:currency_id')
             vehicle.title = find('a:title')
             vehicle.vehicle_guid = find('a:vehicle_guid')
@@ -220,16 +220,17 @@ class WsdlAutoscout24(object):
 
         return vehicles
 
-    def equipments_factory(self, etree_equipments):
+    def equipments_factory(self, etree_equipment_ids):
         """ Return a list of equipments
 
         Input:
-            etree_equipments :: [e0 :: xml.etree.ElementTree.Element, ...]
+            etree_equipment_ids :: [e0 :: xml.etree.ElementTree.Element, ...]
         """
-        return [e.text for e in etree_equipments.findall('a:equipment_id', self.name_spaces)]
+        return [e.text for e in etree_equipment_ids]
 
 class Vehicle(object):
     """ Object storing all the necessary information related to a car"""
+    # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
         """ """
@@ -249,7 +250,7 @@ class Vehicle(object):
         self.mileage = None
         self.model_id = None
         self.owners_offer_key = None
-        self.prices = None
+        self.price = None
         self.currency = None
         self.title = None
         self.vehicle_guid = None
