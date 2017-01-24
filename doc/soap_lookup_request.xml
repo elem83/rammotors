@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.autoscout24.com/webapi/" xmlns:data="http://www.autoscout24.com/webapi/data/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetLookupData>
+         <!--Optional:-->
+         <web:request>
+            <data:culture_id>fr-BE</data:culture_id>
+         </web:request>
+      </web:GetLookupData>
+   </soapenv:Body>
+</soapenv:Envelope>
