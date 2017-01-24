@@ -73,24 +73,28 @@
                                      <!-- <span class="title-price line-through">EUR 3.800,-</span> -->
                                   </div>
                                   <p class="margin-bottom-20">{{vehicle.version}}</p>
+
                                    <ul class="list-inline add-to-wishlist margin-bottom-20">
                                     <li class="features">
                                       <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
                                     </li>
-                                    <li class="features">
-                                    {{vehicule.category}} <i class="fa fa-calendar" aria-hidden="true"> {{vehicle.initial_registration}}</i>
+                                    <li>
+                                    <strong>{{vehicle.category}}</strong>
                                     </li>
-
                                     <li class="features">
-                                    {{vehicle.category}} 
+                                    <i class="fa fa-calendar" aria-hidden="true"> {{vehicle.initial_registration}}</i>
+                                    </li>
+                                    <li class="features">
                                     {{vehicle.fuel}}
                                     {{vehicle.gear}}
                                     {{vehicle.color}}
                                     {{vehicle.body}}
                                     {{vehicle.painting}}
                                     </li>
+                                    <li class="features">
+                                    <li class="fa fa-fw fa-dashboard" area-hidden="true"></li>  {{vehicle.kilowatt}}
+                                    </li>
                                     <li>
-                                      {{vehicle.kilowatt}}
                                       {{vehicle.media_image_count}}
                                       {{vehicle.consumption}}
                                       {{vehicle.emiss_class_id}}
