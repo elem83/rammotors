@@ -1,0 +1,9 @@
+-r base.text # includes the base.text requirements file
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR.ancestor(1)
+
+STATICFILES_DIRS = [
+    BASE_DIR.child('static'),
+]
