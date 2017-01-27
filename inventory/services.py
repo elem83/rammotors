@@ -1,3 +1,4 @@
+# pylint: disable=cell-var-from-loop, no-self-use, too-many-public-methods
 """
 Module responsible to communicate with the WSDL servers
 and handling all the logic of the website.
@@ -10,7 +11,7 @@ from datetime import datetime
 import xml.etree.ElementTree as ET
 import requests
 
-from inventory.models import Brands, Equipments, Color, Fuel, Gear, Painting, Category, Body
+from inventory.models import Enumeration
 
 
 URL = 'http://api.autoscout24.com/AS24_WS_Search'
@@ -265,45 +266,134 @@ class Vehicle(object):
         return self.brand_id
 
     @property
-    def brand(self):
-        """ Return name of the brand (not the id) """
-        return Brands.objects.get(item_id=self.brand_id).description
+    def category(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='category', item_id=self.category_id).text
+
+    @property
+    def body_color(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='body_color', item_id=self.body_colorgroup_id).text
+
+    @property
+    def body(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='body', item_id=self.body_id).text
+
+    @property
+    def country(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def culture(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def lookup_currency(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def customer_type(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def equipment(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='allfueltype', item_id=self.brand_id).text
 
     @property
     def equipments(self):
         """ Return name of the equipments (not the id) """
-        return [Equipments.objects.get(item_id=eid).description for eid in self.equipment_ids]
+        return [Enumeration.objects.get(name='equipment',\
+                    item_id=eid).text for eid in self.equipment_ids]
+
+    @property
+    def fraud_reason(self):
+        """ Retrieve data from the database """
+        return NotImplemented
 
     @property
     def fuel(self):
-        """ Return name of the fuel (not the id) """
-        return Fuel.objects.get(item_id=self.fuel_type_id).description
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='fuel', item_id=self.fuel_type_id).text
 
     @property
-    def gear(self):
-        """ Return name of the fuel (not the id) """
-        return Gear.objects.get(item_id=self.gear_type_id).description
+    def gear_types(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='gear_types', item_id=self.gear_type_id).text
 
     @property
-    def color(self):
-        """ Return name of the fuel (not the id) """
-        return Color.objects.get(item_id=self.body_colorgroup_id).description
+    def body_painting(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='body_painting', item_id=self.body_painting_id).text
 
     @property
-    def body(self):
-        """ Return name of the body (not the id) """
-        return Body.objects.get(item_id=self.body_id).description
+    def seal(self):
+        """ Retrieve data from the database """
+        return NotImplemented
 
     @property
-    def painting(self):
-        """ Return name of the painting (not the id) """
-        return Painting.objects.get(item_id=self.body_painting_id).description
+    def seal_class(self):
+        """ Retrieve data from the database """
+        return NotImplemented
 
     @property
-    def category(self):
-        """ Return name of the body (not the id) """
-        return Category.objects.get(item_id=self.category_id).description
-    
+    def service(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def phonenumber_type(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def emission_class(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='emission_class', item_id=self.emiss_class_id).text
+
+    @property
+    def vattype(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def visibilitytype(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def emission_sticker(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def allfueltype(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def brand(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='brand', item_id=self.brand_id).text
+
+    @property
+    def model_line(self):
+        """ Retrieve data from the database """
+        return NotImplemented
+
+    @property
+    def model(self):
+        """ Retrieve data from the database """
+        return Enumeration.objects.get(name='model', item_id=self.model_id).text
+
     @property
     def initial_registration(self):
-        return datetime.strptime(self.initial_registration_raw,'%Y-%m-%dT%H:%M:%S').strftime('%m/%y')
+        """ Reformat the date of the first registration """
+        return datetime.strptime(self.initial_registration_raw,\
+                                 '%Y-%m-%dT%H:%M:%S').strftime('%m/%y')
+

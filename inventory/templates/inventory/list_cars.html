@@ -9,14 +9,6 @@
 <script src="{% static 'assets/js/custom.js' %}"></script>
 {% endblock %}
 
-<!-- context = {'vehicles': vehicles, 'images_uri': images_uri}
-
-        self.brand_id = None
-        self.price = None
-        self.currency = 'EUR'
-        self.uri_image_feature = None
-
--->
 {% block content %}
   <!--=== Content Part ===-->
   <div class="jumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg);">
@@ -47,69 +39,48 @@
                                       <li>
                                       <h4 class="title-price"><a href="shop-ui-inner.html">{{vehicle.brand}}</a></h4>
                                       </li>
-                                      <li><span class="gender text-uppercase">{{vehicle.model_id}}</span></li>
+                                      <li><span class="gender text-uppercase">{{vehicle.model}}</span></li>
                                       <li class="pull-right">
-                                          <ul class="list-inline product-ratings">
-                                              <li>
-                                                  <i class="rating-selected fa fa-star"></i>
-                                              </li>
-                                              <li>
-                                                  <i class="rating-selected fa fa-star"></i>
-                                              </li>
-                                              <li>
-                                                  <i class="rating-selected fa fa-star"></i>
-                                              </li>
-                                              <li>
-                                                  <i class="rating fa fa-star"></i>
-                                              </li>
-                                              <li>
-                                                  <i class="rating fa fa-star"></i>
-                                              </li>
-                                          </ul>
-                                      </li>
+                                        <button class="btn btn-u btn-u-orange" type="button" disabled="disabled">
+                                      {{vehicle.currency}} {{vehicle.price|intcomma}}
+                                        </button>
                                   </ul>
-                                  <div class="margin-bottom-10">
-                                    <span class="title-price margin-right-10">{{vehicle.currency}} {{vehicle.price|intcomma}}</span>
-                                     <!-- <span class="title-price line-through">EUR 3.800,-</span> -->
-                                  </div>
-                                  <p class="margin-bottom-20">{{vehicle.version}}</p>
-
                                    <ul class="list-inline add-to-wishlist margin-bottom-20">
-                                    <li class="features">
-                                      <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
-                                    </li>
                                     <li>
                                     <strong>{{vehicle.category}}</strong>
                                     </li>
                                     <li class="features">
-                                    <i class="fa fa-calendar" aria-hidden="true"> {{vehicle.initial_registration}}</i>
+                                     <i class="fa fa-fw fa-calendar-check-o"></i> {{vehicle.initial_registration}}
                                     </li>
                                     <li class="features">
-                                    {{vehicle.fuel}}
-                                    {{vehicle.gear}}
-                                    {{vehicle.color}}
+                                      <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
+                                    </li>
+                                    </lu>
+                                    <hr class="devider devider-dotted">
+                                   <ul class="list-inline add-to-wishlist margin-bottom-20">
+                                     <li>
                                     {{vehicle.body}}
-                                    {{vehicle.painting}}
-                                    </li>
-                                    <li class="features">
-                                    <li class="fa fa-fw fa-dashboard" area-hidden="true"></li>  {{vehicle.kilowatt}}
                                     </li>
                                     <li>
-                                      {{vehicle.media_image_count}}
-                                      {{vehicle.consumption}}
-                                      {{vehicle.emiss_class_id}}
-                                      {{vehicle.emiss_co2_liquid}}
+                                    {{vehicle.body_color}} {{vehicle.body_painting}}
                                     </li>
-                                   </ul>
+                                    <li>
+                                    {{vehicle.fuel}}
+                                    </li>
+                                    <li>
+                                    {{vehicle.gear_types}}
+                                    </li>
+                                    <li>
+                                    <i class="fa fa-fw fa-dashboard" area-hidden="true"></i> {{vehicle.kilowatt}} kW
+                                    </li>
+                                  </ul>
+                                    <hr class="devider devider-dotted">
 
-                                   <ul class="list-inline add-to-wishlist margin-bottom-20">
-                                    {% for equiment in vehicle.equipments %}
-                                    <li class="features">
-                                      {{equiment}}
-                                    </li>
-                                    {% endfor %}
-                                   </ul>
-                                  <button type="button" class="btn-u btn-u-sea-shop">Voir {{vehicle.vehicle_id}} </button>
+                                  <p class="margin-bottom-20">
+                                  {{vehicle.version}}
+                                  </p>
+
+                                  <button type="button" class="btn-u btn-u-sea-shop" id={{vehicle.vehicle_id}}>Voir</button>
                               </div>
                           </div>
                       </div>
