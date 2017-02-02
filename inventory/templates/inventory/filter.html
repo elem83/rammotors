@@ -10,46 +10,16 @@ Marque<i class="fa fa-angle-down"></i></a></h2>
                       <div id="collapseOne" class="panel-collapse collapse in">
                           <div class="panel-body">
                               <ul class="list-unstyled checkbox-list">
+                                {% for brand,count in brands.items %}
                                   <li>
                                       <label class="checkbox">
                                           <input type="checkbox" name="checkbox" checked />
                                           <i></i>
-                                          Dacia
-                                          <small><a href="#">(23)</a></small>
+                                          {{brand}}
+                                          <small><a href="#">({{count}})</a></small>
                                       </label>
                                   </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" checked />
-                                          <i></i>
-                                          Skoda
-                                          <small><a href="#">(4)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Toyota
-                                          <small><a href="#">(11)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Mercedes
-                                          <small><a href="#">(3)</a></small>
-                                      </label>
-                                  </li>
-                                  <li>
-                                      <label class="checkbox">
-                                          <input type="checkbox" name="checkbox" />
-                                          <i></i>
-                                          Nissan
-                                          <small><a href="#">(87)</a></small>
-                                      </label>
-                                  </li>
+                                  {% endfor %}
                               </ul>
                           </div>
                       </div>
