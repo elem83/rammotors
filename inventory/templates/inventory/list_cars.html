@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block js_custom %}
-<script src="{% static 'assets/js/custom.js' %}"></script>
+<script src="{% static 'rammotors/js/inventory/custom.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -23,11 +23,11 @@
                 <!-- Start product -->
                 {% for vehicle in vehicles %}
                   {% if not forloop.last %}
-                  <div class="list-product-description product-description-brd margin-bottom-30">
+                  <div class="list-product-description product-description-brd margin-bottom-30" name='{{vehicle.brand}}'>
                   {% else %}
-                  <div class="list-product-description product-description-brd">
+                  <div class="list-product-description product-description-brd" name='{{vehicle.brand}}'>
                     {% endif %}
-                      <div class="row">
+                    <div class="row">
                           <div class="col-sm-4">
                               <a href="shop-ui-inner.html">
                                 <img class="img-responsive sm-margin-bottom-20" src='{{images_uri}}{{vehicle.media_image_feature}}' alt="">
@@ -88,28 +88,6 @@
                   <!-- end product -->
                   {% endfor %}
               </div>
-
-              <!--/end filter results-->
-              <div class="text-center">
-                  <ul class="pagination pagination-v2">
-                      <li>
-                          <a href="#"><i class="fa fa-angle-left"></i></a>
-                      </li>
-                      <li class="active">
-                          <a href="#">1</a>
-                      </li>
-                      <li>
-                          <a href="#">2</a>
-                      </li>
-                      <li>
-                          <a href="#">3</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-angle-right"></i></a>
-                      </li>
-                  </ul>
-              </div>
-              <!--/end pagination-->
           </div>
       </div>
       <!--/end row-->

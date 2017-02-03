@@ -12,7 +12,7 @@ Marque<i class="fa fa-angle-down"></i></a></h2>
                     {% for brand,count in brands.items %}
                       <li>
                           <label class="checkbox">
-                              <input type="checkbox" name="checkbox" checked />
+                            <input type="checkbox" name="checkbox" value="{{brand}}" />
                               <i></i>
                               {{brand}}
                               <small><a href="#">({{count}})</a></small>
