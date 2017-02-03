@@ -14,4 +14,11 @@ $(document).ready(function(){
       });
   });
 
+  $('#reset').click(function(){
+    $('input[type=checkbox]').each(function () {
+      $(this).attr('checked', false);
+      brand = $(this).val();
+      $('div[name='+ brand +']').show("slow");
+    });
+  });
 });// end of document ready
