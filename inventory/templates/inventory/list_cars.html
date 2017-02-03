@@ -77,7 +77,7 @@
                                     <hr class="devider devider-dotted">
 
                                   <p class="margin-bottom-20">
-                                  {{vehicle.version}}
+                                  {{vehicle.version|default_if_none:""}}
                                   </p>
 
                                   <button type="button" class="btn-u btn-u-sea-shop" id={{vehicle.vehicle_id}}>Voir</button>
