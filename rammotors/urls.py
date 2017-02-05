@@ -17,12 +17,11 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-#from django.contrib.auth import urls as auth_urls
 
 from inventory import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.vehicules_list, name='vehicules_list'),
-    url(r'^user/', include('django.contrib.auth.urls')),
+    url(r'^$', views.vehicles_list, name='vehicles_list'),
+    url(r'^o$', views.vehicle_details, name='vehicle_details'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

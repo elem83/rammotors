@@ -2,13 +2,44 @@
 {% load static %}
 {% load humanize %}
 {% block css_custom %}
-<link rel="stylesheet" href="{% static 'rammotors/css/custom.css' %}">
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/line-icons/line-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/noUiSlider/jquery.nouislider.min.css' %}">
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css' %}">
+
+  <!-- CSS Customization -->
+  <link rel="stylesheet" href="{% static 'rammotors/css/custom.css' %}">
 {% endblock %}
 
 {% block js_custom %}
-<script src="{% static 'rammotors/js/inventory/custom.js' %}"></script>
+  <!-- JS Implementing Plugins -->
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/back-to-top.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/smoothScroll.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/noUiSlider/jquery.nouislider.all.min.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+  <!-- JS Customization -->
+  <script src="{% static 'rammotors/js/inventory/custom.js' %}"></script>
+  <!-- JS Page Level -->
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/js/shop.app.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/js/plugins/mouse-wheel.js' %}"></script>
+  <script>
+    jQuery(document).ready(function() {
+    App.init();
+    App.initScrollBar();
+    MouseWheel.initMouseWheel();
+    });
+  </script>
+  <!--[if lt IE 9]>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/respond.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/html5shiv.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/js/plugins/placeholder-IE-fixes.js' %}"></script>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/sky-forms-pro/skyforms/js/jquery.placeholder.min.js' %}"></script>
+  <![endif]-->
 {% endblock %}
-
 {% block content %}
   <!--=== Content Part ===-->
   <div class="jumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg);">

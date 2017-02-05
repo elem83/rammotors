@@ -7,6 +7,8 @@ Note that in order to help me to create the requests I have used the
 application: https://www.soapui.org/soap-and-wsdl/working-with-wsdls.html
 """
 
+from collections import defaultdict
+
 from datetime import datetime
 import xml.etree.ElementTree as ET
 import requests
@@ -57,6 +59,7 @@ class WsdlAutoscout24(object):
 
     def __init__(self):
         self.response = self.wsdl_find_articles()
+        self.vehicles = []
 
     @property
     def name_spaces(self):
@@ -147,8 +150,8 @@ class WsdlAutoscout24(object):
             vehicules :: [v1 :: Vehicle, v2 :: Vehicle, ...]
         """
         etree_vehicles = self.etree_vehicles()
-        vehicles = self.vehicles_factory(etree_vehicles)
-        return vehicles
+        self.vehicles = self.vehicles_factory(etree_vehicles)
+        return self.vehicles
 
     def etree_vehicles(self):
         """ Extract the list of vehicle in etree format """
@@ -227,6 +230,10 @@ class WsdlAutoscout24(object):
             etree_equipment_ids :: [e0 :: xml.etree.ElementTree.Element, ...]
         """
         return [e.text for e in etree_equipment_ids]
+
+    def vehicle_details(self):
+        """ Return a vehicule """
+        return self.vehicles[0]
 
 class Vehicle(object):
     """ Object storing all the necessary information related to a car"""
@@ -397,3 +404,9 @@ class Vehicle(object):
         return datetime.strptime(self.initial_registration_raw,\
                                  '%Y-%m-%dT%H:%M:%S').strftime('%m/%y')
 
+def filter_brands(vehicles):
+    """ Group the cars by brands """
+    brands = defaultdict(int)
+    for vhc in vehicles:
+        brands[vhc.brand] += 1
+    return dict(brands)
