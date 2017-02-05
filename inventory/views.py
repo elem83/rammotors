@@ -10,9 +10,9 @@ from inventory import services
 
 def vehicles_list(request):
     """ Return the context and render templates """
-    autoscout = services.WsdlAutoscout24()
+    autoscout = services.AS24WSSearch()
     images_uri = autoscout.uri_images('main')
-    vehicles = autoscout()
+    vehicles = autoscout.list_vehicles()
     brands = services.filter_brands(vehicles)
     context = {\
         'vehicles': vehicles,

@@ -1,0 +1,3158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="12fb1868-1103-4eb9-986f-e2c1f04da7f3" activeEnvironment="Default" name="autoscout24" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="caa03d99-1d4b-4e4d-99a3-a9bc25da6819" wsaVersion="NONE" name="BasicHttpBinding_IArticleSearch" type="wsdl" bindingName="{http://www.autoscout24.com/webapi/}BasicHttpBinding_IArticleSearch" soapVersion="1_1" anonymous="optional" definition="file:/home/netsamir/Webfactional/webapps/rammotors_project/source/doc/AS24_WS_Search.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/netsamir/Webfactional/webapps/rammotors_project/source/doc/AS24_WS_Search.xml"><con:part><con:url>file:/home/netsamir/Webfactional/webapps/rammotors_project/source/doc/AS24_WS_Search.xml</con:url><con:content><![CDATA[<wsdl:definitions name="ArticleSearchFacade" targetNamespace="http://www.autoscout24.com/webapi/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.autoscout24.com/webapi/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.autoscout24.com/webapi/Imports">
+      <xsd:import namespace="http://www.autoscout24.com/webapi/" schemaLocation="http://api.autoscout24.com/ssg/wsdl/Search.svc?serviceoid=227442735&amp;servdocoid=9445212160"/>
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="http://api.autoscout24.com/ssg/wsdl/Search.svc?serviceoid=227442735&amp;servdocoid=9445212162"/>
+      <xsd:import namespace="http://www.autoscout24.com/webapi/data/" schemaLocation="http://api.autoscout24.com/ssg/wsdl/Search.svc?serviceoid=227442735&amp;servdocoid=9445212161"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IArticleSearch_FindArticles_InputMessage">
+    <wsdl:part element="tns:FindArticles" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_FindArticles_OutputMessage">
+    <wsdl:part element="tns:FindArticlesResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_GetArticleDetails_InputMessage">
+    <wsdl:part element="tns:GetArticleDetails" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_GetArticleDetails_OutputMessage">
+    <wsdl:part element="tns:GetArticleDetailsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_GetCustomerArticleList_InputMessage">
+    <wsdl:part element="tns:GetCustomerArticleList" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_GetCustomerArticleList_OutputMessage">
+    <wsdl:part element="tns:GetCustomerArticleListResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_GetCustomerArticleDetails_InputMessage">
+    <wsdl:part element="tns:GetCustomerArticleDetails" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_GetCustomerArticleDetails_OutputMessage">
+    <wsdl:part element="tns:GetCustomerArticleDetailsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_SendContactMessage_InputMessage">
+    <wsdl:part element="tns:SendContactMessage" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IArticleSearch_SendContactMessage_OutputMessage">
+    <wsdl:part element="tns:SendContactMessageResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="IArticleSearch">
+    <wsdl:operation name="FindArticles">
+      <wsdl:input message="tns:IArticleSearch_FindArticles_InputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/FindArticles"/>
+      <wsdl:output message="tns:IArticleSearch_FindArticles_OutputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/FindArticlesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleDetails">
+      <wsdl:input message="tns:IArticleSearch_GetArticleDetails_InputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/GetArticleDetails"/>
+      <wsdl:output message="tns:IArticleSearch_GetArticleDetails_OutputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/GetArticleDetailsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerArticleList">
+      <wsdl:input message="tns:IArticleSearch_GetCustomerArticleList_InputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleList"/>
+      <wsdl:output message="tns:IArticleSearch_GetCustomerArticleList_OutputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerArticleDetails">
+      <wsdl:input message="tns:IArticleSearch_GetCustomerArticleDetails_InputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleDetails"/>
+      <wsdl:output message="tns:IArticleSearch_GetCustomerArticleDetails_OutputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleDetailsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendContactMessage">
+      <wsdl:input message="tns:IArticleSearch_SendContactMessage_InputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/SendContactMessage"/>
+      <wsdl:output message="tns:IArticleSearch_SendContactMessage_OutputMessage" wsaw:Action="http://www.autoscout24.com/webapi/IArticleSearch/SendContactMessageResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IArticleSearch" type="tns:IArticleSearch">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="FindArticles">
+      <soap:operation soapAction="http://www.autoscout24.com/webapi/IArticleSearch/FindArticles" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleDetails">
+      <soap:operation soapAction="http://www.autoscout24.com/webapi/IArticleSearch/GetArticleDetails" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerArticleList">
+      <soap:operation soapAction="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerArticleDetails">
+      <soap:operation soapAction="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleDetails" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendContactMessage">
+      <soap:operation soapAction="http://www.autoscout24.com/webapi/IArticleSearch/SendContactMessage" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ArticleSearchFacade">
+    <wsdl:port binding="tns:BasicHttpBinding_IArticleSearch" name="BasicHttpBinding_IArticleSearch">
+      <soap:address location="http://api.autoscout24.com/AS24_WS_Search"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://api.autoscout24.com/ssg/wsdl/Search.svc?serviceoid=227442735&amp;servdocoid=9445212160</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://www.autoscout24.com/webapi/" xmlns:tns="http://www.autoscout24.com/webapi/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://www.autoscout24.com/webapi/data/" schemaLocation="http://api.autoscout24.com/ssg/wsdl/Search.svc?serviceoid=227442735&amp;servdocoid=9445212161"/>
+  <xs:element name="FindArticles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q1:FindArticlesRequest" xmlns:q1="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindArticlesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="response" nillable="true" type="q2:FindArticlesResponse" xmlns:q2="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArticleDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q3:GetArticleDetailsRequest" xmlns:q3="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArticleDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="response" nillable="true" type="q4:GetArticleDetailsResponse" xmlns:q4="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerArticleList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q5:GetCustomerArticleListRequest" xmlns:q5="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerArticleListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="response" nillable="true" type="q6:GetCustomerArticleListResponse" xmlns:q6="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerArticleDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q7:GetCustomerArticleDetailsRequest" xmlns:q7="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerArticleDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="response" nillable="true" type="q8:GetCustomerArticleDetailsResponse" xmlns:q8="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendContactMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q9:SendContactMessageRequest" xmlns:q9="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendContactMessageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="response" nillable="true" type="q10:SendContactMessageResponse" xmlns:q10="http://www.autoscout24.com/webapi/data/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://api.autoscout24.com/ssg/wsdl/Search.svc?serviceoid=227442735&amp;servdocoid=9445212161</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://www.autoscout24.com/webapi/data/" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://www.autoscout24.com/webapi/data/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="http://api.autoscout24.com/ssg/wsdl/Search.svc?serviceoid=227442735&amp;servdocoid=9445212162"/>
+  <xs:complexType name="FindArticlesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="session_id" nillable="true" type="ser:guid">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicle_search_parameters" nillable="true" type="tns:SearchParameters">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FindArticlesRequest" nillable="true" type="tns:FindArticlesRequest"/>
+  <xs:complexType name="RequestBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="client_id" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="culture_id" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="profile_id" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="revision" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestBase" nillable="true" type="tns:RequestBase"/>
+  <xs:complexType name="SearchParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accident_free" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="address" nillable="true" type="tns:ZipSearch">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="as24_customer_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="availability" nillable="true" type="tns:AvailabilitySearch">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="bodies" nillable="true" type="tns:BodyTypes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="body_colorgroups" nillable="true" type="tns:BodyColours">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="body_paintings" nillable="true" type="tns:PaintingTypes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="brands" nillable="true" type="tns:Makes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="categories" nillable="true" type="tns:ArticleCategories">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="covering" nillable="true" type="tns:Upholsteries">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dealer_id" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="doors" nillable="true" type="tns:FromToOfNullableOfint5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="emission" nillable="true" type="tns:EmissionSearch">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="equipments" nillable="true" type="tns:equipments">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="export_third_party_listings" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="financing" nillable="true" type="tns:FinancingSearch">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fuel_types" nillable="true" type="tns:FuelTypes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="gear_type_ids" nillable="true" type="tns:GearingTypes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="general_inspection" nillable="true" type="tns:FromToOfNullableOfdateTime5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="group_id" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="initial_registration" nillable="true" type="tns:FromToOfNullableOfdateTime5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="interior_color" nillable="true" type="tns:InteriorColors">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kilowatt" nillable="true" type="tns:FromToOfNullableOfdecimal5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="leasing" nillable="true" type="tns:LeasingSearch">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="mileage" nillable="true" type="tns:FromToOfNullableOfint5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="model_lines" nillable="true" type="tns:ModelLines">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="models" nillable="true" type="tns:Models">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="owners_offer_key" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="paging" nillable="true" type="tns:Paging">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="previous_owner_count" nillable="true" type="tns:FromToOfNullableOfint5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="price_dealer" nillable="true" type="tns:PriceFromTo">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="price_public" nillable="true" type="tns:PriceFromTo">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="seal_classes" nillable="true" type="tns:SealClasses">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="seals" nillable="true" type="tns:seals">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="seats" nillable="true" type="tns:FromToOfNullableOfint5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="show_dealer_vehicles" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="show_private_vehicles" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="show_with_images_only" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sorting" nillable="true" type="tns:Sorting">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="vehicle_types" nillable="true" type="tns:VehicleTypes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="version" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ccm" nillable="true" type="tns:FromToOfNullableOfint5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchParameters" nillable="true" type="tns:SearchParameters"/>
+  <xs:complexType name="ZipSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="countries" nillable="true" type="tns:Countries">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="geo_position" nillable="true" type="tns:GeoPosition">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="radius" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="zip_code" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="zip_country_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZipSearch" nillable="true" type="tns:ZipSearch"/>
+  <xs:complexType name="Countries">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="country_id" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Countries" nillable="true" type="tns:Countries"/>
+  <xs:complexType name="GeoPosition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="latitude" nillable="true" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="longitude" nillable="true" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeoPosition" nillable="true" type="tns:GeoPosition"/>
+  <xs:complexType name="AvailabilitySearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="begin" nillable="true" type="tns:FromValueOfNullableOfdateTime5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="last_change" nillable="true" type="tns:FromToOfNullableOfdateTime5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailabilitySearch" nillable="true" type="tns:AvailabilitySearch"/>
+  <xs:complexType name="FromValueOfNullableOfdateTime5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="FromValueOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="dateTime" Namespace="http://www.w3.org/2001/XMLSchema"/>
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="from" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FromValueOfNullableOfdateTime5F2dSckg" nillable="true" type="tns:FromValueOfNullableOfdateTime5F2dSckg"/>
+  <xs:complexType name="FromToOfNullableOfdateTime5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="FromToOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="dateTime" Namespace="http://www.w3.org/2001/XMLSchema"/>
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ToValueOfNullableOfdateTime5F2dSckg">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="from" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FromToOfNullableOfdateTime5F2dSckg" nillable="true" type="tns:FromToOfNullableOfdateTime5F2dSckg"/>
+  <xs:complexType name="ToValueOfNullableOfdateTime5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ToValueOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="dateTime" Namespace="http://www.w3.org/2001/XMLSchema"/>
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="to" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ToValueOfNullableOfdateTime5F2dSckg" nillable="true" type="tns:ToValueOfNullableOfdateTime5F2dSckg"/>
+  <xs:complexType name="BodyTypes">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="body_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BodyTypes" nillable="true" type="tns:BodyTypes"/>
+  <xs:complexType name="BodyColours">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="body_colorgroup_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BodyColours" nillable="true" type="tns:BodyColours"/>
+  <xs:complexType name="PaintingTypes">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="body_painting_id" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaintingTypes" nillable="true" type="tns:PaintingTypes"/>
+  <xs:complexType name="Makes">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="brand_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Makes" nillable="true" type="tns:Makes"/>
+  <xs:complexType name="ArticleCategories">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="category_id" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArticleCategories" nillable="true" type="tns:ArticleCategories"/>
+  <xs:complexType name="Upholsteries">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="covering_id" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Upholsteries" nillable="true" type="tns:Upholsteries"/>
+  <xs:complexType name="FromToOfNullableOfint5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="FromToOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema"/>
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ToValueOfNullableOfint5F2dSckg">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="from" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FromToOfNullableOfint5F2dSckg" nillable="true" type="tns:FromToOfNullableOfint5F2dSckg"/>
+  <xs:complexType name="ToValueOfNullableOfint5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ToValueOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema"/>
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="to" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ToValueOfNullableOfint5F2dSckg" nillable="true" type="tns:ToValueOfNullableOfint5F2dSckg"/>
+  <xs:complexType name="EmissionSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="class_id" nillable="true" type="tns:FromValueOfNullableOfint5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sticker_id" nillable="true" type="tns:FromValueOfNullableOfint5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmissionSearch" nillable="true" type="tns:EmissionSearch"/>
+  <xs:complexType name="FromValueOfNullableOfint5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="FromValueOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema"/>
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="from" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FromValueOfNullableOfint5F2dSckg" nillable="true" type="tns:FromValueOfNullableOfint5F2dSckg"/>
+  <xs:complexType name="equipments">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="equipment_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="equipments" nillable="true" type="tns:equipments"/>
+  <xs:complexType name="FinancingSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="duration" nillable="true" type="tns:FromToOfNullableOfint5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="eff_rate_of_interest" nillable="true" type="tns:ToValueOfNullableOfdecimal5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ending_rate_value" nillable="true" type="tns:FromToOfNullableOfdecimal5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="initial_payment_value" nillable="true" type="tns:FromToOfNullableOfdecimal5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="rate_value" nillable="true" type="tns:FromToOfNullableOfdecimal5F2dSckg">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FinancingSearch" nillable="true" type="tns:FinancingSearch"/>
+  <xs:complexType name="ToValueOfNullableOfdecimal5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ToValueOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="decimal" Namespace="http://www.w3.org/2001/XMLSchema"/>
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="to" nillable="true" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ToValueOfNullableOfdecimal5F2dSckg" nillable="true" type="tns:ToValueOfNullableOfdecimal5F2dSckg"/>
+  <xs:complexType name="FromToOfNullableOfdecimal5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="FromToOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="decimal" Namespace="http://www.w3.org/2001/XMLSchema"/>
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ToValueOfNullableOfdecimal5F2dSckg">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="from" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FromToOfNullableOfdecimal5F2dSckg" nillable="true" type="tns:FromToOfNullableOfdecimal5F2dSckg"/>
+  <xs:complexType name="FuelTypes">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fuel_type_id" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FuelTypes" nillable="true" type="tns:FuelTypes"/>
+  <xs:complexType name="GearingTypes">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="gear_type_id" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GearingTypes" nillable="true" type="tns:GearingTypes"/>
+  <xs:complexType name="InteriorColors">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="interior_color_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InteriorColors" nillable="true" type="tns:InteriorColors"/>
+  <xs:complexType name="LeasingSearch">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FinancingSearch">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="takeover" nillable="true" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LeasingSearch" nillable="true" type="tns:LeasingSearch"/>
+  <xs:complexType name="ModelLines">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="model_line_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ModelLines" nillable="true" type="tns:ModelLines"/>
+  <xs:complexType name="Models">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="model_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Models" nillable="true" type="tns:Models"/>
+  <xs:complexType name="Paging">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="current_page" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="results_per_page" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Paging" nillable="true" type="tns:Paging"/>
+  <xs:complexType name="PriceFromTo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FromToOfNullableOfdecimal5F2dSckg">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vat_type_id" nillable="true" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PriceFromTo" nillable="true" type="tns:PriceFromTo"/>
+  <xs:complexType name="SealClasses">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="seal_class_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SealClasses" nillable="true" type="tns:SealClasses"/>
+  <xs:complexType name="seals">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="seal_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="seals" nillable="true" type="tns:seals"/>
+  <xs:complexType name="Sorting">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descending" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="first_brand_id" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="key" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sorting" nillable="true" type="tns:Sorting"/>
+  <xs:complexType name="VehicleTypes">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vehicle_type_id" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VehicleTypes" nillable="true" type="tns:VehicleTypes"/>
+  <xs:complexType name="FindArticlesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="root_paths" nillable="true" type="tns:root_paths">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="session_id" type="ser:guid">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="used_vehicle_search_parameters" nillable="true" type="tns:SearchParameters">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicles" nillable="true" type="tns:ArrayOfvehicle">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicles_found" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FindArticlesResponse" nillable="true" type="tns:FindArticlesResponse"/>
+  <xs:complexType name="ResponseBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request_id" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="errors" nillable="true" type="tns:ArrayOferror">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="build" nillable="true" type="tns:Build">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseBase" nillable="true" type="tns:ResponseBase"/>
+  <xs:complexType name="ArrayOferror">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="error" nillable="true" type="tns:error"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOferror" nillable="true" type="tns:ArrayOferror"/>
+  <xs:complexType name="error">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="error" nillable="true" type="tns:error"/>
+  <xs:complexType name="Build">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="number" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="time_stamp" nillable="true" type="tns:TimeStamp">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Build" nillable="true" type="tns:Build"/>
+  <xs:complexType name="TimeStamp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="runtime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="service" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeStamp" nillable="true" type="tns:TimeStamp"/>
+  <xs:complexType name="root_paths">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="as24_url_root" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="images_big" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="images_main" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="images_small" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="images_thumbnails" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="root_paths" nillable="true" type="tns:root_paths"/>
+  <xs:complexType name="ArrayOfvehicle">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vehicle" nillable="true" type="tns:vehicle"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfvehicle" nillable="true" type="tns:ArrayOfvehicle"/>
+  <xs:complexType name="vehicle">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ArticleListItemBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availability" nillable="true" type="tns:Availability">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="vehicle" nillable="true" type="tns:vehicle"/>
+  <xs:complexType name="ArticleListItemBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ArticleItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="emission" nillable="true" type="tns:Emission">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="fuel_types" nillable="true" type="tns:fuel_types">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="previous_owner" nillable="true" type="tns:PreviousOwnerOfOwnerList19jCfK4b">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="type" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ArticleListItemBase" nillable="true" type="tns:ArticleListItemBase"/>
+  <xs:complexType name="ArticleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ArticleItemBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="consumption" nillable="true" type="tns:ConsumptionOfConsumptionData19jCfK4b">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ext_id_list" nillable="true" type="tns:ArrayOfitem">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="properties" nillable="true" type="tns:ArrayOfproperty">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ArticleItem" nillable="true" type="tns:ArticleItem"/>
+  <xs:complexType name="ArticleItemBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accident_free" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="alloy_wheels_size" nillable="true" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="body_color" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="body_colorgroup_id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="body_id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="body_painting_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="brand_id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="category_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="covering_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="equipments" nillable="true" type="tns:equipments">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fuel_type_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="gear_type_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="general_inspection" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="initial_registration" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="interior_color_id" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kilowatt" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="media" nillable="true" type="tns:MediaOfImageMediaXCodeAmSZe6zN">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="mileage" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="model_id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="owners_offer_key" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="prices" nillable="true" type="tns:ArrayOfprice">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="primary_fuel_type" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="seals" nillable="true" type="tns:seals">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="service" nillable="true" type="tns:Service">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="transmission_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="vehicle_guid" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="vehicle_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="version" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="video" nillable="true" type="tns:Video">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="x_code" nillable="true" type="tns:XCode">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArticleItemBase" nillable="true" type="tns:ArticleItemBase"/>
+  <xs:complexType name="MediaOfImageMediaXCodeAmSZe6zN">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="MediaOf{0}{1}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Image" Namespace="http://www.autoscout24.com/webapi/data/"/>
+          <GenericParameter Name="MediaXCode" Namespace="http://www.autoscout24.com/webapi/data/"/>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:media">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="x_code" nillable="true" type="tns:MediaXCode">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MediaOfImageMediaXCodeAmSZe6zN" nillable="true" type="tns:MediaOfImageMediaXCodeAmSZe6zN"/>
+  <xs:complexType name="media">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="media" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Image" Namespace="http://www.autoscout24.com/webapi/data/"/>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="images" nillable="true" type="tns:ImageListOfImage19jCfK4b">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="media" nillable="true" type="tns:media"/>
+  <xs:complexType name="ImageListOfImage19jCfK4b">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ImageListOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Image" Namespace="http://www.autoscout24.com/webapi/data/"/>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="image" nillable="true" type="tns:Image"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageListOfImage19jCfK4b" nillable="true" type="tns:ImageListOfImage19jCfK4b"/>
+  <xs:complexType name="Image">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="position" nillable="true" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Image" nillable="true" type="tns:Image"/>
+  <xs:complexType name="MediaXCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="image_count" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="last_change_images" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MediaXCode" nillable="true" type="tns:MediaXCode"/>
+  <xs:complexType name="ArrayOfprice">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="price" nillable="true" type="tns:price"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfprice" nillable="true" type="tns:ArrayOfprice"/>
+  <xs:complexType name="price">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="currency_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="negotiable" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="value" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="vat_type_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="price" nillable="true" type="tns:price"/>
+  <xs:complexType name="Service">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="last_change_cam_belt" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="last_technical_service" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Service" nillable="true" type="tns:Service"/>
+  <xs:complexType name="Video">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Video" nillable="true" type="tns:Video"/>
+  <xs:complexType name="XCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="as24_detail_page_url" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XCode" nillable="true" type="tns:XCode"/>
+  <xs:complexType name="ConsumptionOfConsumptionData19jCfK4b">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ConsumptionOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ConsumptionData" Namespace="http://www.autoscout24.com/webapi/data/"/>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="electric" nillable="true" type="tns:ConsumptionData">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="gas" nillable="true" type="tns:ConsumptionData">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="liquid" nillable="true" type="tns:ConsumptionData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsumptionOfConsumptionData19jCfK4b" nillable="true" type="tns:ConsumptionOfConsumptionData19jCfK4b"/>
+  <xs:complexType name="ConsumptionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="combined" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="extra_urban" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fuel_type" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="urban" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsumptionData" nillable="true" type="tns:ConsumptionData"/>
+  <xs:complexType name="ArrayOfitem">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:item"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfitem" nillable="true" type="tns:ArrayOfitem"/>
+  <xs:complexType name="item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="meaning" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="item" nillable="true" type="tns:item"/>
+  <xs:complexType name="ArrayOfproperty">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="property" nillable="true" type="tns:property"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfproperty" nillable="true" type="tns:ArrayOfproperty"/>
+  <xs:complexType name="property">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="text" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="x_code" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="property" nillable="true" type="tns:property"/>
+  <xs:complexType name="Emission">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="class_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="co2_electric" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="co2_gas" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="co2_liquid" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="efficiency_class" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sticker_id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Emission" nillable="true" type="tns:Emission"/>
+  <xs:complexType name="fuel_types">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fuel_type" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="fuel_types" nillable="true" type="tns:fuel_types"/>
+  <xs:complexType name="PreviousOwnerOfOwnerList19jCfK4b">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="PreviousOwnerOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="OwnerList" Namespace="http://www.autoscout24.com/webapi/data/"/>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PreviousOwnerBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="owner" nillable="true" type="tns:OwnersOfOwnerList19jCfK4b">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PreviousOwnerOfOwnerList19jCfK4b" nillable="true" type="tns:PreviousOwnerOfOwnerList19jCfK4b"/>
+  <xs:complexType name="PreviousOwnerBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="count" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreviousOwnerBase" nillable="true" type="tns:PreviousOwnerBase"/>
+  <xs:complexType name="OwnersOfOwnerList19jCfK4b">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="OwnersOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="OwnerList" Namespace="http://www.autoscout24.com/webapi/data/"/>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="owner" nillable="true" type="tns:OwnerList"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OwnersOfOwnerList19jCfK4b" nillable="true" type="tns:OwnersOfOwnerList19jCfK4b"/>
+  <xs:complexType name="OwnerList">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OwnerBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="x_code" nillable="true" type="tns:OwnerXCode">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OwnerList" nillable="true" type="tns:OwnerList"/>
+  <xs:complexType name="OwnerBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="city" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="country" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OwnerBase" nillable="true" type="tns:OwnerBase"/>
+  <xs:complexType name="OwnerXCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customer_type_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="seller_type_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OwnerXCode" nillable="true" type="tns:OwnerXCode"/>
+  <xs:complexType name="Availability">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="begin" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="end" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="last_change" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Availability" nillable="true" type="tns:Availability"/>
+  <xs:complexType name="GetArticleDetailsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="formatted_notes" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicle_guid" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicle_id" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetArticleDetailsRequest" nillable="true" type="tns:GetArticleDetailsRequest"/>
+  <xs:complexType name="GetArticleDetailsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="root_paths" nillable="true" type="tns:root_paths">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicle" nillable="true" type="tns:ArticleDetailItem">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetArticleDetailsResponse" nillable="true" type="tns:GetArticleDetailsResponse"/>
+  <xs:complexType name="ArticleDetailItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ArticleDetailItemBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availability" nillable="true" type="tns:Availability">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ArticleDetailItem" nillable="true" type="tns:ArticleDetailItem"/>
+  <xs:complexType name="ArticleDetailItemBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ArticleItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="capacity" type="xs:unsignedInt">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="cylinder" type="xs:unsignedInt">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="doors" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="emission" nillable="true" type="tns:Emission">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="financing" nillable="true" type="tns:Financing">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="fuel_types" nillable="true" type="tns:fuel_types">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="gears" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="hsn" type="xs:unsignedInt">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="kerb_weight" type="xs:float">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="leasing" nillable="true" type="tns:Leasing">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="licence_number" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="notes" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="previous_owner" nillable="true" type="tns:PreviousOwnerOfOwnerDetails19jCfK4b">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="seats" type="xs:unsignedInt">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="tsn" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="type" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="warranty_duration" type="xs:unsignedInt">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ArticleDetailItemBase" nillable="true" type="tns:ArticleDetailItemBase"/>
+  <xs:complexType name="Financing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bankname" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="bankname_id" type="xs:int"/>
+      <xs:element minOccurs="0" name="debit_interest_rate" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="debit_interest_type" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="duration" type="xs:unsignedInt"/>
+      <xs:element minOccurs="0" name="eff_rate_of_interest" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="ending_rate_value" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="gross_credit_amount" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="initial_payment_value" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="net_credit_amount" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="rate_insurance" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="rate_value" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="service_fee" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Financing" nillable="true" type="tns:Financing"/>
+  <xs:complexType name="Leasing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bankname" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="bankname_id" type="xs:int"/>
+      <xs:element minOccurs="0" name="contract_value" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="declining_balance" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="duration" type="xs:unsignedInt"/>
+      <xs:element minOccurs="0" name="eff_rate_of_interest" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="excess_mileage_price" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="initial_payment_value" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="mileage" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="notes" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="rate_value" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="takeover" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="unused_mileage_price" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Leasing" nillable="true" type="tns:Leasing"/>
+  <xs:complexType name="PreviousOwnerOfOwnerDetails19jCfK4b">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="PreviousOwnerOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="OwnerDetails" Namespace="http://www.autoscout24.com/webapi/data/"/>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PreviousOwnerBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="owner" nillable="true" type="tns:OwnersOfOwnerDetails19jCfK4b">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PreviousOwnerOfOwnerDetails19jCfK4b" nillable="true" type="tns:PreviousOwnerOfOwnerDetails19jCfK4b"/>
+  <xs:complexType name="OwnersOfOwnerDetails19jCfK4b">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="OwnersOf{0}{#}" Namespace="http://www.autoscout24.com/webapi/data/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="OwnerDetails" Namespace="http://www.autoscout24.com/webapi/data/"/>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="owner" nillable="true" type="tns:OwnerDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OwnersOfOwnerDetails19jCfK4b" nillable="true" type="tns:OwnersOfOwnerDetails19jCfK4b"/>
+  <xs:complexType name="OwnerDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OwnerBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="emails" nillable="true" type="tns:EmailList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="faxnumbers" nillable="true" type="tns:FaxList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="first_name" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="last_name" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="phonenumbers" nillable="true" type="tns:PhoneList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="post_office_box" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="street" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="x_code" nillable="true" type="tns:OwnerXCodeDetails">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OwnerDetails" nillable="true" type="tns:OwnerDetails"/>
+  <xs:complexType name="EmailList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="email" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmailList" nillable="true" type="tns:EmailList"/>
+  <xs:complexType name="FaxList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="faxnumber" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FaxList" nillable="true" type="tns:FaxList"/>
+  <xs:complexType name="PhoneList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="phonenumber" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhoneList" nillable="true" type="tns:PhoneList"/>
+  <xs:complexType name="OwnerXCodeDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OwnerXCode">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address_id" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="address_type_id" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="company_name" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="title" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OwnerXCodeDetails" nillable="true" type="tns:OwnerXCodeDetails"/>
+  <xs:complexType name="GetCustomerArticleListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AuthenticatedRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vehicle_search_parameters" nillable="true" type="tns:DemandDataSearchParameters">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCustomerArticleListRequest" nillable="true" type="tns:GetCustomerArticleListRequest"/>
+  <xs:complexType name="AuthenticatedRequestBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="user" nillable="true" type="tns:UserCredentials"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AuthenticatedRequestBase" nillable="true" type="tns:AuthenticatedRequestBase"/>
+  <xs:complexType name="UserCredentials">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserCredentials" nillable="true" type="tns:UserCredentials"/>
+  <xs:complexType name="DemandDataSearchParameters">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SearchParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="status" nillable="true" type="tns:Status">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DemandDataSearchParameters" nillable="true" type="tns:DemandDataSearchParameters"/>
+  <xs:complexType name="Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="status_id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Status" nillable="true" type="tns:Status"/>
+  <xs:complexType name="GetCustomerArticleListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="root_paths" nillable="true" type="tns:root_paths">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="used_vehicle_search_parameters" nillable="true" type="tns:DemandDataSearchParameters">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicles" nillable="true" type="tns:DemandDataListItemList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicles_found" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCustomerArticleListResponse" nillable="true" type="tns:GetCustomerArticleListResponse"/>
+  <xs:complexType name="DemandDataListItemList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vehicle" nillable="true" type="tns:DemandDataListItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DemandDataListItemList" nillable="true" type="tns:DemandDataListItemList"/>
+  <xs:complexType name="DemandDataListItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ArticleListItemBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availability" nillable="true" type="tns:Availability">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="status" nillable="true" type="tns:Status">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DemandDataListItem" nillable="true" type="tns:DemandDataListItem"/>
+  <xs:complexType name="GetCustomerArticleDetailsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AuthenticatedRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="formatted_notes" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicle_id" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCustomerArticleDetailsRequest" nillable="true" type="tns:GetCustomerArticleDetailsRequest"/>
+  <xs:complexType name="GetCustomerArticleDetailsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="root_paths" nillable="true" type="tns:root_paths">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vehicle" nillable="true" type="tns:DemadDataDetailItem">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCustomerArticleDetailsResponse" nillable="true" type="tns:GetCustomerArticleDetailsResponse"/>
+  <xs:complexType name="DemadDataDetailItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ArticleDetailItemBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availability" nillable="true" type="tns:Availability">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="status" nillable="true" type="tns:Status">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DemadDataDetailItem" nillable="true" type="tns:DemadDataDetailItem"/>
+  <xs:complexType name="SendContactMessageRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MessagingRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="application_url" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="comments" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="customer_articles_page_url" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="detail_page_url" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="partner" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="phonenumber" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="send_confirmation" nillable="true" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="vehicle_id" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendContactMessageRequest" nillable="true" type="tns:SendContactMessageRequest"/>
+  <xs:complexType name="MessagingRequestBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email_templates_profile_id" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MessagingRequestBase" nillable="true" type="tns:MessagingRequestBase"/>
+  <xs:complexType name="SendContactMessageResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendContactMessageResponse" nillable="true" type="tns:SendContactMessageResponse"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://api.autoscout24.com/ssg/wsdl/Search.svc?serviceoid=227442735&amp;servdocoid=9445212162</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+  <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+  <xs:element name="byte" nillable="true" type="xs:byte"/>
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+  <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+  <xs:element name="double" nillable="true" type="xs:double"/>
+  <xs:element name="float" nillable="true" type="xs:float"/>
+  <xs:element name="int" nillable="true" type="xs:int"/>
+  <xs:element name="long" nillable="true" type="xs:long"/>
+  <xs:element name="QName" nillable="true" type="xs:QName"/>
+  <xs:element name="short" nillable="true" type="xs:short"/>
+  <xs:element name="string" nillable="true" type="xs:string"/>
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+  <xs:element name="char" nillable="true" type="tns:char"/>
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int"/>
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration"/>
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid"/>
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName"/>
+  <xs:attribute name="Id" type="xs:ID"/>
+  <xs:attribute name="Ref" type="xs:IDREF"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://api.autoscout24.com/AS24_WS_Search</con:endpoint></con:endpoints><con:operation id="66ec02f3-98bf-468a-b252-ff3a474a0449" isOneWay="false" action="http://www.autoscout24.com/webapi/IArticleSearch/FindArticles" name="FindArticles" bindingOperationName="FindArticles" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="38783c72-d3bc-466b-a565-b0e629027500" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.autoscout24.com/AS24_WS_Search</con:endpoint><con:request><![CDATA[<soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:web="http://www.autoscout24.com/webapi/"
+    xmlns:data="http://www.autoscout24.com/webapi/data/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:FindArticles>
+         <!--Optional:-->
+         <web:request>
+        <data:culture_id>fr-BE</data:culture_id>
+            <data:vehicle_search_parameters>
+               <data:dealer_id>2142129754</data:dealer_id>
+            </data:vehicle_search_parameters>
+         </web:request>
+      </web:FindArticles>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:username>BE_2142129754</con:username><con:password>netsarammo2017$</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.autoscout24.com/webapi/IArticleSearch/FindArticles"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f1e25692-d1ee-4c19-9068-7a6d173b484b" isOneWay="false" action="http://www.autoscout24.com/webapi/IArticleSearch/GetArticleDetails" name="GetArticleDetails" bindingOperationName="GetArticleDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f5ce103c-efb6-4c30-b959-d56c1f004523" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.autoscout24.com/AS24_WS_Search</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.autoscout24.com/webapi/" xmlns:data="http://www.autoscout24.com/webapi/data/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetArticleDetails>
+         <!--Optional:-->
+         <web:request>
+            <data:culture_id>fr-BE</data:culture_id>
+            <data:vehicle_id>305299807</data:vehicle_id>
+         </web:request>
+      </web:GetArticleDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>BE_2142129754</con:username><con:password>netsarammo2017$</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.autoscout24.com/webapi/IArticleSearch/GetArticleDetails"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a2ead23b-b4a5-429f-805a-532bf8bd0a1a" isOneWay="false" action="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleDetails" name="GetCustomerArticleDetails" bindingOperationName="GetCustomerArticleDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ee2f58de-f835-441a-a2b3-855df05f9edd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.autoscout24.com/AS24_WS_Search</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.autoscout24.com/webapi/" xmlns:data="http://www.autoscout24.com/webapi/data/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetCustomerArticleDetails>
+         <!--Optional:-->
+         <web:request>
+            <!--Optional:-->
+            <data:client_id>?</data:client_id>
+            <!--Optional:-->
+            <data:culture_id>?</data:culture_id>
+            <!--Optional:-->
+            <data:profile_id>?</data:profile_id>
+            <!--Optional:-->
+            <data:revision>?</data:revision>
+            <!--Optional:-->
+            <data:user>
+               <!--Optional:-->
+               <data:username>?</data:username>
+               <!--Optional:-->
+               <data:password>?</data:password>
+            </data:user>
+            <!--Optional:-->
+            <data:formatted_notes>?</data:formatted_notes>
+            <!--Optional:-->
+            <data:vehicle_id>?</data:vehicle_id>
+         </web:request>
+      </web:GetCustomerArticleDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleDetails"/></con:call></con:operation><con:operation id="25aa5584-457f-4f3f-a365-111c81e36adc" isOneWay="false" action="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleList" name="GetCustomerArticleList" bindingOperationName="GetCustomerArticleList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f105c5bc-7a6e-4455-a48c-b62d4081a9ca" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.autoscout24.com/AS24_WS_Search</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.autoscout24.com/webapi/" xmlns:data="http://www.autoscout24.com/webapi/data/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetCustomerArticleList>
+         <!--Optional:-->
+         <web:request>
+            <!--Optional:-->
+            <data:client_id>?</data:client_id>
+            <!--Optional:-->
+            <data:culture_id>?</data:culture_id>
+            <!--Optional:-->
+            <data:profile_id>?</data:profile_id>
+            <!--Optional:-->
+            <data:revision>?</data:revision>
+            <!--Optional:-->
+            <data:user>
+               <!--Optional:-->
+               <data:username>?</data:username>
+               <!--Optional:-->
+               <data:password>?</data:password>
+            </data:user>
+            <!--Optional:-->
+            <data:vehicle_search_parameters>
+               <!--Optional:-->
+               <data:accident_free>?</data:accident_free>
+               <!--Optional:-->
+               <data:address>
+                  <!--Optional:-->
+                  <data:countries>
+                     <!--Zero or more repetitions:-->
+                     <data:country_id>?</data:country_id>
+                  </data:countries>
+                  <!--Optional:-->
+                  <data:geo_position>
+                     <!--Optional:-->
+                     <data:latitude>?</data:latitude>
+                     <!--Optional:-->
+                     <data:longitude>?</data:longitude>
+                  </data:geo_position>
+                  <!--Optional:-->
+                  <data:radius>?</data:radius>
+                  <!--Optional:-->
+                  <data:zip_code>?</data:zip_code>
+                  <!--Optional:-->
+                  <data:zip_country_id>?</data:zip_country_id>
+               </data:address>
+               <!--Optional:-->
+               <data:as24_customer_id>?</data:as24_customer_id>
+               <!--Optional:-->
+               <data:availability>
+                  <!--Optional:-->
+                  <data:begin>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:begin>
+                  <!--Optional:-->
+                  <data:last_change>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:last_change>
+               </data:availability>
+               <!--Optional:-->
+               <data:bodies>
+                  <!--Zero or more repetitions:-->
+                  <data:body_id>?</data:body_id>
+               </data:bodies>
+               <!--Optional:-->
+               <data:body_colorgroups>
+                  <!--Zero or more repetitions:-->
+                  <data:body_colorgroup_id>?</data:body_colorgroup_id>
+               </data:body_colorgroups>
+               <!--Optional:-->
+               <data:body_paintings>
+                  <!--Zero or more repetitions:-->
+                  <data:body_painting_id>?</data:body_painting_id>
+               </data:body_paintings>
+               <!--Optional:-->
+               <data:brands>
+                  <!--Zero or more repetitions:-->
+                  <data:brand_id>?</data:brand_id>
+               </data:brands>
+               <!--Optional:-->
+               <data:categories>
+                  <!--Zero or more repetitions:-->
+                  <data:category_id>?</data:category_id>
+               </data:categories>
+               <!--Optional:-->
+               <data:covering>
+                  <!--Zero or more repetitions:-->
+                  <data:covering_id>?</data:covering_id>
+               </data:covering>
+               <!--Optional:-->
+               <data:dealer_id>?</data:dealer_id>
+               <!--Optional:-->
+               <data:doors>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+               </data:doors>
+               <!--Optional:-->
+               <data:emission>
+                  <!--Optional:-->
+                  <data:class_id>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:class_id>
+                  <!--Optional:-->
+                  <data:sticker_id>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:sticker_id>
+               </data:emission>
+               <!--Optional:-->
+               <data:equipments>
+                  <!--Zero or more repetitions:-->
+                  <data:equipment_id>?</data:equipment_id>
+               </data:equipments>
+               <!--Optional:-->
+               <data:export_third_party_listings>?</data:export_third_party_listings>
+               <!--Optional:-->
+               <data:financing>
+                  <!--Optional:-->
+                  <data:duration>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:duration>
+                  <!--Optional:-->
+                  <data:eff_rate_of_interest>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                  </data:eff_rate_of_interest>
+                  <!--Optional:-->
+                  <data:ending_rate_value>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:ending_rate_value>
+                  <!--Optional:-->
+                  <data:initial_payment_value>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:initial_payment_value>
+                  <!--Optional:-->
+                  <data:rate_value>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:rate_value>
+               </data:financing>
+               <!--Optional:-->
+               <data:fuel_types>
+                  <!--Zero or more repetitions:-->
+                  <data:fuel_type_id>?</data:fuel_type_id>
+               </data:fuel_types>
+               <!--Optional:-->
+               <data:gear_type_ids>
+                  <!--Zero or more repetitions:-->
+                  <data:gear_type_id>?</data:gear_type_id>
+               </data:gear_type_ids>
+               <!--Optional:-->
+               <data:general_inspection>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+               </data:general_inspection>
+               <!--Optional:-->
+               <data:group_id>?</data:group_id>
+               <!--Optional:-->
+               <data:initial_registration>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+               </data:initial_registration>
+               <!--Optional:-->
+               <data:interior_color>
+                  <!--Zero or more repetitions:-->
+                  <data:interior_color_id>?</data:interior_color_id>
+               </data:interior_color>
+               <!--Optional:-->
+               <data:kilowatt>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+               </data:kilowatt>
+               <!--Optional:-->
+               <data:leasing>
+                  <!--Optional:-->
+                  <data:duration>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:duration>
+                  <!--Optional:-->
+                  <data:eff_rate_of_interest>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                  </data:eff_rate_of_interest>
+                  <!--Optional:-->
+                  <data:ending_rate_value>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:ending_rate_value>
+                  <!--Optional:-->
+                  <data:initial_payment_value>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:initial_payment_value>
+                  <!--Optional:-->
+                  <data:rate_value>
+                     <!--Optional:-->
+                     <data:to>?</data:to>
+                     <!--Optional:-->
+                     <data:from>?</data:from>
+                  </data:rate_value>
+                  <!--Optional:-->
+                  <data:takeover>?</data:takeover>
+               </data:leasing>
+               <!--Optional:-->
+               <data:mileage>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+               </data:mileage>
+               <!--Optional:-->
+               <data:model_lines>
+                  <!--Zero or more repetitions:-->
+                  <data:model_line_id>?</data:model_line_id>
+               </data:model_lines>
+               <!--Optional:-->
+               <data:models>
+                  <!--Zero or more repetitions:-->
+                  <data:model_id>?</data:model_id>
+               </data:models>
+               <!--Optional:-->
+               <data:owners_offer_key>?</data:owners_offer_key>
+               <!--Optional:-->
+               <data:paging>
+                  <!--Optional:-->
+                  <data:current_page>?</data:current_page>
+                  <!--Optional:-->
+                  <data:results_per_page>?</data:results_per_page>
+               </data:paging>
+               <!--Optional:-->
+               <data:previous_owner_count>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+               </data:previous_owner_count>
+               <!--Optional:-->
+               <data:price_dealer>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+                  <!--Optional:-->
+                  <data:vat_type_id>?</data:vat_type_id>
+               </data:price_dealer>
+               <!--Optional:-->
+               <data:price_public>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+                  <!--Optional:-->
+                  <data:vat_type_id>?</data:vat_type_id>
+               </data:price_public>
+               <!--Optional:-->
+               <data:seal_classes>
+                  <!--Zero or more repetitions:-->
+                  <data:seal_class_id>?</data:seal_class_id>
+               </data:seal_classes>
+               <!--Optional:-->
+               <data:seals>
+                  <!--Zero or more repetitions:-->
+                  <data:seal_id>?</data:seal_id>
+               </data:seals>
+               <!--Optional:-->
+               <data:seats>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+               </data:seats>
+               <!--Optional:-->
+               <data:show_dealer_vehicles>?</data:show_dealer_vehicles>
+               <!--Optional:-->
+               <data:show_private_vehicles>?</data:show_private_vehicles>
+               <!--Optional:-->
+               <data:show_with_images_only>?</data:show_with_images_only>
+               <!--Optional:-->
+               <data:sorting>
+                  <!--Optional:-->
+                  <data:descending>?</data:descending>
+                  <!--Optional:-->
+                  <data:first_brand_id>?</data:first_brand_id>
+                  <!--Optional:-->
+                  <data:key>?</data:key>
+               </data:sorting>
+               <!--Optional:-->
+               <data:vehicle_types>
+                  <!--Zero or more repetitions:-->
+                  <data:vehicle_type_id>?</data:vehicle_type_id>
+               </data:vehicle_types>
+               <!--Optional:-->
+               <data:version>?</data:version>
+               <!--Optional:-->
+               <data:ccm>
+                  <!--Optional:-->
+                  <data:to>?</data:to>
+                  <!--Optional:-->
+                  <data:from>?</data:from>
+               </data:ccm>
+               <!--Optional:-->
+               <data:status>
+                  <!--Optional:-->
+                  <data:status_id>?</data:status_id>
+               </data:status>
+            </data:vehicle_search_parameters>
+         </web:request>
+      </web:GetCustomerArticleList>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.autoscout24.com/webapi/IArticleSearch/GetCustomerArticleList"/></con:call></con:operation><con:operation id="036674de-bd1f-4073-b979-1990f7587f56" isOneWay="false" action="http://www.autoscout24.com/webapi/IArticleSearch/SendContactMessage" name="SendContactMessage" bindingOperationName="SendContactMessage" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b16dd883-a07e-4f0f-b9c2-340a31011002" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.autoscout24.com/AS24_WS_Search</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.autoscout24.com/webapi/" xmlns:data="http://www.autoscout24.com/webapi/data/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:SendContactMessage>
+         <!--Optional:-->
+         <web:request>
+            <!--Optional:-->
+            <data:client_id>?</data:client_id>
+            <!--Optional:-->
+            <data:culture_id>?</data:culture_id>
+            <!--Optional:-->
+            <data:profile_id>?</data:profile_id>
+            <!--Optional:-->
+            <data:revision>?</data:revision>
+            <!--Optional:-->
+            <data:email_templates_profile_id>?</data:email_templates_profile_id>
+            <!--Optional:-->
+            <data:application_url>?</data:application_url>
+            <!--Optional:-->
+            <data:comments>?</data:comments>
+            <!--Optional:-->
+            <data:customer_articles_page_url>?</data:customer_articles_page_url>
+            <!--Optional:-->
+            <data:detail_page_url>?</data:detail_page_url>
+            <!--Optional:-->
+            <data:email>?</data:email>
+            <!--Optional:-->
+            <data:name>?</data:name>
+            <!--Optional:-->
+            <data:partner>?</data:partner>
+            <!--Optional:-->
+            <data:phonenumber>?</data:phonenumber>
+            <!--Optional:-->
+            <data:send_confirmation>?</data:send_confirmation>
+            <!--Optional:-->
+            <data:vehicle_id>?</data:vehicle_id>
+         </web:request>
+      </web:SendContactMessage>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.autoscout24.com/webapi/IArticleSearch/SendContactMessage"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
