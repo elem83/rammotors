@@ -224,16 +224,17 @@ class AS24WSSearch(object):
         vehicle.vehicle_id = find('a:vehicle_id')
         vehicle.version = find('a:version')
         vehicle.consumption = find('./a:consumption/a:liquid/a:combined')
-        # TOD: extra urban/urban
-        # <a:capacity>796</a:capacity>
-        # <a:cylinder>3</a:cylinder>
-        # <a:doors>5</a:doors>
+        vehicle.extra_urban = find('./a:consumption/a:liquid/a:extra_urban')
+        vehicle.urban = find('./a:consumption/a:liquid/a:urban')
+        vehicle.capacity = find('a:capacity')
+        vehicle.cylinder = find('a:cylinder')
+        vehicle.doors = find('a:doors')
         vehicle.emiss_class_id = find('./a:emission/a:class_id')
         vehicle.emiss_co2_liquid = find('./a:emission/a:co2_liquid')
-        # TOD:
-        # <a:gears>5</a:gears>
-        #       <a:kerb_weight>776</a:kerb_weight>
-        #       <a:notes>Vehicule en parf
+        vehicle.notes = find('a:notes')
+        vehicle.seats = find('a:seats')
+        vehicle.gears = find('a:gears')
+        vehicle.kerb_weight = find('a:kerb_weight')
         vehicle.avail_begin = find('./a:availability/a:begin')
         vehicle.avail_last_change = find('./a:availability/a:last_change')
 
@@ -347,6 +348,15 @@ class Vehicle(object):
         self.emiss_co2_liquid = None
         self.avail_begin = None
         self.avail_last_change = None
+        self.capacity = None
+        self.cylinder = None
+        self.seats = None
+        self.doors = None
+        self.extra_urban = None
+        self.urban = None
+        self.notes = None
+        self.gears = None
+        self.kerb_weight = None
 
     def __str__(self):
         """ Representation of the object"""

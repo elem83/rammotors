@@ -49,8 +49,8 @@
    <div class="container">
     <ul class="breadcrumb-v5">
      <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-     <li><a href="#">Products</a></li>
-     <li class="active">New</li>
+     <li><a href="#">Voitures</a></li>
+     <li class="active">{{vehicle.category}}</li>
     </ul>
    </div>
    <!-- End Breadcrumbs v5 -->
@@ -65,119 +65,79 @@
       {% for image in vehicle.all_images %}
         <div class="ms-slide">
          <img src='{{uri_images_big}}{{image}}' data-src="{{uri_images_big}}{{image}}" alt="">
-         <img class="ms-thumb" src="{{uri_images_thumb}}{{image}}" alt="thumb">
+         <img class="ms-thumb" src="{{uri_images_big}}{{image}}" alt="thumb">
         </div>
       {% endfor %}
        </div>
        <!-- End Master Slider -->
       </div>
-     </div>
+    </div><!-- end col-md06 -->
 
      <div class="col-md-6">
       <div class="shop-product-heading">
         <h2>{{vehicle.brand}} <small>{{vehicle.model}}</small> </h2>
       </div><!--/end shop product social-->
 
-      <p>Integer <strong>dapibus ut elit</strong>
-
-      {{vehicle.accident_free}}
-      {{vehicle.body_color}}
-      {{vehicle.body}}
-      {{vehicle.body_painting}}
-      {{vehicle.brand}}
-      {{vehicle.category}}
-      {{vehicle.fuel}}
-      {{vehicle.gear_type}}
-      {{vehicle.initial_registration}}
-      {{vehicle.kilowatt}}
-      {{vehicle.media_image_feature}}
-      {{vehicle.media_image_count}}
-      {{vehicle.mileage}}
-      {{vehicle.model}}
-      {{vehicle.owners_offer_key}}
-      {{vehicle.price}}
-      {{vehicle.currency}}
-      {{vehicle.vehicle_guid}}
-      {{vehicle.vehicle_id}}
-      {{vehicle.version}}
-      {{vehicle.consumption}}
-      {{vehicle.emission_class}}
-      {{vehicle.emiss_co2_liquid}}
-      {{vehicle.avail_begin}}
-      {{vehicle.avail_last_change}}
-
-      <lu>
-      {% for equipment in vehicle.equipments %}
-      <li>
-        {{equipment}}
+      <p>
+        <ul class="list-inline add-to-wishlist margin-bottom-20">
+        <li>
+          <strong>{{vehicle.category}}</strong>
         </li>
-        {% endfor %}
-        </lu>
-
-      </p><br>
-
-      <ul class="list-inline shop-product-prices margin-bottom-30">
-        <li class="shop-red">{{vehicle.currency}} {{vehicle.price|intcomma}}</li>
-       <li><small class="shop-bg-red time-day-left">4 days left</small></li>
-      </ul><!--/end shop product prices-->
-
-      <h3 class="shop-product-title">Size</h3>
-      <ul class="list-inline product-size margin-bottom-30">
-       <li>
-        <input type="radio" id="size-1" name="size">
-        <label for="size-1">S</label>
-       </li>
-       <li>
-        <input type="radio" id="size-2" name="size">
-        <label for="size-2">M</label>
-       </li>
-       <li>
-        <input type="radio" id="size-3" name="size" checked>
-        <label for="size-3">L</label>
-       </li>
-       <li>
-        <input type="radio" id="size-4" name="size">
-        <label for="size-4">XL</label>
-       </li>
-      </ul><!--/end product size-->
-
-      <h3 class="shop-product-title">Color</h3>
-      <ul class="list-inline product-color margin-bottom-30">
-       <li>
-        <input type="radio" id="color-1" name="color">
-        <label class="color-one" for="color-1"></label>
-       </li>
-       <li>
-        <input type="radio" id="color-2" name="color" checked>
-        <label class="color-two" for="color-2"></label>
-       </li>
-       <li>
-        <input type="radio" id="color-3" name="color">
-        <label class="color-three" for="color-3"></label>
-       </li>
-      </ul><!--/end product color-->
-
-      <h3 class="shop-product-title">Quantity</h3>
-      <div class="margin-bottom-40">
-       <form name="f1" class="product-quantity sm-margin-bottom-20">
-        <button type='button' class="quantity-button" name='subtract' onclick='javascript: subtractQty();' value='-'>-</button>
-        <input type='text' class="quantity-field" name='qty' value="1" id='qty'/>
-        <button type='button' class="quantity-button" name='add' onclick='javascript: document.getElementById("qty").value++;' value='+'>+</button>
-       </form>
-       <button type="button" class="btn-u btn-u-sea-shop btn-u-lg">Add to Cart</button>
-      </div><!--/end product quantity-->
-
-      <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
-       <li class="wishlist-in">
-        <i class="fa fa-heart"></i>
-        <a href="#">Add to Wishlist</a>
-       </li>
-       <li class="compare-in">
-        <i class="fa fa-exchange"></i>
-        <a href="#">Add to Compare</a>
-       </li>
+        <li class="features">
+        {% if vehicle.accident_free %}
+          Sans accident
+          {% else %}
+          Accidentée
+        {% endif %}
+      </li>
+      <li class="features">
+        <i class="fa fa-fw fa-calendar-check-o"></i> {{vehicle.initial_registration}}
+      </li>
+      <li class="features">
+        <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
+      </li>
       </ul>
-      <p class="wishlist-category"><strong>Categories:</strong> <a href="#">Clothing,</a> <a href="#">Shoes</a></p>
+      <hr class="devider devider-dotted">
+    </p>
+
+    <ul class="list-inline shop-product-prices margin-bottom-30">
+      <li class="shop-red">{{vehicle.currency}} {{vehicle.price|intcomma}}</li>
+      {{vehicle.version}}
+    </ul><!--/end shop product prices-->
+
+      <h3 class="shop-product-title">Plus de détails</h3>
+        <div class="row">
+         <div class="col-sm-6">
+          <ul class="list-unstyled specifies-list">
+           <li><i class="fa fa-caret-right"></i>Propriétaires précédents: <span>1</span></li>
+           <li><i class="fa fa-caret-right"></i>Carrosserie: <span>{{vehicle.body}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Transmission: <span>{{vehicle.gear_types}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Vitesses: <span>{{vehicle.gears}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Cylindrée: <span>{{vehicle.capacity}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Cylindres: <span>{{vehicle.cylinder}}</span></li>
+          </ul>
+         </div>
+         <div class="col-sm-6">
+          <ul class="list-unstyled specifies-list">
+            <li><i class="fa fa-caret-right"></i>Poids à vide: <span>{{vehicle.kerb_weight}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Carburant: <span>{{vehicle.fuel}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Consommation de carburant*:</li>
+           <ul>
+             <li>{{vehicle.consumption}} (mixte)</li>
+             <li>{{vehicle.urban}} (urbain)</li>
+             <li>{{vehicle.extra_urban}} (extra-urbain)</li>
+           </ul>
+           <li><i class="fa fa-caret-right"></i>Émissions de CO2*: <span>{{vehicle.emiss_co2_liquid}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Classe d'émission: <span>{{vehicle.emission_class}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Portes: <span>{{vehicle.doors}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Sièges: <span></span>{{vehicle.seats}}</li>
+           <li><i class="fa fa-caret-right"></i>Garantie: <span></span></li>
+           <li><i class="fa fa-caret-right"></i>Couleur extérieure: <span>{{vehicle.body_color}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Équipement intérieur: <span></span></li>
+          </ul>
+         </div>
+        </div>
+
      </div>
     </div><!--/end row-->
    </div>
@@ -190,12 +150,16 @@
    <div class="row margin-bottom-60">
     <div class="col-md-4 product-service md-margin-bottom-30">
      <div class="product-service-heading">
-      <i class="fa fa-truck"></i>
+       <i class="fa fa-check-square-o" aria-hidden="true"></i>
      </div>
      <div class="product-service-in">
-      <h3>Free Delivery</h3>
-      <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
-      <a href="#">+Read More</a>
+      <h3>Certifié</h3>
+      <p> 
+      Garantie de 12 mois<br>
+      Entretien effectué <br>
+      Contrôle technique et une demande d'immatriculation. <br>
+<img src="http://pic.autoscout24.net/seals/images/138.gif">
+      </p>
      </div>
     </div>
     <div class="col-md-4 product-service md-margin-bottom-30">
@@ -203,9 +167,10 @@
       <i class="icon-earphones-alt"></i>
      </div>
      <div class="product-service-in">
-      <h3>Customer Service</h3>
-      <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
-      <a href="#">+Read More</a>
+      <h3>Service Client</h3>
+      <p>
+      Il vous est possible de prendre contact avec notre service vente hors de nos heures d'ouverture par téléphone au 0476 823793
+      </p>
      </div>
     </div>
     <div class="col-md-4 product-service">
@@ -213,9 +178,8 @@
       <i class="icon-refresh"></i>
      </div>
      <div class="product-service-in">
-      <h3>Free Returns</h3>
-      <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
-      <a href="#">+Read More</a>
+      <h3>Reprises</h3>
+      <p> Reprise de véhicule possible</p>
      </div>
     </div>
    </div><!--/end row-->
@@ -231,37 +195,20 @@
      <div class="tab-pane fade in active" id="description">
       <div class="row">
        <div class="col-md-7">
-        <p>Morbi non semper est, eget tincidunt turpis. Vivamus sollicitudin sodales nisi, et venenatis turpis Vivamus sollicitudin ultricies eget. Fusce vitae neque blandit lectus faucibus aliquet nec vel ipsum. Integer mattis lacinia felis vel sollicitudin molestie.</p><br>
+        <p>
+        {{vehicle.notes}}
+        </p><br>
 
-        <h3 class="heading-md margin-bottom-20">Specifies</h3>
-        <div class="row">
-         <div class="col-sm-6">
-          <ul class="list-unstyled specifies-list">
-           <li><i class="fa fa-caret-right"></i>Brand Name: <span>Lacoste</span></li>
-           <li><i class="fa fa-caret-right"></i>Technics: <span>Computer</span> Knitted</li>
-           <li><i class="fa fa-caret-right"></i>Sleeve Length: <span>Full</span></li>
-           <li><i class="fa fa-caret-right"></i>Sleeve Style: <span>Regular</span></li>
-           <li><i class="fa fa-caret-right"></i>Pattern Type: <span>PAID</span></li>
-           <li><i class="fa fa-caret-right"></i>Style: <span>Casual</span></li>
-          </ul>
-         </div>
-         <div class="col-sm-6">
-          <ul class="list-unstyled specifies-list">
-           <li><i class="fa fa-caret-right"></i>Material: <span>Cotton,Nylon</span></li>
-           <li><i class="fa fa-caret-right"></i>Item Type: <span>Pullovers</span></li>
-           <li><i class="fa fa-caret-right"></i>Thickness: <span>Thin</span></li>
-           <li><i class="fa fa-caret-right"></i>Model Number: <span>TM-11013 </span></li>
-           <li><i class="fa fa-caret-right"></i>Gender: <span>Men</span></li>
-           <li><i class="fa fa-caret-right"></i>MATERIAL: <span>80%COTTON+10%NYLON</span></li>
-          </ul>
-         </div>
-        </div>
-       </div>
-       <div class="col-md-5">
-        <div class="responsive-video">
-         <iframe src="//player.vimeo.com/video/72343553" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        </div>
-       </div>
+        <h3 class="heading-md margin-bottom-20">Equipement du véhicule</h3>
+
+      <lu>
+      {% for equipment in vehicle.equipments %}
+      <li>
+        {{equipment}}
+        </li>
+        {% endfor %}
+        </lu>
+
       </div>
      </div>
      <!-- End Description -->
@@ -274,8 +221,8 @@
   <!--=== Illustration v2 ===-->
   <div class="container">
    <div class="heading heading-v1 margin-bottom-20">
-    <h2>Product you may like</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed odio elit, ultrices vel cursus sed, placerat ut leo. Phasellus in magna erat. Etiam gravida convallis augue non tincidunt. Nunc lobortis dapibus neque quis lacinia. Nam dapibus tellus sit amet odio venenatis</p>
+    <h2>Autres voitures:</h2>
+    <p></p>
    </div>
 
    <div class="illustration-v2 margin-bottom-60">
