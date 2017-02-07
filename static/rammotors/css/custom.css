@@ -1,15 +1,45 @@
-
-
-/* Add here all your css styles (customizations) */
-
-.jumbotron
-{
-    height: 370px;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .features
 {
     color: #999;
     font-size: 14px;
+}
+
+@media (max-width: 320px){
+  .jumbotron
+  { height: 80px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 480px){
+  .jumbotron
+  { height: 130px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+  .jumbotron
+  { height: 170px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1280px){
+  .jumbotron
+  { height: 370px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 1281px){
+  .jumbotron
+  { height: 470px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
