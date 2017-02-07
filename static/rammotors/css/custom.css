@@ -6,7 +6,7 @@
 
 @media (max-width: 320px){
   .jumbotron
-  { height: 80px;
+  { height: 100px;
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -22,7 +22,7 @@
 
 @media (min-width: 481px) and (max-width: 768px){
   .jumbotron
-  { height: 170px;
+  { height: 420px;
     background-repeat: no-repeat;
     background-size: cover;
   }
