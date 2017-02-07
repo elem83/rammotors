@@ -4,6 +4,11 @@
     font-size: 14px;
 }
 
+.rgba-banner{
+    top: 0px;
+    right: 30px;
+}
+
 @media (max-width: 320px){
   .jumbotron
   { height: 100px;

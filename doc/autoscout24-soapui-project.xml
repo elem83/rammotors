@@ -2744,7 +2744,7 @@
          <!--Optional:-->
          <web:request>
             <data:culture_id>fr-BE</data:culture_id>
-            <data:vehicle_id>305299807</data:vehicle_id>
+            <data:vehicle_id>305142438</data:vehicle_id>
          </web:request>
       </web:GetArticleDetails>
    </soapenv:Body>

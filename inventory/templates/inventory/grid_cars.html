@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css_custom %}
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/line-icons/line-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/noUiSlider/jquery.nouislider.min.css' %}">
+  <link rel="stylesheet" href="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css' %}">
+
+  <!-- CSS Customization -->
+  <link rel="stylesheet" href="{% static 'rammotors/css/custom.css' %}">
+{% endblock %}
+
+{% block js_custom %}
+  <!-- JS Implementing Plugins -->
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/back-to-top.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/smoothScroll.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/noUiSlider/jquery.nouislider.all.min.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+  <!-- JS Customization -->
+  <script src="{% static 'rammotors/js/inventory/custom.js' %}"></script>
+  <!-- JS Page Level -->
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/js/shop.app.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/js/plugins/mouse-wheel.js' %}"></script>
+  <script>
+    jQuery(document).ready(function() {
+    App.init();
+    App.initScrollBar();
+    MouseWheel.initMouseWheel();
+    });
+  </script>
+  <!--[if lt IE 9]>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/respond.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/html5shiv.js' %}"></script>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/js/plugins/placeholder-IE-fixes.js' %}"></script>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/sky-forms-pro/skyforms/js/jquery.placeholder.min.js' %}"></script>
+  <![endif]-->
+{% endblock %}
+{% block content %}
+  <!--=== Content Part ===-->
+  <div class="jumbotron myjumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg)"></div>
+  <div class="content container">
+      <div class="row">
+        {% include "inventory/filter.html" %}
+          <div class="col-md-9">
+            {% include "inventory/show.html" %}
+
+          <div class="filter-results">
+                {% for vehicles_tuple in vehicles_list_tuples %}
+<div class="row illustration-v2 margin-bottom-30" >
+        {% for vehicle in vehicles_tuple %}
+
+        <div class="col-md-4" name='{{vehicle.brand}}'>
+         <div class="product-img product-img-brd">
+          <a href="#"><img class="full-width img-responsive" src="{{images_uri}}{{vehicle.media_image_feature}}" alt=""></a>
+                  <div class="shop-rgba-dark-green rgba-banner">1/{{vehicle.media_image_count}}</div>
+         </div>
+         <div class="product-description product-description-brd margin-bottom-30">
+          <div class="overflow-h margin-bottom-5">
+           <div class="pull-left">
+                      <h4 class="title-price"><a href="car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4>
+                      <span class="gender text-uppercase">{{vehicle.model}}</span>
+           </div>
+           <div class="product-price">
+                      <span class="title-price">{{vehicle.currency}} {{vehicle.price}}</span>
+           </div>
+          </div>
+         </div>
+        </div>
+              {% endfor %}
+
+       </div>
+
+          {% endfor %}
+
+        </div>
+       </div>
+      </div>
+{% endblock %}

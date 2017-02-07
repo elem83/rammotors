@@ -43,8 +43,6 @@
 {% block content %}
   <!--=== Content Part ===-->
   <div class="jumbotron myjumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg)">
-  <div class="container">
-</div>
 </div>
   <div class="content container">
       <div class="row">
@@ -62,6 +60,7 @@
                     {% endif %}
                     <div class="row">
                           <div class="col-sm-4">
+                                <div class="shop-rgba-dark-green rgba-banner">1/{{vehicle.media_image_count}}</div>
                             <a href="car/{{vehicle.vehicle_id}}">
                                 <img class="img-responsive sm-margin-bottom-20" src='{{images_uri}}{{vehicle.media_image_feature}}' alt="">
                               </a>

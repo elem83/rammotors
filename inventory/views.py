@@ -21,6 +21,28 @@ def vehicles_list(request):
     }
     return render(request, 'inventory/list_cars.html', context)
 
+def make_tuple(lst, col):
+    """
+    Create a list of tuple from a flat list
+    """
+    for i in range(0, len(lst), col):
+        val = lst[i:i+col]
+        yield tuple(val)
+
+def vehicles_grid(request):
+    """ Return the context and render templates """
+    autoscout = services.AS24WSSearch()
+    images_uri = autoscout.uri_images('main')
+    vehicles = autoscout.list_vehicles()
+    brands = services.filter_brands(vehicles)
+    context = {\
+        'vehicles': vehicles,
+        'vehicles_list_tuples': list(make_tuple(vehicles, 3)),
+        'images_uri': images_uri,
+        'brands': brands\
+    }
+    return render(request, 'inventory/grid_cars.html', context)
+
 def vehicle_details(request, vehicle_id):
     """ Return the detail of a vehicle """
     autoscout = services.AS24WSSearch()
