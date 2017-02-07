@@ -23,5 +23,5 @@ from inventory import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.vehicles_list, name='vehicles_list'),
-    url(r'^o$', views.vehicle_details, name='vehicle_details'),
+    url(r'^car/(\d+)$', views.vehicle_details, name='vehicle_details'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

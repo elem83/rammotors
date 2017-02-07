@@ -49,7 +49,7 @@
    <div class="container">
     <ul class="breadcrumb-v5">
      <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-     <li><a href="#">Voitures</a></li>
+     <li><a href="/">Voitures</a></li>
      <li class="active">{{vehicle.category}}</li>
     </ul>
    </div>
@@ -76,6 +76,13 @@
      <div class="col-md-6">
       <div class="shop-product-heading">
         <h2>{{vehicle.brand}} <small>{{vehicle.model}}</small> </h2>
+
+        <ul class="list-inline shop-product-prices">
+            <li class="pull-right shop-red">
+            {{vehicle.currency}} {{vehicle.price|intcomma}}
+            </li>
+        </ul>
+
       </div><!--/end shop product social-->
 
       <p>
@@ -101,7 +108,6 @@
     </p>
 
     <ul class="list-inline shop-product-prices margin-bottom-30">
-      <li class="shop-red">{{vehicle.currency}} {{vehicle.price|intcomma}}</li>
       {{vehicle.version}}
     </ul><!--/end shop product prices-->
 
@@ -109,18 +115,17 @@
         <div class="row">
          <div class="col-sm-6">
           <ul class="list-unstyled specifies-list">
-           <li><i class="fa fa-caret-right"></i>Propriétaires précédents: <span>1</span></li>
            <li><i class="fa fa-caret-right"></i>Carrosserie: <span>{{vehicle.body}}</span></li>
            <li><i class="fa fa-caret-right"></i>Transmission: <span>{{vehicle.gear_types}}</span></li>
            <li><i class="fa fa-caret-right"></i>Vitesses: <span>{{vehicle.gears}}</span></li>
            <li><i class="fa fa-caret-right"></i>Cylindrée: <span>{{vehicle.capacity}}</span></li>
            <li><i class="fa fa-caret-right"></i>Cylindres: <span>{{vehicle.cylinder}}</span></li>
+            <li><i class="fa fa-caret-right"></i>Poids à vide: <span>{{vehicle.kerb_weight}}</span></li>
+           <li><i class="fa fa-caret-right"></i>Carburant: <span>{{vehicle.fuel}}</span></li>
           </ul>
          </div>
          <div class="col-sm-6">
           <ul class="list-unstyled specifies-list">
-            <li><i class="fa fa-caret-right"></i>Poids à vide: <span>{{vehicle.kerb_weight}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Carburant: <span>{{vehicle.fuel}}</span></li>
            <li><i class="fa fa-caret-right"></i>Consommation de carburant*:</li>
            <ul>
              <li>{{vehicle.consumption}} (mixte)</li>
@@ -131,9 +136,7 @@
            <li><i class="fa fa-caret-right"></i>Classe d'émission: <span>{{vehicle.emission_class}}</span></li>
            <li><i class="fa fa-caret-right"></i>Portes: <span>{{vehicle.doors}}</span></li>
            <li><i class="fa fa-caret-right"></i>Sièges: <span></span>{{vehicle.seats}}</li>
-           <li><i class="fa fa-caret-right"></i>Garantie: <span></span></li>
            <li><i class="fa fa-caret-right"></i>Couleur extérieure: <span>{{vehicle.body_color}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Équipement intérieur: <span></span></li>
           </ul>
          </div>
         </div>
@@ -148,40 +151,52 @@
   <div class="content-md container">
    <!--=== Product Service ===-->
    <div class="row margin-bottom-60">
-    <div class="col-md-4 product-service md-margin-bottom-30">
+
+
+    <div class="col-md-3 product-service md-margin-bottom-30">
      <div class="product-service-heading">
        <i class="fa fa-check-square-o" aria-hidden="true"></i>
      </div>
      <div class="product-service-in">
-      <h3>Certifié</h3>
-      <p> 
-      Garantie de 12 mois<br>
-      Entretien effectué <br>
-      Contrôle technique et une demande d'immatriculation. <br>
-<img src="http://pic.autoscout24.net/seals/images/138.gif">
-      </p>
+       <h3><img src="http://pic.autoscout24.net/seals/images/138.gif"></h3>
+      <p> Car-Pass est la garantie officielle du kilométrage réel. </p>
      </div>
     </div>
-    <div class="col-md-4 product-service md-margin-bottom-30">
+    <div class="col-md-3 product-service md-margin-bottom-30">
      <div class="product-service-heading">
       <i class="icon-earphones-alt"></i>
      </div>
      <div class="product-service-in">
       <h3>Service Client</h3>
       <p>
-      Il vous est possible de prendre contact avec notre service vente hors de nos heures d'ouverture par téléphone au 0476 823793
+      Il vous est possible de prendre contact avec notre service vente hors de nos heures d'ouverture par téléphone au
+      <a href="tel:+32 476 823 793">+32 476 823 793</a>
       </p>
      </div>
     </div>
-    <div class="col-md-4 product-service">
+    <div class="col-md-3 product-service">
      <div class="product-service-heading">
       <i class="icon-refresh"></i>
      </div>
      <div class="product-service-in">
-      <h3>Reprises</h3>
-      <p> Reprise de véhicule possible</p>
+      <h3>Garantie</h3>
+      <p> Garantie de 12 mois</p>
      </div>
     </div>
+
+    <div class="col-md-3 product-service md-margin-bottom-30">
+     <div class="product-service-heading">
+      <i class="fa fa-car" aria-hidden="true"></i>
+     </div>
+     <div class="product-service-in">
+      <h3>Autres</h3>
+      <p>
+      Entretien effectué <br>
+      Contrôle technique et une demande d'immatriculation. <br>
+      </p>
+     </div>
+    </div>
+
    </div><!--/end row-->
    <!--=== End Product Service ===-->
 
@@ -201,13 +216,17 @@
 
         <h3 class="heading-md margin-bottom-20">Equipement du véhicule</h3>
 
-      <lu>
+        <div class="row">
+         <div class="col-sm-6">
+          <ul class="list-unstyled specifies-list">
       {% for equipment in vehicle.equipments %}
-      <li>
+           <li><i class="fa fa-caret-right"></i>
         {{equipment}}
         </li>
         {% endfor %}
         </lu>
+      </div>
+    </div>
 
       </div>
      </div>
@@ -234,10 +253,10 @@
     <ul class="list-inline owl-slider-v4">
     {% for vehicle in vehicles %}
      <li class="item">
-      <a href="#"><img class="img-responsive" src="{{uri_images_main}}{{vehicle.media_image_feature}}" alt=""></a>
+     <a href="{{vehicle.vehicle_id}}"><img class="img-responsive" src="{{uri_images_main}}{{vehicle.media_image_feature}}" alt=""></a>
       <div class="product-description-v2">
        <div class="margin-bottom-5">
-         <h4 class="title-price"><a href="#">{{vehicle.brand}} <small>{{vehicle.model}}</small></a></h4>
+         <h4 class="title-price"><a href="{{vehicle.vehicle_id}}">{{vehicle.brand}} <small>{{vehicle.model}}</small></a></h4>
         <span class="title-price">{{vehicle.currency}} {{vehicle.price|intcomma}}</span>
        </div>
       </div>

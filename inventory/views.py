@@ -21,14 +21,14 @@ def vehicles_list(request):
     }
     return render(request, 'inventory/list_cars.html', context)
 
-def vehicle_details(request):
+def vehicle_details(request, vehicle_id):
     """ Return the detail of a vehicle """
     autoscout = services.AS24WSSearch()
-    vehicle = autoscout.details_vehicle(304915410)
+    vehicles = autoscout.list_vehicles()
+    vehicle = autoscout.details_vehicle(vehicle_id)
     uri_images_big = autoscout.uri_images('big')
     uri_images_main = autoscout.uri_images('main')
     uri_images_thumb = autoscout.uri_images('thumb')
-    vehicles = autoscout.list_vehicles()
     context = {\
         'vehicle': vehicle,
         'vehicles': vehicles,

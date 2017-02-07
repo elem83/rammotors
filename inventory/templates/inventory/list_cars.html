@@ -60,7 +60,7 @@
                     {% endif %}
                     <div class="row">
                           <div class="col-sm-4">
-                              <a href="shop-ui-inner.html">
+                            <a href="car/{{vehicle.vehicle_id}}">
                                 <img class="img-responsive sm-margin-bottom-20" src='{{images_uri}}{{vehicle.media_image_feature}}' alt="">
                               </a>
                           </div>
@@ -68,14 +68,15 @@
                               <div class="overflow-h margin-bottom-5">
                                   <ul class="list-inline overflow-h">
                                       <li>
-                                      <h4 class="title-price"><a href="shop-ui-inner.html">{{vehicle.brand}}</a></h4>
+                                      <h4 class="title-price"><a href="car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4>
                                       </li>
                                       <li><span class="gender text-uppercase">{{vehicle.model}}</span></li>
                                       <li class="pull-right">
-                                        <button class="btn btn-u btn-u-orange" type="button" disabled="disabled">
+                                      <a href="car/{{vehicle.vehicle_id}}" rel="glow" class="btn btn-success glow">
                                       {{vehicle.currency}} {{vehicle.price|intcomma}}
-                                        </button>
-                                  </ul>
+                                      </a>
+                                      </li>
+                                 </ul>
                                    <ul class="list-inline add-to-wishlist margin-bottom-20">
                                     <li>
                                     <strong>{{vehicle.category}}</strong>
@@ -110,8 +111,6 @@
                                   <p class="margin-bottom-20">
                                   {{vehicle.version|default_if_none:""}}
                                   </p>
-
-                                  <button type="button" class="btn-u btn-u-sea-shop" id={{vehicle.vehicle_id}}>Voir</button>
                               </div>
                           </div>
                       </div>

@@ -195,7 +195,7 @@ class AS24WSSearch(object):
 
     def vehicle_factory(self, etree_vehicle):
         """ Build a vehicle of type Vehicle """
-        find = lambda tag: etree_vehicle.find(tag, self.name_spaces).text
+        find = lambda tag: self.attr_lookup(etree_vehicle, tag)
         vehicle = Vehicle()
 
         vehicle.accident_free = find('a:accident_free')
