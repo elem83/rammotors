@@ -41,43 +41,38 @@
   <![endif]-->
 {% endblock %}
 {% block content %}
-  <!--=== Content Part ===-->
-  <div class="jumbotron myjumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg)"></div>
-  <div class="content container">
-      <div class="row">
-        {% include "inventory/filter.html" %}
-          <div class="col-md-9">
-            {% include "inventory/show.html" %}
-
-          <div class="filter-results">
-                {% for vehicles_tuple in vehicles_list_tuples %}
-<div class="row illustration-v2 margin-bottom-30" >
-        {% for vehicle in vehicles_tuple %}
-
-        <div class="col-md-4" name='{{vehicle.brand}}'>
-         <div class="product-img product-img-brd">
-           <a href="/car/{{vehicle.vehicle_id}}"><img class="full-width img-responsive" src="{{images_uri}}{{vehicle.media_image_feature}}" alt=""></a>
-                  <div class="shop-rgba-dark-green rgba-banner">1/{{vehicle.media_image_count}}</div>
-         </div>
-         <div class="product-description product-description-brd margin-bottom-30">
-          <div class="overflow-h margin-bottom-5">
-           <div class="pull-left">
-                      <h4 class="title-price"><a href="/car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4>
-                      <span class="gender text-uppercase">{{vehicle.model}}</span>
+<!--=== Content Part ===-->
+<div class="jumbotron myjumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg)"></div>
+<div class="content container">
+  <div class="row">
+    {% include "inventory/filter.html" %}
+    <div class="col-md-9">
+      {% include "inventory/show.html" %}
+      <div class="filter-results">
+        {% for vehicles_tuple in vehicles_list_tuples %}
+        <div class="row illustration-v2 margin-bottom-30">
+         {% for vehicle in vehicles_tuple %}
+         <div class="col-md-4" name='{{vehicle.brand}}'>
+           <div class="product-img product-img-brd">
+             <a href="/car/{{vehicle.vehicle_id}}"><img class="full-width img-responsive" 
+             src="{{images_uri}}{{vehicle.media_image_feature}}" alt=""></a>
+             <div class="shop-rgba-dark-green rgba-banner">1/{{vehicle.media_image_count}}</div>
            </div>
-           <div class="product-price">
-                      <span class="title-price">{{vehicle.currency}} {{vehicle.price}}</span>
-           </div>
-          </div>
-         </div>
-        </div>
-              {% endfor %}
-
-       </div>
-
-          {% endfor %}
-
-        </div>
-       </div>
-      </div>
+           <div class="product-description product-description-brd margin-bottom-30">
+             <div class="overflow-h margin-bottom-5">
+               <div class="pull-left">
+                 <h4 class="title-price"><a href="/car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4>
+                 <span class="gender text-uppercase">{{vehicle.model}}</span>
+               </div>
+               <div class="product-price"><span class="title-price">{{vehicle.currency}} {{vehicle.price}}</span></div>
+             </div><!-- end overflow -->
+           </div><!-- end product description -->
+         </div><!-- end of col4 -->
+         {% endfor %}
+      </div><!-- end of row -->
+      {% endfor %}
+     </div> <!-- end of filter -->
+    </div> <!-- end of col9 -->
+  </div><!-- end of row -->
+</div><!-- end of content -->
 {% endblock %}

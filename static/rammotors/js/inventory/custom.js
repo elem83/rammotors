@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  $( "input[name='optionsRadios']" ).prop('checked', false);
+
   var brand;
 
   $('input[type=checkbox]').change(
@@ -21,4 +23,5 @@ $(document).ready(function(){
       $('div[name='+ brand +']').show("slow");
     });
   });
+
 });// end of document ready

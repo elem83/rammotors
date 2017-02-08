@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^$', views.vehicles_list, name='vehicles_list'),
     url(r'^list/$', views.vehicles_list, name='vehicle_list'),
     url(r'^grid/$', views.vehicles_grid, name='vehicle_grid'),
+    url(r'^iso/$', views.iso, name='iso'),
     url(r'^car/(\d+)$', views.vehicle_details, name='vehicle_details'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

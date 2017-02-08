@@ -41,86 +41,57 @@
   <![endif]-->
 {% endblock %}
 {% block content %}
-  <!--=== Content Part ===-->
-  <div class="jumbotron myjumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg)">
-</div>
-  <div class="content container">
-      <div class="row">
-        {% include "inventory/filter.html" %}
-          <div class="col-md-9">
-            {% include "inventory/show.html" %}
+<!--=== Content Part ===-->
+<div class="jumbotron myjumbotron" style="background-image:url(/static/rammotors/img/banner_car_1.jpg)"></div>
 
-              <div class="filter-results">
-                <!-- Start product -->
-                {% for vehicle in vehicles %}
-                  {% if not forloop.last %}
-                  <div class="list-product-description product-description-brd margin-bottom-30" name='{{vehicle.brand}}'>
-                  {% else %}
-                  <div class="list-product-description product-description-brd" name='{{vehicle.brand}}'>
-                    {% endif %}
-                    <div class="row">
-                          <div class="col-sm-4">
-                                <div class="shop-rgba-dark-green rgba-banner">1/{{vehicle.media_image_count}}</div>
-                            <a href="car/{{vehicle.vehicle_id}}">
-                                <img class="img-responsive sm-margin-bottom-20" src='{{images_uri}}{{vehicle.media_image_feature}}' alt="">
-                              </a>
-                          </div>
-                          <div class="col-sm-8 product-description">
-                              <div class="overflow-h margin-bottom-5">
-                                  <ul class="list-inline overflow-h">
-                                      <li>
-                                      <h4 class="title-price"><a href="car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4>
-                                      </li>
-                                      <li><span class="gender text-uppercase">{{vehicle.model}}</span></li>
-                                      <li class="pull-right">
-                                      <a href="car/{{vehicle.vehicle_id}}" rel="glow" class="btn btn-success glow">
-                                      {{vehicle.currency}} {{vehicle.price|intcomma}}
-                                      </a>
-                                      </li>
-                                 </ul>
-                                   <ul class="list-inline add-to-wishlist margin-bottom-20">
-                                    <li>
-                                    <strong>{{vehicle.category}}</strong>
-                                    </li>
-                                    <li class="features">
-                                     <i class="fa fa-fw fa-calendar-check-o"></i> {{vehicle.initial_registration}}
-                                    </li>
-                                    <li class="features">
-                                      <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
-                                    </li>
-                                    </lu>
-                                    <hr class="devider devider-dotted">
-                                   <ul class="list-inline add-to-wishlist margin-bottom-20">
-                                     <li>
-                                    {{vehicle.body}}
-                                    </li>
-                                    <li>
-                                    {{vehicle.body_color}} {{vehicle.body_painting}}
-                                    </li>
-                                    <li>
-                                    {{vehicle.fuel}}
-                                    </li>
-                                    <li>
-                                    {{vehicle.gear_types}}
-                                    </li>
-                                    <li>
-                                    <i class="fa fa-fw fa-dashboard" area-hidden="true"></i> {{vehicle.kilowatt}} kW
-                                    </li>
-                                  </ul>
-                                    <hr class="devider devider-dotted">
-
-                                  <p class="margin-bottom-20">
-                                  {{vehicle.version|default_if_none:""}}
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- end product -->
-                  {% endfor %}
-              </div>
-          </div>
-      </div>
-      <!--/end row-->
-  </div>
+<div class="content container">
+  <div class="row">
+    {% include "inventory/filter.html" %}
+    <div class="col-md-9">
+      {% include "inventory/show.html" %}
+      <div class="filter-results">
+      <!-- Start product -->
+      {% for vehicle in vehicles %}
+        <div class="list-product-description product-description-brd
+          {% if not forloop.last %} margin-bottom-30 {% endif %}" name='{{vehicle.brand}}'>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="shop-rgba-dark-green rgba-banner">1/{{vehicle.media_image_count}}</div>
+              <a href="car/{{vehicle.vehicle_id}}"><img class="img-responsive sm-margin-bottom-20"
+                src='{{images_uri}}{{vehicle.media_image_feature}}' alt=""></a>
+            </div>
+            <div class="col-sm-8 product-description">
+              <div class="overflow-h margin-bottom-5">
+                <ul class="list-inline overflow-h">
+                  <li><h4 class="title-price"><a href="car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4></li>
+                  <li><span class="gender text-uppercase">{{vehicle.model}}</span></li>
+                  <li class="pull-right"> <a href="car/{{vehicle.vehicle_id}}" rel="glow"
+                    class="btn btn-success glow">{{vehicle.currency}} {{vehicle.price|intcomma}}</a></li>
+                </ul>
+                <ul class="list-inline add-to-wishlist margin-bottom-20">
+                  <li><strong>{{vehicle.category}}</strong></li>
+                  <li class="features"><i class="fa fa-fw fa-calendar-check-o"></i> {{vehicle.initial_registration}}</li>
+                  <li class="features"><i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM</li>
+                </lu>
+                <hr class="devider devider-dotted">
+                <ul class="list-inline add-to-wishlist margin-bottom-20">
+                  <li>{{vehicle.body}}</li>
+                  <li>{{vehicle.body_color}} {{vehicle.body_painting}}</li>
+                  <li>{{vehicle.fuel}}</li>
+                  <li>{{vehicle.gear_types}}</li>
+                  <li><i class="fa fa-fw fa-dashboard" area-hidden="true"></i> {{vehicle.kilowatt}} kW</li>
+                </ul>
+                <hr class="devider devider-dotted">
+                <p class="margin-bottom-20">
+                  {{vehicle.version|default_if_none:""}}
+                </p>
+              </div><!-- end of overflow -->
+            </div> <!-- end of col8 -->
+          </div> <!-- end of row -->
+        </div> <!-- end of product -->
+        {% endfor %}
+      </div><!-- end of filter result -->
+    </div><!-- end of col9 -->
+  </div><!--/end row-->
+</div> <!-- end of content -->
 {% endblock %}
