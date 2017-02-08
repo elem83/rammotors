@@ -19,6 +19,7 @@
   <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/smoothScroll.js' %}"></script>
   <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/noUiSlider/jquery.nouislider.all.min.js' %}"></script>
   <script src="{% static 'unify-v1.9.6/E-Commerce/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
   <!-- JS Customization -->
   <script src="{% static 'rammotors/js/inventory/custom.js' %}"></script>
   <!-- JS Page Level -->
@@ -49,12 +50,11 @@
     <div class="col-md-9">
       {% include "inventory/show.html" %}
       <div class="filter-results">
-        {% for vehicles_tuple in vehicles_list_tuples %}
-        <div class="row illustration-v2 margin-bottom-30">
-         {% for vehicle in vehicles_tuple %}
-         <div class="col-md-4" name='{{vehicle.brand}}'>
+        <div class="row illustration-v2 margin-bottom-30 grid">
+         {% for vehicle in vehicles %}
+         <div class="col-md-4 {{vehicle.brand}}">
            <div class="product-img product-img-brd">
-             <a href="/car/{{vehicle.vehicle_id}}"><img class="full-width img-responsive" 
+             <a href="/car/{{vehicle.vehicle_id}}"><img class="full-width img-responsive"
              src="{{images_uri}}{{vehicle.media_image_feature}}" alt=""></a>
              <div class="shop-rgba-dark-green rgba-banner">1/{{vehicle.media_image_count}}</div>
            </div>
@@ -64,15 +64,15 @@
                  <h4 class="title-price"><a href="/car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4>
                  <span class="gender text-uppercase">{{vehicle.model}}</span>
                </div>
-               <div class="product-price"><span class="title-price">{{vehicle.currency}} {{vehicle.price}}</span></div>
+               <div class="product-price"><span class="title-price">{{vehicle.currency}} {{vehicle.price|intcomma}}</span></div>
              </div><!-- end overflow -->
            </div><!-- end product description -->
          </div><!-- end of col4 -->
          {% endfor %}
       </div><!-- end of row -->
-      {% endfor %}
      </div> <!-- end of filter -->
     </div> <!-- end of col9 -->
   </div><!-- end of row -->
 </div><!-- end of content -->
 {% endblock %}
+

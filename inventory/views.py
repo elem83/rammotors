@@ -21,20 +21,6 @@ def vehicles_list(request):
     }
     return render(request, 'inventory/list_cars.html', context)
 
-def iso(request):
-    """ Test """
-    autoscout = services.AS24WSSearch()
-    images_uri = autoscout.uri_images('main')
-    vehicles = autoscout.list_vehicles()
-    brands = services.filter_brands(vehicles)
-    context = {\
-        'vehicles': vehicles,
-        'vehicles_list_tuples': list(make_tuple(vehicles, 3)),
-        'images_uri': images_uri,
-        'brands': brands\
-    }
-    return render(request, 'inventory/isotope.html', context)
-
 def make_tuple(lst, col):
     """
     Create a list of tuple from a flat list
@@ -55,7 +41,7 @@ def vehicles_grid(request):
         'images_uri': images_uri,
         'brands': brands\
     }
-    return render(request, 'inventory/grid_cars2.html', context)
+    return render(request, 'inventory/grid_cars.html', context)
 
 def vehicle_details(request, vehicle_id):
     """ Return the detail of a vehicle """
