@@ -1,13 +1,28 @@
 <div class="row margin-bottom-5">
   <div class="col-sm-4 result-category">
     <h2>Voitures</h2>
-    <small class="shop-bg-red badge-results">{{vehicles|length}} Resultas</small>
+    <small class="shop-bg-red badge-results"><span id="count_car">{{vehicles|length}}</span> Resultas</small>
   </div>
   <div class="col-sm-8">
     <ul class="list-inline clear-both">
       <li class="grid-list-icons">
         <a href="/"><i class="fa fa-th-list"></i></a>
         <a href="/grid/"><i class="fa fa-th"></i></a>
+      </li>
+      <li class="sort-list-btn">
+        <h3>Tri par :</h3>
+        <div class="btn-group">
+          <button type="button"
+            class="btn btn-default dropdown-toggle"
+            data-toggle="dropdown"
+            id='sort_criteria'>
+            Prix <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" id="sorts">
+            <li data-sort-by="price"><a href="#">Prix</a></li>
+            <li data-sort-by="km"><a href="#">Km</a></li>
+          </ul>
+        </div>
       </li>
     </ul>
   </div>

@@ -44,226 +44,185 @@
 {% endblock %}
 
 {% block content %}
-  <div class="shop-product">
-   <!-- Breadcrumbs v5 -->
-   <div class="container">
+<div class="shop-product">
+  <!-- Breadcrumbs v5 -->
+  <div class="container">
     <ul class="breadcrumb-v5">
-     <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-     <li><a href="/">Voitures</a></li>
-     <li class="active">{{vehicle.category}}</li>
+      <li><a href="/"><i class="fa fa-home"></i></a></li>
+      <li><a href="/">Voitures</a></li>
+      <li class="active">{{vehicle.category}}</li>
     </ul>
-   </div>
-   <!-- End Breadcrumbs v5 -->
-
-   <div class="container">
-    <div class="row">
-     <div class="col-md-6 md-margin-bottom-50">
-      <div class="ms-showcase2-template">
-       <!-- Master Slider -->
-       <div class="master-slider ms-skin-default" id="masterslider">
-
-      {% for image in vehicle.all_images %}
-        <div class="ms-slide">
-         <img src='{{uri_images_big}}{{image}}' data-src="{{uri_images_big}}{{image}}" alt="">
-         <img class="ms-thumb" src="{{uri_images_big}}{{image}}" alt="thumb">
-        </div>
-      {% endfor %}
-       </div>
-       <!-- End Master Slider -->
-      </div>
-    </div><!-- end col-md06 -->
-
-     <div class="col-md-6">
-      <div class="shop-product-heading">
-        <h2>{{vehicle.brand}} <small>{{vehicle.model}}</small> </h2>
-
-        <ul class="list-inline shop-product-prices">
-            <li class="pull-right shop-red">
-            {{vehicle.currency}} {{vehicle.price|intcomma}}
-            </li>
-        </ul>
-
-      </div><!--/end shop product social-->
-
-      <p>
-        <ul class="list-inline add-to-wishlist margin-bottom-20">
-        <li>
-          <strong>{{vehicle.category}}</strong>
-        </li>
-        <li class="features">
-        {% if vehicle.accident_free %}
-          Sans accident
-          {% else %}
-          Accidentée
-        {% endif %}
-      </li>
-      <li class="features">
-        <i class="fa fa-fw fa-calendar-check-o"></i> {{vehicle.initial_registration}}
-      </li>
-      <li class="features">
-        <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
-      </li>
-      </ul>
-      <hr class="devider devider-dotted">
-    </p>
-
-    <ul class="list-inline shop-product-prices margin-bottom-30">
-      {{vehicle.version}}
-    </ul><!--/end shop product prices-->
-
-      <h3 class="shop-product-title">Plus de détails</h3>
-        <div class="row">
-         <div class="col-sm-6">
-          <ul class="list-unstyled specifies-list">
-           <li><i class="fa fa-caret-right"></i>Carrosserie: <span>{{vehicle.body}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Transmission: <span>{{vehicle.gear_types}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Vitesses: <span>{{vehicle.gears}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Cylindrée: <span>{{vehicle.capacity}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Cylindres: <span>{{vehicle.cylinder}}</span></li>
-            <li><i class="fa fa-caret-right"></i>Poids à vide: <span>{{vehicle.kerb_weight}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Carburant: <span>{{vehicle.fuel}}</span></li>
-          </ul>
-         </div>
-         <div class="col-sm-6">
-          <ul class="list-unstyled specifies-list">
-           <li><i class="fa fa-caret-right"></i>Consommation de carburant:</li>
-           <ul>
-             <li><span>{{vehicle.consumption}}</span> (mixte)</li>
-             <li><span>{{vehicle.urban}}</span> (urbain)</li>
-             <li><span>{{vehicle.extra_urban}}</span> (extra-urbain)</li>
-           </ul>
-           <li><i class="fa fa-caret-right"></i>Émissions de CO2: <span>{{vehicle.emiss_co2_liquid}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Classe d'émission: <span>{{vehicle.emission_class}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Portes: <span>{{vehicle.doors}}</span></li>
-           <li><i class="fa fa-caret-right"></i>Sièges: <span></span>{{vehicle.seats}}</li>
-           <li><i class="fa fa-caret-right"></i>Couleur extérieure: <span>{{vehicle.body_color}}</span></li>
-          </ul>
-         </div>
-        </div>
-
-     </div>
-    </div><!--/end row-->
-   </div>
   </div>
-  <!--=== End Shop Product ===-->
-
-  <!--=== Content Medium ===-->
-  <div class="content-md container">
-   <!--=== Product Service ===-->
-   <div class="row margin-bottom-60">
-
-
+  <!-- End Breadcrumbs v5 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 md-margin-bottom-50">
+        <div class="ms-showcase2-template">
+          <!-- Master Slider -->
+          <div class="master-slider ms-skin-default" id="masterslider">
+          {% for image in vehicle.all_images %}
+            <div class="ms-slide">
+              <img src='{{uri_images_big}}{{image}}' data-src="{{uri_images_big}}{{image}}" alt="">
+              <img class="ms-thumb" src="{{uri_images_big}}{{image}}" alt="thumb">
+            </div>
+          {% endfor %}
+          </div>
+          <!-- End Master Slider -->
+        </div>
+      </div><!-- end col-md06 -->
+      <div class="col-md-6">
+        <div class="shop-product-heading">
+          <h2>{{vehicle.brand}} <small>{{vehicle.model}}</small> </h2>
+          <ul class="list-inline shop-product-prices">
+            <li class="pull-right shop-red">
+             {{vehicle.currency}} {{vehicle.price|intcomma}}
+            </li>
+          </ul>
+        </div><!--/end shop product social-->
+        <ul class="list-inline add-to-wishlist margin-bottom-20">
+          <li><strong>{{vehicle.category}}</strong></li>
+          <li class="features">
+            <i class="fa fa-fw fa-calendar-check-o"></i> {{vehicle.initial_registration}}
+          </li>
+          <li class="features">
+            <i class="fa fa-road" aria-hidden="true"></i> {{vehicle.mileage|intcomma}} KM
+          </li>
+        </ul>
+        <hr class="devider devider-dotted">
+        <p>{{vehicle.version}}</p>
+        <hr class="devider devider-dotted">
+        <h3 class="shop-product-title">Plus de détails</h3>
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="list-unstyled specifies-list">
+            <li><i class="fa fa-caret-right"></i>Carrosserie: <span>{{vehicle.body}}</span></li>
+            <li><i class="fa fa-caret-right"></i>Transmission: <span>{{vehicle.gear_types}}</span></li>
+            <li><i class="fa fa-caret-right"></i>Vitesses: <span>{{vehicle.gears}}</span></li>
+            <li><i class="fa fa-caret-right"></i>Cylindrée: <span>{{vehicle.capacity|intcomma}} cm<sup>3</sup></span></li>
+            <li><i class="fa fa-caret-right"></i>Cylindres: <span>{{vehicle.cylinder}}</span></li>
+            <li><i class="fa fa-caret-right"></i>Poids à vide: <span>{{vehicle.kerb_weight|intcomma}} kg</span></li>
+            <li><i class="fa fa-caret-right"></i>Carburant: <span>{{vehicle.fuel}}</span></li>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <ul class="list-unstyled specifies-list">
+              <li><i class="fa fa-caret-right"></i>Consommation de carburant:</li>
+                <ul>
+                  <li><span>{{vehicle.consumption}} l/100 km</span> (mixte)</li>
+                  <li><span>{{vehicle.urban}} l/100 km</span> (urbain)</li>
+                  <li><span>{{vehicle.extra_urban}} l/100 km</span> (extra-urbain)</li>
+                </ul>
+              <li><i class="fa fa-caret-right"></i>Émissions de CO2: <span>{{vehicle.emiss_co2_liquid}}</span></li>
+              <li><i class="fa fa-caret-right"></i>Classe d'émission: <span>{{vehicle.emission_class}}</span></li>
+              <li><i class="fa fa-caret-right"></i>Portes: <span>{{vehicle.doors}}</span></li>
+              <li><i class="fa fa-caret-right"></i>Sièges: <span></span>{{vehicle.seats}}</li>
+              <li><i class="fa fa-caret-right"></i>Couleur extérieure: <span>{{vehicle.body_color}}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- endcol -->
+    </div><!--/end row-->
+  </div>
+</div>
+<!--=== End Shop Product ===-->
+<!--=== Content Medium ===-->
+<div class="content-md container">
+  <!--=== Product Service ===-->
+  <div class="row margin-bottom-60">
     <div class="col-md-3 product-service md-margin-bottom-30">
-     <div class="product-service-heading">
-       <i class="fa fa-check-square-o" aria-hidden="true"></i>
-     </div>
-     <div class="product-service-in">
-       <h3><img src="http://pic.autoscout24.net/seals/images/138.gif"></h3>
-      <p> Car-Pass est la garantie officielle du kilométrage réel. </p>
-     </div>
+      <div class="product-service-heading">
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+      </div>
+      <div class="product-service-in">
+        <h3><img src="http://pic.autoscout24.net/seals/images/138.gif"></h3>
+        <p> Car-Pass est la garantie officielle du kilométrage réel. </p>
+      </div>
     </div>
     <div class="col-md-3 product-service md-margin-bottom-30">
-     <div class="product-service-heading">
-      <i class="icon-earphones-alt"></i>
-     </div>
-     <div class="product-service-in">
-      <h3>Service Client</h3>
-      <p>
-      Il vous est possible de prendre contact avec notre service vente hors de nos heures d'ouverture par téléphone au
-      <a href="tel:+32 476 823 793">+32 476 823 793</a>
-      </p>
-     </div>
+      <div class="product-service-heading">
+        <i class="icon-earphones-alt"></i>
+      </div>
+      <div class="product-service-in">
+        <h3>Service Client</h3>
+        <p>
+          Il vous est possible de prendre contact avec notre service vente hors de nos heures d'ouverture par téléphone au
+          <a href="tel:+32 476 823 793">+32 476 823 793</a>
+        </p>
+      </div>
     </div>
     <div class="col-md-3 product-service">
-     <div class="product-service-heading">
-      <i class="icon-refresh"></i>
-     </div>
-     <div class="product-service-in">
-      <h3>Garantie</h3>
-      <p> Garantie de 12 mois</p>
-     </div>
+      <div class="product-service-heading">
+        <i class="icon-refresh"></i>
+      </div>
+      <div class="product-service-in">
+        <h3>Garantie</h3>
+        <p> Garantie de 12 mois</p>
+      </div>
     </div>
-
     <div class="col-md-3 product-service md-margin-bottom-30">
-     <div class="product-service-heading">
-      <i class="fa fa-car" aria-hidden="true"></i>
-     </div>
-     <div class="product-service-in">
-      <h3>Autres</h3>
-      <p>
-      Entretien effectué <br>
-      Contrôle technique et une demande d'immatriculation. <br>
-      </p>
-     </div>
-    </div>
-
-   </div><!--/end row-->
-   <!--=== End Product Service ===-->
-
-   <div class="tab-v6">
-    <ul class="nav nav-tabs" role="tablist">
-     <li class="active"><a href="#description" role="tab" data-toggle="tab">Description</a></li>
-    </ul>
-
-    <div class="tab-content">
-     <!-- Description -->
-     <div class="tab-pane fade in active" id="description">
-      <div class="row">
-       <div class="col-md-7">
+      <div class="product-service-heading">
+        <i class="fa fa-car" aria-hidden="true"></i>
+      </div>
+      <div class="product-service-in">
+        <h3>Autres</h3>
         <p>
-        {{vehicle.notes}}
-        </p><br>
-
-        <h3 class="heading-md margin-bottom-20">Equipement du véhicule</h3>
-
+        Entretien effectué <br>
+        Contrôle technique et une demande d'immatriculation. <br>
+        </p>
+      </div>
+    </div>
+  </div><!--/end row-->
+   <!--=== End Product Service ===-->
+  <div class="tab-v6">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active"><a href="#description" role="tab" data-toggle="tab">Description</a></li>
+    </ul>
+    <div class="tab-content">
+      <!-- Description -->
+      <div class="tab-pane fade in active" id="description">
         <div class="row">
-         <div class="col-sm-6">
-          <ul class="list-unstyled specifies-list">
-      {% for equipment in vehicle.equipments %}
-           <li><i class="fa fa-caret-right"></i>
-        {{equipment}}
-        </li>
-        {% endfor %}
-        </lu>
-      </div>
-    </div>
-
-      </div>
-     </div>
-     <!-- End Description -->
-
-    </div>
-   </div>
-  </div><!--/end container-->
-  <!--=== End Content Medium ===-->
-
-  <!--=== Illustration v2 ===-->
-  <div class="container">
-   <div class="heading heading-v1 margin-bottom-20">
+          <div class="col-md-7">
+            <p>{{vehicle.notes}}</p>
+            <br>
+            <h3 class="heading-md margin-bottom-20">Equipement du véhicule</h3>
+            <div class="row">
+              <div class="col-sm-6">
+                <ul class="list-unstyled specifies-list">
+                  {% for equipment in vehicle.equipments %}
+                    <li><i class="fa fa-caret-right"></i> {{equipment}} </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div> <!--end col7-->
+        </div> <!--end row -->
+      </div><!--end tab-pane -->
+    </div><!--end tab-content -->
+  </div><!--/end tab-v6-->
+</div><!--end content -->
+<div class="container">
+  <div class="heading heading-v1 margin-bottom-20">
     <h2>Autres voitures:</h2>
     <p></p>
-   </div>
-
-   <div class="illustration-v2 margin-bottom-60">
-    <div class="customNavigation margin-bottom-25">
-     <a class="owl-btn prev rounded-x"><i class="fa fa-angle-left"></i></a>
-     <a class="owl-btn next rounded-x"><i class="fa fa-angle-right"></i></a>
-    </div>
-
-    <ul class="list-inline owl-slider-v4">
-    {% for vehicle in vehicles %}
-     <li class="item">
-     <a href="{{vehicle.vehicle_id}}"><img class="img-responsive" src="{{uri_images_main}}{{vehicle.media_image_feature}}" alt=""></a>
-      <div class="product-description-v2">
-       <div class="margin-bottom-5">
-         <h4 class="title-price"><a href="{{vehicle.vehicle_id}}">{{vehicle.brand}} <small>{{vehicle.model}}</small></a></h4>
-        <span class="title-price">{{vehicle.currency}} {{vehicle.price|intcomma}}</span>
-       </div>
-      </div>
-     </li>
-     {% endfor %}
-    </ul>
-   </div>
   </div>
-  <!--=== End Illustration v2 ===-->
+  <div class="illustration-v2 margin-bottom-60">
+    <div class="customNavigation margin-bottom-25">
+      <a class="owl-btn prev rounded-x"><i class="fa fa-angle-left"></i></a>
+      <a class="owl-btn next rounded-x"><i class="fa fa-angle-right"></i></a>
+    </div>
+    <ul class="list-inline owl-slider-v4">
+      {% for vehicle in vehicles %}
+      <li class="item">
+        <a href="{{vehicle.vehicle_id}}"><img class="img-responsive" src="{{uri_images_main}}{{vehicle.media_image_feature}}" alt=""></a>
+        <div class="product-description-v2">
+          <div class="margin-bottom-5">
+            <h4 class="title-price"><a href="{{vehicle.vehicle_id}}">{{vehicle.brand}} <small>{{vehicle.model}}</small></a></h4>
+            <span class="title-price">{{vehicle.currency}} {{vehicle.price|intcomma}}</span>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 {% endblock %}

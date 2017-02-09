@@ -12,11 +12,12 @@
             {% for brand,count in brands.items %}
             <li>
               <label class="checkbox">
-                <input type="radio" 
-                name="optionsRadios" 
-                id="optionsRadios1" 
-                value="option1" 
-                checked="" 
+                <input type="radio"
+                name="optionsRadios"
+                id="optionsRadios1"
+                value="option1"
+                checked=""
+                data-count="{{count}}"
                 data-filter=".{{brand}}" />
                 <i></i>
                 {{brand}}
@@ -30,7 +31,8 @@
     </div>
   </div>
   <!--/end panel group-->
-  <button type="button" 
-    class="btn-u btn-brd btn-brd-hover btn-u-lg btn-u-sea-shop btn-block" 
+  <button type="button"
+    class="btn-u btn-brd btn-brd-hover btn-u-lg btn-u-sea-shop btn-block"
+    id="reset"
     data-filter="*">réinitialiser</button>
 </div>

@@ -59,13 +59,22 @@
              <div class="shop-rgba-dark-green rgba-banner">1/{{vehicle.media_image_count}}</div>
            </div>
            <div class="product-description product-description-brd margin-bottom-30">
-             <div class="overflow-h margin-bottom-5">
-               <div class="pull-left">
-                 <h4 class="title-price"><a href="/car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4>
-                 <span class="gender text-uppercase">{{vehicle.model}}</span>
-               </div>
-               <div class="product-price"><span class="title-price">{{vehicle.currency}} {{vehicle.price|intcomma}}</span></div>
-             </div><!-- end overflow -->
+           <ul class="list-inline overflow-h">
+             <li>
+               <h4 class="title-price"><a href="car/{{vehicle.vehicle_id}}">{{vehicle.brand}}</a></h4>
+             </li>
+             <li><span class="gender text-uppercase">{{vehicle.model}}</span></li>
+             <li class="pull-right">
+               <a href="car/304707153" rel="glow" class="btn btn-success glow">
+                {{vehicle.currency}} <span class="price">{{vehicle.price|intcomma}}</span>
+               </a>
+             </li>
+           </ul>
+           <hr class="devider devider-dotted">
+           <ul class="list-inline add-to-wishlist margin-bottom-20">
+             <li class="features"><i class="fa fa-fw fa-calendar-check-o"></i> {{vehicle.initial_registration}}</li>
+             <li class="features"><i class="fa fa-road" aria-hidden="true"></i> <span class="km">{{vehicle.mileage|intcomma}}</span> KM</li>
+           </lu>
            </div><!-- end product description -->
          </div><!-- end of col4 -->
          {% endfor %}
