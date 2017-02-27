@@ -102,3 +102,11 @@ def test_vehicles_factory(fixture_soap):
             "The first vehicle of the list should not be empty"
     assert all(check_obj_not_empty(obj) for obj in vehicles), \
             "None of the vehicule should be empty"
+
+def test_attr_lookup(fixture_soap):
+    etree_vehicles = \
+        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+    assert fixture_soap['as']._attr_lookup(etree_vehicles[0], 'a:brand_id') != \
+            '00', "The brand should not be equal to 00"
+    assert fixture_soap['as']._attr_lookup(etree_vehicles[0], 'a:not_exist') == \
+            '', "Should be the empty string"
