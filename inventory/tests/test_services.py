@@ -110,3 +110,18 @@ def test_attr_lookup(fixture_soap):
             '00', "The brand should not be equal to 00"
     assert fixture_soap['as']._attr_lookup(etree_vehicles[0], 'a:not_exist') == \
             '', "Should be the empty string"
+
+def test_equipments_factory(fixture_soap):
+    etree_vehicles = \
+        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+
+    etree_equipment_ids = \
+            etree_vehicles[0].findall('a:equipments/a:equipment_id',\
+                                    fixture_soap['as'].name_spaces)
+    result = fixture_soap['as']._equipments_factory(\
+                                            etree_equipment_ids)
+    assert isinstance(result, list), "Should be an instance of list"
+    assert all(isinstance(int(item), int) for item in result), \
+            "Should contains number or nothing"
+    assert all(isinstance(int(item), int) for item in []), \
+            "Should contains number or nothing"
