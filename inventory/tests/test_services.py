@@ -1,6 +1,7 @@
 # pylint: disable=missing-docstring, unused-import, redefined-outer-name
 """Unit test for Inventory"""
 
+from xml.etree import ElementTree
 import pytest
 
 from inventory.views import vehicles_list
@@ -77,11 +78,16 @@ def test_find_articles(fixture_soap):
     assert fixture_soap['response'].content.endswith(\
         b'</FindArticlesResponse></s:Body></s:Envelope>'), \
             "The Soap response should finished with FindArticles ..."
-"""
-    def test_etree_vehicles(self):
-        etree_vehicles = services.AS24WSSearch()._etree_vehicles(self.response.content)
-        assertEqual(type(etree_vehicles), list)
 
+def test_etree_vehicles(fixture_soap):
+    # pylint: disable=protected-access
+    etree_vehicles = \
+            fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+    assert isinstance(etree_vehicles, list), "Should be a list"
+    assert '{http://www.autoscout24.com/webapi/data/}vehicle' in \
+        str(etree_vehicles[0]), "Should be a ElementTree"
+
+"""
     def test_vehicles_factory(self):
         etree_vehicles = self.wsdl_autoscout24._etree_vehicles(self.response.content)
         vehicles = services.AS24WSSearch()._vehicles_factory(etree_vehicles)
