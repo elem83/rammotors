@@ -57,6 +57,8 @@ def test_uri(fixture_soap):
             "Should return a URI containing /images-small/"
     assert '/thumbnails-big/' in check('thumb'), \
             "Should return a URI containing /thumbnails-big/"
+    with pytest.raises(ValueError):
+        check('anything')
 
 def test_get_article_details(fixture_soap):
     scout = fixture_soap['as'].get_article_details('0')
@@ -136,3 +138,7 @@ def test_images_factory(fixture_soap):
     assert isinstance(result, list), "Should be an instance of list"
     assert all('.jpg' in item for item in result), \
             "Should contains images"
+
+def test_vehicle_str():
+    vehicle = services.Vehicle().brand_id = '50'
+    assert str(vehicle) == '50', "The print should show the brand id"
