@@ -1,4 +1,4 @@
-# pylint: disable=missing-docstring, unused-import, redefined-outer-name
+# pylint: disable=protected-access, missing-docstring, unused-import, redefined-outer-name
 """Unit test for Inventory"""
 
 from xml.etree import ElementTree
@@ -80,19 +80,16 @@ def test_find_articles(fixture_soap):
             "The Soap response should finished with FindArticles ..."
 
 def test_etree_vehicles(fixture_soap):
-    # pylint: disable=protected-access
     etree_vehicles = \
             fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
     assert isinstance(etree_vehicles, list), "Should be a list"
     assert '{http://www.autoscout24.com/webapi/data/}vehicle' in \
         str(etree_vehicles[0]), "Should be a ElementTree"
 
-"""
-    def test_vehicles_factory(self):
-        etree_vehicles = self.wsdl_autoscout24._etree_vehicles(self.response.content)
-        vehicles = services.AS24WSSearch()._vehicles_factory(etree_vehicles)
-        assertNotEqual(len(vehicles), 0)
-        assertEqual(type(vehicles[0]), services.Vehicle)
-        assertEqual(type(vehicles[0].brand_id), str)
+def test_vehicle_factory(fixture_soap):
+    etree_vehicles = \
+        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+    vehicle = fixture_soap['as']._vehicle_factory(etree_vehicles[0])
+    assert isinstance(vehicle, services.Vehicle)
+    assert isinstance(vehicle.brand_id, str)
 
-"""

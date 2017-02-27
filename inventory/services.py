@@ -163,7 +163,7 @@ class AS24WSSearch(object):
             a TooManyRedirects exception is raised.
         """
         etree_vehicles = self._etree_vehicles(\
-                                              self.get_article_details(vehicle_id).content)
+                            self.get_article_details(vehicle_id).content)
         vehicle = self._vehicle_factory(etree_vehicles[0])
         return vehicle
 
@@ -215,7 +215,15 @@ class AS24WSSearch(object):
         return etree_vehicles
 
     def _vehicle_factory(self, etree_vehicle):
-        """ Build a vehicle of type Vehicle """
+        """ Extract the information from the WSDL and build a vehicle of type
+        Vehicle.
+
+        Input:
+            etree_vehicle :: xml.etree.ElementTree
+
+        Return:
+            vehicle :: [Vehicle, ...]
+        """
         find = lambda tag: self._attr_lookup(etree_vehicle, tag)
         vehicle = Vehicle()
 
