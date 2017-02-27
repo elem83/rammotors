@@ -90,6 +90,15 @@ def test_vehicle_factory(fixture_soap):
     etree_vehicles = \
         fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
     vehicle = fixture_soap['as']._vehicle_factory(etree_vehicles[0])
-    assert isinstance(vehicle, services.Vehicle)
-    assert isinstance(vehicle.brand_id, str)
+    assert isinstance(vehicle, services.Vehicle), "Should be type of Vehicle"
+    assert isinstance(vehicle.brand_id, str), \
+            "Brand should be filled with a value"
 
+def test_vehicles_factory(fixture_soap):
+    etree_vehicles = \
+        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+    vehicles = fixture_soap['as']._vehicles_factory(etree_vehicles)
+    assert check_obj_not_empty(vehicles[0]), \
+            "The first vehicle of the list should not be empty"
+    assert all(check_obj_not_empty(obj) for obj in vehicles), \
+            "None of the vehicule should be empty"
