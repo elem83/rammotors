@@ -6,12 +6,13 @@ and handling all the logic of the website.
 Note that in order to help me to create the requests I have used the
 application: https://www.soapui.org/soap-and-wsdl/working-with-wsdls.html
 """
-
 from collections import defaultdict
 
 from datetime import datetime
 import xml.etree.ElementTree as ET
 import requests
+
+from django.core.exceptions import ObjectDoesNotExist
 
 from inventory.models import Enumeration
 
@@ -95,49 +96,6 @@ class AS24WSSearch(object):
 
         return name_spaces
 
-    def uri_images(self, size):
-        """ Return the base URI for the images
-
-        Input:
-            size :: [big|main|small|thumbnails] :: String
-
-        Return:
-            uri :: String
-        """
-        if size == 'big':
-            return 'http://pic.autoscout24.net/images-big/'
-        elif size == 'main':
-            return 'http://pic.autoscout24.net/images/'
-        elif size == 'small':
-            return 'http://pic.autoscout24.net/images-small/'
-        elif size == 'thumb':
-            return 'http://pic.autoscout24.net/thumbnails-big/'
-        else:
-            raise ValueError('Not a correct size parameter')
-
-
-    def etree_vehicles(self, func):
-        """ Extract the list of vehicle in etree format """
-
-        root = ET.fromstring(func)
-        etree_vehicles = root.findall(".//a:vehicle", self.name_spaces)
-        return etree_vehicles
-
-    def details_vehicle(self, vehicle_id):
-        """ Return details of a vehicle """
-
-        etree_vehicles = self.etree_vehicles(self.get_article_details(vehicle_id))
-        vehicle = self.vehicle_factory(etree_vehicles[0])
-        return vehicle
-
-    def get_article_details(self, vehicle_id):
-        """ Implementation of the GetArticleDetails from WSDL Autoscout24 """
-        context = {'culture_id': CULTURE_ID, 'vehicle_id': vehicle_id}
-        response = requests.post(URL, headers=HEADER_VEHICLE_DETAILS,
-                                 data=SOAP_VEHICLE_DETAILS.format(**context),
-                                 auth=(USERNAME, PASSWORD))
-        return response.content
-
     def list_vehicles(self):
         """ Implementation of FindArticles
 
@@ -158,7 +116,7 @@ class AS24WSSearch(object):
             Expected header expected by the servers
 
         Returns:
-            Nothing
+            vehicles :: [Vehicle, ... ]
 
         Set Instance Variable:
             self.response :: requests.models.Response
@@ -180,22 +138,67 @@ class AS24WSSearch(object):
             If a request exceeds the configured number of maximum redirections,
             a TooManyRedirects exception is raised.
         """
-        etree_vehicles = self.etree_vehicles(self.find_articles())
-        vehicles = self.vehicles_factory(etree_vehicles)
+        etree_vehicles = self._etree_vehicles(self.find_articles().content)
+        vehicles = self._vehicles_factory(etree_vehicles)
         return vehicles
 
-    def find_articles(self):
-        """ Request the list of vehicle through wsdl """
+    def details_vehicle(self, vehicle_id):
+        """ Return details of a vehicle """
 
+        etree_vehicles = self._etree_vehicles(self.get_article_details(vehicle_id).content)
+        vehicle = self._vehicle_factory(etree_vehicles[0])
+        return vehicle
+
+    def uri_images(self, size):
+        """ Return the base URI for the images
+
+        Input:
+            size :: [big|main|small|thumbnails] :: String
+
+        Return:
+            uri :: String
+        """
+        if size == 'big':
+            return 'http://pic.autoscout24.net/images-big/'
+        elif size == 'main':
+            return 'http://pic.autoscout24.net/images/'
+        elif size == 'small':
+            return 'http://pic.autoscout24.net/images-small/'
+        elif size == 'thumb':
+            return 'http://pic.autoscout24.net/thumbnails-big/'
+        else:
+            raise ValueError('Not a correct size parameter')
+
+    def get_article_details(self, vehicle_id):
+        """
+        Implementation of the GetArticleDetails from WSDL Autoscout23
+        """
+        context = {'culture_id': CULTURE_ID, 'vehicle_id': vehicle_id}
+        response = requests.post(URL, headers=HEADER_VEHICLE_DETAILS,
+                                 data=SOAP_VEHICLE_DETAILS.format(**context),
+                                 auth=(USERNAME, PASSWORD))
+        return response
+
+    def find_articles(self):
+        """
+        Implementation of the find_articles from WSDL Autoscout24
+        """
         context = {'dealer_id': SELLER_ID, 'culture_id': CULTURE_ID}
         response = requests.post(URL, headers=HEADER,
                                  data=SOAP.format(**context),
                                  auth=(USERNAME, PASSWORD))
-        return response.content
+        return response
 
-    def vehicle_factory(self, etree_vehicle):
+    def _etree_vehicles(self, response):
+        """ Extract the list of vehicle in etree format """
+
+        root = ET.fromstring(response)
+        etree_vehicles = root.findall(".//a:vehicle", self.name_spaces)
+        return etree_vehicles
+
+    def _vehicle_factory(self, etree_vehicle):
         """ Build a vehicle of type Vehicle """
-        find = lambda tag: self.attr_lookup(etree_vehicle, tag)
+        find = lambda tag: self._attr_lookup(etree_vehicle, tag)
         vehicle = Vehicle()
 
         vehicle.accident_free = find('a:accident_free')
@@ -206,7 +209,7 @@ class AS24WSSearch(object):
         etree_equipment_ids =\
                 etree_vehicle.findall('a:equipments/a:equipment_id',\
                                       self.name_spaces)
-        vehicle.equipment_ids = self.equipments_factory(etree_equipment_ids)
+        vehicle.equipment_ids = self._equipments_factory(etree_equipment_ids)
         vehicle.fuel_type_id = find('a:fuel_type_id')
         vehicle.gear_type_id = find('a:gear_type_id')
         vehicle.initial_registration_raw = find('a:initial_registration')
@@ -214,7 +217,7 @@ class AS24WSSearch(object):
         all_images =\
                 etree_vehicle.findall('a:media/a:images/a:image/a:uri',\
                                   self.name_spaces)
-        vehicle.all_images = self.images_factory(all_images)
+        vehicle.all_images = self._images_factory(all_images)
         vehicle.media_image_count = find('a:media/a:x_code/a:image_count')
         vehicle.mileage = find('a:mileage')
         vehicle.model_id = find('a:model_id')
@@ -240,7 +243,7 @@ class AS24WSSearch(object):
 
         return vehicle
 
-    def vehicles_factory(self, etree_vehicles):
+    def _vehicles_factory(self, etree_vehicles):
         """ Build a list of vehicules of type Vehicle
 
         Input:
@@ -251,7 +254,7 @@ class AS24WSSearch(object):
         """
         vehicles = list()
         for etree_v in etree_vehicles:
-            find = lambda tag: self.attr_lookup(etree_v, tag)
+            find = lambda tag: self._attr_lookup(etree_v, tag)
             vehicle = Vehicle()
 
             vehicle.accident_free = find('a:accident_free')
@@ -261,7 +264,7 @@ class AS24WSSearch(object):
             vehicle.brand_id = find('a:brand_id')
             vehicle.category_id = find('a:category_id')
             etree_equipment_ids = etree_v.findall('a:equipments/a:equipment_id', self.name_spaces)
-            vehicle.equipment_ids = self.equipments_factory(etree_equipment_ids)
+            vehicle.equipment_ids = self._equipments_factory(etree_equipment_ids)
             vehicle.fuel_type_id = find('a:fuel_type_id')
             vehicle.gear_type_id = find('a:gear_type_id')
             vehicle.initial_registration_raw = find('a:initial_registration')
@@ -285,7 +288,7 @@ class AS24WSSearch(object):
 
         return vehicles
 
-    def attr_lookup(self, etree, tag):
+    def _attr_lookup(self, etree, tag):
         """ Extract the value of the tag if it exists
 
         Input:
@@ -303,7 +306,7 @@ class AS24WSSearch(object):
 
         return value
 
-    def equipments_factory(self, etree_equipment_ids):
+    def _equipments_factory(self, etree_equipment_ids):
         """ Return a list of equipments
 
         Input:
@@ -311,9 +314,10 @@ class AS24WSSearch(object):
         """
         return [e.text for e in etree_equipment_ids]
 
-    def images_factory(self, etree_images):
+    def _images_factory(self, etree_images):
         """ Return a list of images """
         return [e.text for e in etree_images]
+
 
 class Vehicle(object):
     """ Object storing all the necessary information related to a car"""
@@ -471,7 +475,11 @@ class Vehicle(object):
     @property
     def brand(self):
         """ Retrieve data from the database """
-        return Enumeration.objects.get(name='brand', item_id=self.brand_id).text
+        try:
+            enumeration = Enumeration.objects.get(name='brand', item_id=self.brand_id).text
+        except ObjectDoesNotExist:
+            return ""
+        return enumeration
 
     @property
     def model_line(self):
