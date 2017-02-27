@@ -50,31 +50,3 @@ class VehiculeTest(TestCase):
         expected_html = render_to_string('inventory/list_cars.html', context)
         self.assertEqual(response.content.decode(), expected_html)
 
-    # Unit test
-
-    def test_find_articles(self):
-        """Testing the wsdl query to fetch the list of cars"""
-        self.assertTrue(self.response.status_code, 200)
-        self.assertTrue(self.response.content.startswith(b'<s:Envelope'))
-        self.assertTrue(\
-        self.response.content.endswith(\
-            b'</FindArticlesResponse></s:Body></s:Envelope>'))
-
-    def test_etree_vehicles(self):
-        """ test _etree_vehicles """
-        etree_vehicles = services.AS24WSSearch()._etree_vehicles(self.response.content)
-        self.assertEqual(type(etree_vehicles), list)
-
-    def test_vehicles_factory(self):
-        """ test the factory """
-        etree_vehicles = self.wsdl_autoscout24._etree_vehicles(self.response.content)
-        vehicles = services.AS24WSSearch()._vehicles_factory(etree_vehicles)
-        self.assertNotEqual(len(vehicles), 0)
-        self.assertEqual(type(vehicles[0]), services.Vehicle)
-        self.assertEqual(type(vehicles[0].brand_id), str)
-
-    def test_uri(self):
-        """ Test the uri_images method """
-        images_uri = self.wsdl_autoscout24.uri_images('main')
-        self.assertEqual(images_uri, 'http://pic.autoscout24.net/images/')
-
