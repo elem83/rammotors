@@ -57,6 +57,18 @@ def test_uri(fixture_soap):
     assert '/thumbnails-big/' in check('thumb'), \
             "Should return a URI containing /thumbnails-big/"
 
+def test_get_article_details(fixture_soap):
+    scout = fixture_soap['as'].get_article_details('0')
+    assert scout.status_code == 200, "Should return 200"
+    assert 'NothingFound' in str(scout.content), \
+            "Should contains the string NothingFound"
+    vehicle = fixture_soap['as'].list_vehicles()[0]
+    vehicle_id = vehicle.vehicle_id
+    scout2 = fixture_soap['as'].get_article_details(vehicle_id)
+    assert 'NothingFound' not in \
+            str(scout2.content), \
+            "Should not contains the string NothingFound"
+
 def test_find_articles(fixture_soap):
     """Testing the wsdl query to fetch the list of cars"""
     assert fixture_soap['response'].status_code == 200, "Should return 200"
