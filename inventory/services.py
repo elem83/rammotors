@@ -1,4 +1,4 @@
-# pylint: disable=cell-var-from-loop, no-self-use, too-many-public-methods
+# pylint: disable=fixme, cell-var-from-loop, no-self-use, too-many-public-methods
 """
 Module responsible to communicate with the WSDL servers
 and handling all the logic of the website.
@@ -85,6 +85,7 @@ SOAP_VEHICLE_DETAILS = """<soapenv:Envelope
 class AS24WSSearch(object):
     """ Implementation of the WSDL API of Autoscout24 """
 
+    #TODO: Check if not better to create an attribute
     @property
     def name_spaces(self):
         """ Return the name spaces that will be used during the XPath """
@@ -118,11 +119,6 @@ class AS24WSSearch(object):
         Returns:
             vehicles :: [Vehicle, ... ]
 
-        Set Instance Variable:
-            self.response :: requests.models.Response
-            The response received from the wsdl servers in an object form
-            corresponding to Requests module
-
         Exceptions:
             Timeouts :: requests.exceptions.Timeout
             timeout is not a time limit on the entire response download; rather, an
@@ -143,9 +139,31 @@ class AS24WSSearch(object):
         return vehicles
 
     def details_vehicle(self, vehicle_id):
-        """ Return details of a vehicle """
+        """ Return details of a vehicle
 
-        etree_vehicles = self._etree_vehicles(self.get_article_details(vehicle_id).content)
+        Input:
+            vehicle_id :: Numeric value (String)
+
+        Return:
+            vehicle :: Vehicle
+
+        Exceptions:
+            Timeouts :: requests.exceptions.Timeout
+            timeout is not a time limit on the entire response download; rather, an
+            exception is raised if the server has not issued a response for timeout
+            seconds (more precisely, if no bytes have been received on the
+            underlying socket for timeout seconds). If no timeout is specified
+            explicitly, requests do not time out.
+
+            ConnectionError, TooManyRedirects :: requests.exceptions.RequestException
+            In the event of a network problem (e.g. DNS failure,
+            refused connection, etc), Requests will raise a ConnectionError
+            exception.
+            If a request exceeds the configured number of maximum redirections,
+            a TooManyRedirects exception is raised.
+        """
+        etree_vehicles = self._etree_vehicles(\
+                                              self.get_article_details(vehicle_id).content)
         vehicle = self._vehicle_factory(etree_vehicles[0])
         return vehicle
 

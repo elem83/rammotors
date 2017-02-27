@@ -38,6 +38,25 @@ def test_list_vehicles(fixture_soap):
     assert all(check_obj_not_empty(obj) for obj in result), \
             "None of the vehicule should be empty"
 
+def test_details_vehicle(fixture_soap):
+    vehicle = fixture_soap['as'].list_vehicles()[0]
+    vehicle_id = vehicle.vehicle_id
+    assert isinstance(fixture_soap['as'].details_vehicle(vehicle_id), \
+                      services.Vehicle), "It should be an instance of Vehicle"
+    assert check_obj_not_empty(vehicle), "This instance should not be empty"
+
+def test_uri(fixture_soap):
+    # pylint: disable=unnecessary-lambda
+    check = lambda x: fixture_soap['as'].uri_images(x)
+    assert '/images/' in check('main'), \
+            "Should return a URI containing /images/"
+    assert '/images-big/' in check('big'), \
+            "Should return a URI containing /images-big/"
+    assert '/images-small/' in check('small'), \
+            "Should return a URI containing /images-small/"
+    assert '/thumbnails-big/' in check('thumb'), \
+            "Should return a URI containing /thumbnails-big/"
+
 def test_find_articles(fixture_soap):
     """Testing the wsdl query to fetch the list of cars"""
     assert fixture_soap['response'].status_code == 200, "Should return 200"
@@ -58,7 +77,4 @@ def test_find_articles(fixture_soap):
         assertEqual(type(vehicles[0]), services.Vehicle)
         assertEqual(type(vehicles[0].brand_id), str)
 
-    def test_uri(self):
-        images_uri = self.wsdl_autoscout24.uri_images('main')
-        assertEqual(images_uri, 'http://pic.autoscout24.net/images/')
 """
