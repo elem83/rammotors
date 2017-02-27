@@ -125,3 +125,14 @@ def test_equipments_factory(fixture_soap):
             "Should contains number or nothing"
     assert all(isinstance(int(item), int) for item in []), \
             "Should contains number or nothing"
+
+def test_images_factory(fixture_soap):
+    etree_vehicles = \
+        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+    all_images = \
+            etree_vehicles[0].findall('a:media/a:images/a:image/a:uri',\
+                                fixture_soap['as'].name_spaces)
+    result = fixture_soap['as']._images_factory(all_images)
+    assert isinstance(result, list), "Should be an instance of list"
+    assert all('.jpg' in item for item in result), \
+            "Should contains images"
