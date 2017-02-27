@@ -171,7 +171,7 @@ class AS24WSSearch(object):
 
     def get_article_details(self, vehicle_id):
         """
-        Implementation of the GetArticleDetails from WSDL Autoscout23
+        Implementation of the GetArticleDetails from WSDL Autoscout24
         """
         context = {'culture_id': CULTURE_ID, 'vehicle_id': vehicle_id}
         response = requests.post(URL, headers=HEADER_VEHICLE_DETAILS,
