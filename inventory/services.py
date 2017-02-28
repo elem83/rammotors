@@ -12,8 +12,6 @@ from datetime import datetime
 import xml.etree.ElementTree as ET
 import requests
 
-from django.core.exceptions import ObjectDoesNotExist
-
 from inventory.models import Enumeration
 
 
@@ -477,12 +475,7 @@ class Vehicle(object):
     @property
     def brand(self): # pragma: no cover
         """ Retrieve data from the database """
-        try:
-            enumeration = Enumeration.objects.get(name='brand', \
-                                                  item_id=self.brand_id).text
-        except ObjectDoesNotExist:
-            return ""
-        return enumeration
+        return Enumeration.objects.get(name='brand', item_id=self.brand_id).text
 
     @property
     def model_line(self): # pragma: no cover
@@ -490,8 +483,8 @@ class Vehicle(object):
         return NotImplemented
 
     @property
-    def model(self):
-        """ Retrieve data from the database """ # pragma: no cover
+    def model(self): # pragma: no cover
+        """ Retrieve data from the database """
         return Enumeration.objects.get(name='model', item_id=self.model_id).text
 
     @property

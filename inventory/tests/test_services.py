@@ -2,13 +2,15 @@
 """Unit test for Inventory"""
 
 from xml.etree import ElementTree
+from re import search
+
 import pytest
+
+# from mixer.backend.django import mixer
 
 from inventory.views import vehicles_list
 from inventory import services
-from inventory.models import Enumeration
 
-pytestmark = pytest.mark.django_db
 
 @pytest.fixture()
 def fixture_soap():
@@ -142,9 +144,19 @@ def test_images_factory(fixture_soap):
     assert all('.jpg' in item for item in result), \
             "Should contains images"
 
+def test_initial_registration(fixture_soap):
+    vehicle = fixture_soap['as'].list_vehicles()[0]
+    assert isinstance(vehicle.initial_registration, str), \
+            "The date should be of type string"
+    assert search(r'\d\d/\d\d', vehicle.initial_registration), \
+            "The date should have the format mm/yy"
+"""
+@pytest.mark.django_db
 def test_filter_brands(fixture_soap):
+    mixer.blend('inventory.Enumeration', name='brand', item_id=55, text='Peugot')
     vehicles = fixture_soap['as'].list_vehicles()
     brands = services.filter_brands(vehicles)
     assert isinstance(brands, dict), "Should return a dictionary"
-    assert all(brands.values())
-
+    assert all([value for value in brands.values()]), \
+            "No value should be equal to 0"
+"""
