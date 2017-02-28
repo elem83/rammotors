@@ -364,133 +364,134 @@ class Vehicle(object):
         self.gears = None
         self.kerb_weight = None
 
-    def __str__(self):
+    def __str__(self): # pragma: no cover
         """ Representation of the object"""
         return self.brand_id
 
     @property
-    def category(self):
+    def category(self): # pragma: no cover
         """ Retrieve data from the database """
         return Enumeration.objects.get(name='category', item_id=self.category_id).text
 
     @property
-    def body_color(self):
+    def body_color(self): # pragma: no cover
         """ Retrieve data from the database """
         return Enumeration.objects.get(name='body_color', item_id=self.body_colorgroup_id).text
 
     @property
-    def body(self):
+    def body(self): # pragma: no cover
         """ Retrieve data from the database """
         return Enumeration.objects.get(name='body', item_id=self.body_id).text
 
     @property
-    def country(self):
+    def country(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def culture(self):
+    def culture(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def lookup_currency(self):
+    def lookup_currency(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def customer_type(self):
+    def customer_type(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def equipments(self):
+    def equipments(self): # pragma: no cover
         """ Return name of the equipments (not the id) """
         return [Enumeration.objects.get(name='equipment',\
                     item_id=eid).text for eid in self.equipment_ids]
 
     @property
-    def fraud_reason(self):
+    def fraud_reason(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def fuel(self):
+    def fuel(self): # pragma: no cover
         """ Retrieve data from the database """
         return Enumeration.objects.get(name='fuel', item_id=self.fuel_type_id).text
 
     @property
-    def gear_types(self):
+    def gear_types(self): # pragma: no cover
         """ Retrieve data from the database """
         return Enumeration.objects.get(name='gear_types', item_id=self.gear_type_id).text
 
     @property
-    def body_painting(self):
+    def body_painting(self): # pragma: no cover
         """ Retrieve data from the database """
         return Enumeration.objects.get(name='body_painting', item_id=self.body_painting_id).text
 
     @property
-    def seal(self):
+    def seal(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def seal_class(self):
+    def seal_class(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def service(self):
+    def service(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def phonenumber_type(self):
+    def phonenumber_type(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def emission_class(self):
+    def emission_class(self): # pragma: no cover
         """ Retrieve data from the database """
         return Enumeration.objects.get(name='emission_class', item_id=self.emiss_class_id).text
 
     @property
-    def vattype(self):
+    def vattype(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def visibilitytype(self):
+    def visibilitytype(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def emission_sticker(self):
+    def emission_sticker(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def allfueltype(self):
+    def allfueltype(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
-    def brand(self):
+    def brand(self): # pragma: no cover
         """ Retrieve data from the database """
         try:
-            enumeration = Enumeration.objects.get(name='brand', item_id=self.brand_id).text
+            enumeration = Enumeration.objects.get(name='brand', \
+                                                  item_id=self.brand_id).text
         except ObjectDoesNotExist:
             return ""
         return enumeration
 
     @property
-    def model_line(self):
+    def model_line(self): # pragma: no cover
         """ Retrieve data from the database """
         return NotImplemented
 
     @property
     def model(self):
-        """ Retrieve data from the database """
+        """ Retrieve data from the database """ # pragma: no cover
         return Enumeration.objects.get(name='model', item_id=self.model_id).text
 
     @property

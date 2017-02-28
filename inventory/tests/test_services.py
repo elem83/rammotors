@@ -1,4 +1,4 @@
-# pylint: disable=protected-access, missing-docstring, unused-import, redefined-outer-name
+# pylint: disable=invalid-name, protected-access, missing-docstring, unused-import, redefined-outer-name
 """Unit test for Inventory"""
 
 from xml.etree import ElementTree
@@ -6,6 +6,9 @@ import pytest
 
 from inventory.views import vehicles_list
 from inventory import services
+from inventory.models import Enumeration
+
+pytestmark = pytest.mark.django_db
 
 @pytest.fixture()
 def fixture_soap():
@@ -139,6 +142,9 @@ def test_images_factory(fixture_soap):
     assert all('.jpg' in item for item in result), \
             "Should contains images"
 
-def test_vehicle_str():
-    vehicle = services.Vehicle().brand_id = '50'
-    assert str(vehicle) == '50', "The print should show the brand id"
+def test_filter_brands(fixture_soap):
+    vehicles = fixture_soap['as'].list_vehicles()
+    brands = services.filter_brands(vehicles)
+    assert isinstance(brands, dict), "Should return a dictionary"
+    assert all(brands.values())
+
