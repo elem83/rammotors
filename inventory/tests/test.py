@@ -1,10 +1,12 @@
-# pylint: disable=protected-access
+# pylint: disable=protected-access, unused-import
 """Unit test for Inventory"""
 
 from django.urls import resolve
 from django.test import TestCase
 from django.http import HttpRequest
 from django.template.loader import render_to_string
+
+import pytest
 
 from inventory.views import vehicles_list
 from inventory import services

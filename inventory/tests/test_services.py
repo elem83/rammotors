@@ -6,7 +6,7 @@ from re import search
 
 import pytest
 
-# from mixer.backend.django import mixer
+from mixer.backend.django import mixer
 
 from inventory.views import vehicles_list
 from inventory import services
@@ -150,7 +150,8 @@ def test_initial_registration(fixture_soap):
             "The date should be of type string"
     assert search(r'\d\d/\d\d', vehicle.initial_registration), \
             "The date should have the format mm/yy"
-"""
+
+@pytest.mark.xfail(run=False)
 @pytest.mark.django_db
 def test_filter_brands(fixture_soap):
     mixer.blend('inventory.Enumeration', name='brand', item_id=55, text='Peugot')
@@ -159,4 +160,3 @@ def test_filter_brands(fixture_soap):
     assert isinstance(brands, dict), "Should return a dictionary"
     assert all([value for value in brands.values()]), \
             "No value should be equal to 0"
-"""
