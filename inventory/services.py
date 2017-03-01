@@ -80,6 +80,41 @@ SOAP_VEHICLE_DETAILS = """<soapenv:Envelope
 </soapenv:Envelope>
 """
 
+URL_LOOKUP = 'http://api.autoscout24.com/AS24_WS_Lookup'
+
+HEADER_LOOKUP = {
+    'Accept-Encoding': 'gzip,deflate',
+    'Content-Type': 'text/xml;charset=UTF-8',
+    'SOAPAction': "http://www.autoscout24.com/webapi/ILookup/GetLookupData",
+    'Content-Length': '433',
+    'Host': 'api.autoscout24.com',
+    'Connection': 'Keep-Alive',
+    'User-Agent':  'Apache-HttpClient/4.1.1 (java 1.5)'
+}
+
+SOAP_LOOKUP = """
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.autoscout24.com/webapi/" xmlns:data="http://www.autoscout24.com/webapi/data/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetLookupData>
+         <!--Optional:-->
+         <web:request>
+            <data:culture_id>{culture_id}</data:culture_id>
+         </web:request>
+      </web:GetLookupData>
+   </soapenv:Body>
+</soapenv:Envelope>
+"""
+
+def lookup(culture_id='fr-BE'):
+    """ Retrieve lookup key/value from Autoscout24 """
+    context = {'culture_id': culture_id}
+    soap_request = SOAP_LOOKUP.format(**context)
+    response = requests.post(URL_LOOKUP, headers=HEADER_LOOKUP, \
+                                data=soap_request,\
+                            auth=(USERNAME, PASSWORD))
+    return response.content
+
 class AS24WSSearch(object):
     """ Implementation of the WSDL API of Autoscout24 """
 
@@ -164,6 +199,28 @@ class AS24WSSearch(object):
                             self.get_article_details(vehicle_id).content)
         vehicle = self._vehicle_factory(etree_vehicles[0])
         return vehicle
+
+    def get_lookup_data(self):
+        """ Implementation of GetLookupData
+
+        Return:
+            enum :: [{'name': name, 'item_id': item_id, 'text': item_text},...]
+            """
+
+        return [self._get_elem(elem) for elem in self._parse_xml(lookup())]
+
+    def _parse_xml(self, response):
+        """ Parse the XML received from the lookup """
+        root = ET.fromstring(response)
+        elements = root.find('.//a:elements', self.name_spaces)
+        return elements
+
+    def _get_elem(self, element):
+        """ Helper to fill retrieve all element from the enumeration.xml """
+        name = element.find('a:name', self.name_spaces).text
+        item_id = element.find('a:id', self.name_spaces).text
+        item_text = element.find('a:text', self.name_spaces).text
+        return {'name': name, 'item_id': item_id, 'text': item_text}
 
     def uri_images(self, size):
         """ Return the base URI for the images

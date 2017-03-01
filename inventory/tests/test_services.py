@@ -1,8 +1,10 @@
 # pylint: disable=invalid-name, protected-access, missing-docstring, unused-import, redefined-outer-name
 """Unit test for Inventory"""
 
+from os.path import join
 from xml.etree import ElementTree
 from re import search
+from unittest.mock import patch
 
 import pytest
 
@@ -10,6 +12,7 @@ from mixer.backend.django import mixer
 
 from inventory.views import vehicles_list
 from inventory import services
+from rammotors.settings import test as settings
 
 
 @pytest.fixture()
@@ -160,3 +163,17 @@ def test_filter_brands(fixture_soap):
     assert isinstance(brands, dict), "Should return a dictionary"
     assert all([value for value in brands.values()]), \
             "No value should be equal to 0"
+
+@patch('inventory.services.lookup')
+def test_get_enumerations(mock_lookup):
+    mock_lookup.return_value = \
+        open('inventory/tests/soap_lookup_response.xml').read()
+
+    api = services.AS24WSSearch()
+    result = api.get_lookup_data()
+    assert isinstance(result, list), "Should return a dict"
+    assert isinstance(result[0], dict), \
+            "The elements of the list should be dict"
+    assert all([all(elem.values()) for elem in result])
+    assert len(result) != 0, \
+            "The number of elements is not null"
