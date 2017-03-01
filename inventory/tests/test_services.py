@@ -154,10 +154,17 @@ def test_initial_registration(fixture_soap):
     assert search(r'\d\d/\d\d', vehicle.initial_registration), \
             "The date should have the format mm/yy"
 
-@pytest.mark.xfail(run=False)
+#@pytest.mark.xfail(run=False)
+@patch('inventory.services.lookup')
 @pytest.mark.django_db
-def test_filter_brands(fixture_soap):
-    mixer.blend('inventory.Enumeration', name='brand', item_id=55, text='Peugot')
+def test_filter_brands(fixture_soap, mock_lookup):
+    mock_lookup.return_value = \
+        open('inventory/tests/soap_lookup_response.xml').read()
+
+    api = services.AS24WSSearch()
+    result = api.get_lookup_data()
+    for elem in result:
+        mixer.blend('inventory.Enumeration', **elem)
     vehicles = fixture_soap['as'].list_vehicles()
     brands = services.filter_brands(vehicles)
     assert isinstance(brands, dict), "Should return a dictionary"
