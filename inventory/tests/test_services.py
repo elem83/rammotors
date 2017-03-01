@@ -88,9 +88,7 @@ def test_get_article_details(fixture_soap):
     assert scout.status_code == 200, "Should return 200"
     assert 'NothingFound' in str(scout.content), \
             "Should contains the string NothingFound"
-    vehicle = fixture_soap['as'].list_vehicles()[0]
-    vehicle_id = vehicle.vehicle_id
-    scout2 = services.get_article_details(vehicle_id)
+    scout2 = services.get_article_details(389889)
     assert 'NothingFound' not in \
             str(scout2.content), \
             "Should not contains the string NothingFound"

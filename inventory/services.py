@@ -125,6 +125,16 @@ def get_article_details(vehicle_id):
                                 auth=(USERNAME, PASSWORD))
     return response
 
+def find_articles():
+    """
+    Implementation of the find_articles from WSDL Autoscout24
+    """
+    context = {'dealer_id': SELLER_ID, 'culture_id': CULTURE_ID}
+    response = requests.post(URL, headers=HEADER,
+                                data=SOAP.format(**context),
+                                auth=(USERNAME, PASSWORD))
+    return response
+
 class AS24WSSearch(object):
     """ Implementation of the WSDL API of Autoscout24 """
 
@@ -177,7 +187,7 @@ class AS24WSSearch(object):
             If a request exceeds the configured number of maximum redirections,
             a TooManyRedirects exception is raised.
         """
-        etree_vehicles = self._etree_vehicles(self.find_articles().content)
+        etree_vehicles = self._etree_vehicles(find_articles().content)
         vehicles = self._vehicles_factory(etree_vehicles)
         return vehicles
 
@@ -258,17 +268,6 @@ class AS24WSSearch(object):
             return 'http://pic.autoscout24.net/thumbnails-big/'
         else:
             raise ValueError('Not a correct size parameter')
-
-
-    def find_articles(self):
-        """
-        Implementation of the find_articles from WSDL Autoscout24
-        """
-        context = {'dealer_id': SELLER_ID, 'culture_id': CULTURE_ID}
-        response = requests.post(URL, headers=HEADER,
-                                 data=SOAP.format(**context),
-                                 auth=(USERNAME, PASSWORD))
-        return response
 
     def _etree_vehicles(self, response):
         """ Extract the list of vehicle in etree format """
