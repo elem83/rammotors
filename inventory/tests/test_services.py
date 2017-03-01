@@ -93,8 +93,8 @@ def test_etree_vehicles(fixture_soap):
     etree_vehicles = \
             fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
     assert isinstance(etree_vehicles, list), "Should be a list"
-    assert '{http://www.autoscout24.com/webapi/data/}vehicle' in \
-        str(etree_vehicles[0]), "Should be a ElementTree"
+    assert isinstance(etree_vehicles[0], ElementTree.Element), \
+            "Should be a ElementTree"
 
 def test_vehicle_factory(fixture_soap):
     etree_vehicles = \
