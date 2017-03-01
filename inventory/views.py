@@ -7,8 +7,6 @@ from django.views.generic import View
 
 from inventory import services
 
-# Create your views here.
-
 
 def vehicles_list(request):
     """ Return the context and render templates """
