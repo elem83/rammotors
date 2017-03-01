@@ -173,7 +173,7 @@ def test_filter_brands(fixture_soap):
     brands = services.filter_brands(vehicles)
     assert isinstance(brands, dict), "Should return a dictionary"
     assert all([value for value in brands.values()]), \
-            "No value should be equal to 0"
+            "No value should be equal to nothing"
 
 def test_get_enumerations():
     result = get_lookup_mock()
