@@ -175,12 +175,8 @@ def test_filter_brands(fixture_soap):
     assert all([value for value in brands.values()]), \
             "No value should be equal to 0"
 
-def test_get_enumerations(mock_lookup):
-    mock_lookup.return_value = \
-        open('inventory/tests/soap_lookup_response.xml').read()
-
-    api = services.AS24WSSearch()
-    result = api.get_lookup_data()
+def test_get_enumerations():
+    result = get_lookup_mock()
     assert isinstance(result, list), "Should return a dict"
     assert isinstance(result[0], dict), \
             "The elements of the list should be dict"
