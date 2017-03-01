@@ -115,6 +115,16 @@ def lookup(culture_id='fr-BE'):
                             auth=(USERNAME, PASSWORD))
     return response.content
 
+def get_article_details(vehicle_id):
+    """
+    Implementation of the GetArticleDetails from WSDL Autoscout24
+    """
+    context = {'culture_id': CULTURE_ID, 'vehicle_id': vehicle_id}
+    response = requests.post(URL, headers=HEADER_VEHICLE_DETAILS,
+                                data=SOAP_VEHICLE_DETAILS.format(**context),
+                                auth=(USERNAME, PASSWORD))
+    return response
+
 class AS24WSSearch(object):
     """ Implementation of the WSDL API of Autoscout24 """
 
@@ -196,7 +206,7 @@ class AS24WSSearch(object):
             a TooManyRedirects exception is raised.
         """
         etree_vehicles = self._etree_vehicles(\
-                            self.get_article_details(vehicle_id).content)
+                            get_article_details(vehicle_id).content)
         vehicle = self._vehicle_factory(etree_vehicles[0])
         return vehicle
 
@@ -209,15 +219,16 @@ class AS24WSSearch(object):
 
         return [self._get_elem(elem) for elem in self._parse_xml(lookup())]
 
-    def _parse_xml(self, response):
-        """ Parse the XML received from the lookup 
+    def _parse_xml(self, soap_response):
+        """ Parse the XML received from the lookup
+
         Input:
-            response :: String
-        
+            soap_response :: String
+
         Return:
             elements :: [xml.etree.ElementTree, ...]
         """
-        root = ET.fromstring(response)
+        root = ET.fromstring(soap_response)
         elements = root.find('.//a:elements', self.name_spaces)
         return elements
 
@@ -248,15 +259,6 @@ class AS24WSSearch(object):
         else:
             raise ValueError('Not a correct size parameter')
 
-    def get_article_details(self, vehicle_id):
-        """
-        Implementation of the GetArticleDetails from WSDL Autoscout24
-        """
-        context = {'culture_id': CULTURE_ID, 'vehicle_id': vehicle_id}
-        response = requests.post(URL, headers=HEADER_VEHICLE_DETAILS,
-                                 data=SOAP_VEHICLE_DETAILS.format(**context),
-                                 auth=(USERNAME, PASSWORD))
-        return response
 
     def find_articles(self):
         """

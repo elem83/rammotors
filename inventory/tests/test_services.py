@@ -68,14 +68,29 @@ def test_uri(fixture_soap):
     with pytest.raises(ValueError):
         check('anything')
 
+
+def get_article_mock(*args, **kwargs):
+    class FakeResponse(object):
+        pass
+    response = FakeResponse()
+    response.status_code = 200
+    if args[0] == 'notinlist':
+        response.content = \
+        open('inventory/tests/soap_vehicle_details_response_nothing.xml').read()
+    else:
+        response.content = \
+        open('inventory/tests/soap_vehicle_details_response.xml').read()
+    return response
+
+@patch('inventory.services.get_article_details', side_effect=get_article_mock)
 def test_get_article_details(fixture_soap):
-    scout = fixture_soap['as'].get_article_details('0')
+    scout = services.get_article_details('notinlist')
     assert scout.status_code == 200, "Should return 200"
     assert 'NothingFound' in str(scout.content), \
             "Should contains the string NothingFound"
     vehicle = fixture_soap['as'].list_vehicles()[0]
     vehicle_id = vehicle.vehicle_id
-    scout2 = fixture_soap['as'].get_article_details(vehicle_id)
+    scout2 = services.get_article_details(vehicle_id)
     assert 'NothingFound' not in \
             str(scout2.content), \
             "Should not contains the string NothingFound"
