@@ -210,7 +210,13 @@ class AS24WSSearch(object):
         return [self._get_elem(elem) for elem in self._parse_xml(lookup())]
 
     def _parse_xml(self, response):
-        """ Parse the XML received from the lookup """
+        """ Parse the XML received from the lookup 
+        Input:
+            response :: String
+        
+        Return:
+            elements :: [xml.etree.ElementTree, ...]
+        """
         root = ET.fromstring(response)
         elements = root.find('.//a:elements', self.name_spaces)
         return elements
