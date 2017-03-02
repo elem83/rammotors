@@ -170,13 +170,14 @@ def test_equipments_factory(fixture_soap):
     assert all(isinstance(int(item), int) for item in []), \
             "Should contains number or nothing"
 
+@patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_images_factory(fixture_soap):
     etree_vehicles = \
-        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+        services.AS24WSSearch()._etree_vehicles(services.find_articles().content)
     all_images = \
             etree_vehicles[0].findall('a:media/a:images/a:image/a:uri',\
                                 fixture_soap['as'].name_spaces)
-    result = fixture_soap['as']._images_factory(all_images)
+    result = services.AS24WSSearch()._images_factory(all_images)
     assert isinstance(result, list), "Should be an instance of list"
     assert all('.jpg' in item for item in result), \
             "Should contains images"
