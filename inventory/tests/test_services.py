@@ -88,12 +88,13 @@ def get_article_mock(*args, **kwargs):
     return response
 
 def find_articles_mock(*args, **kwargs):
-    class FakeResponse(object):
-        pass
-    response = FakeResponse()
-    response.status_code = 200
-    response.content = \
-    open('inventory/tests/soap_find_articles_response.xml').read()
+    status_code = 200
+    content = str.encode(\
+    open('inventory/tests/soap_find_articles_response.xml').read())
+    with requests_mock.Mocker() as m:
+        m.get('https://api.mock_scout.com', status_code=status_code, \
+              content = content)
+        response = requests.get('https://api.mock_scout.com')
     return response
 
 @patch('inventory.services.get_article_details', side_effect=get_article_mock)
@@ -112,23 +113,24 @@ def test_find_articles(fixture_soap):
     """Testing the wsdl query to fetch the list of cars"""
     response = services.find_articles()
     assert response.status_code == 200, "Should return 200"
-    assert response.content.startswith('<s:Envelope'), \
+    assert response.content.startswith(b'<s:Envelope'), \
             "The Soap response should start with the Envelope tag"
-    assert response.content.endswith('</s:Envelope>\n'), \
+    assert response.content.endswith(b'</s:Envelope>\n'), \
             "The Soap response should finished with FindArticles ..."
 
 @patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_etree_vehicles(fixture_soap):
     etree_vehicles = \
-            services.AS24WSSearch()._etree_vehicles(services.find_articles())
+            services.AS24WSSearch()._etree_vehicles(services.find_articles().content)
     assert isinstance(etree_vehicles, list), "Should be a list"
     assert isinstance(etree_vehicles[0], ElementTree.Element), \
             "Should be a ElementTree"
 
+@patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_vehicle_factory(fixture_soap):
     etree_vehicles = \
-        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
-    vehicle = fixture_soap['as']._vehicle_factory(etree_vehicles[0])
+        services.AS24WSSearch()._etree_vehicles(services.find_articles().content)
+    vehicle = services.AS24WSSearch()._vehicle_factory(etree_vehicles[0])
     assert isinstance(vehicle, services.Vehicle), "Should be type of Vehicle"
     assert isinstance(vehicle.brand_id, str), \
             "Brand should be filled with a value"
