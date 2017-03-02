@@ -68,7 +68,6 @@ def test_uri(fixture_soap):
     with pytest.raises(ValueError):
         check('anything')
 
-
 def get_article_mock(*args, **kwargs):
     class FakeResponse(object):
         pass
@@ -82,6 +81,15 @@ def get_article_mock(*args, **kwargs):
         open('inventory/tests/soap_vehicle_details_response.xml').read()
     return response
 
+def find_articles_mock(*args, **kwargs):
+    class FakeResponse(object):
+        pass
+    response = FakeResponse()
+    response.status_code = 200
+    response.content = \
+    open('inventory/tests/soap_find_articles_response.xml').read()
+    return response
+
 @patch('inventory.services.get_article_details', side_effect=get_article_mock)
 def test_get_article_details(fixture_soap):
     scout = services.get_article_details('notinlist')
@@ -93,6 +101,7 @@ def test_get_article_details(fixture_soap):
             str(scout2.content), \
             "Should not contains the string NothingFound"
 
+@patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_find_articles(fixture_soap):
     """Testing the wsdl query to fetch the list of cars"""
     assert fixture_soap['response'].status_code == 200, "Should return 200"
