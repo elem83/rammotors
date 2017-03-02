@@ -1,4 +1,4 @@
-# pylint: disable=invalid-name, protected-access, missing-docstring, unused-import, redefined-outer-name
+# pylint: disable=unused-argument, invalid-name, protected-access, missing-docstring, unused-import, redefined-outer-name
 """Unit test for Inventory"""
 
 from os.path import join
@@ -17,7 +17,7 @@ from inventory.views import vehicles_list
 from inventory import services
 from rammotors.settings import test as settings
 
-def get_article_mock(*args, **kwargs):
+def get_article_mock(*args):
     status_code = 200
     if args[0] == 'notinlist':
         content = str.encode(\
@@ -28,7 +28,7 @@ def get_article_mock(*args, **kwargs):
 
     with requests_mock.Mocker() as m:
         m.get('https://api.mock_scout.com', status_code=status_code, \
-              content = content)
+              content=content)
         response = requests.get('https://api.mock_scout.com')
 
     return response
@@ -39,21 +39,17 @@ def find_articles_mock(*args, **kwargs):
     open('inventory/tests/soap_find_articles_response.xml').read())
     with requests_mock.Mocker() as m:
         m.get('https://api.mock_scout.com', status_code=status_code, \
-              content = content)
+              content=content)
         response = requests.get('https://api.mock_scout.com')
     return response
 
-@patch('inventory.services.lookup')
-def get_lookup_mock(mock_lookup):
-    mock_lookup.return_value = \
-        open('inventory/tests/soap_lookup_response.xml').read()
-
-    api = services.AS24WSSearch()
-    return api.get_lookup_data()
-
-def fill_db():
-    for elem in get_lookup_mock():
-        mixer.blend('inventory.Enumeration', **elem)
+def get_lookup_mock(*args, **kwargs):
+    content = str.encode(\
+    open('inventory/tests/soap_lookup_response.xml').read())
+    with requests_mock.Mocker() as m:
+        m.get('https://api.mock_scout.com', content=content)
+        response = requests.get('https://api.mock_scout.com')
+    return response
 
 def check_obj_not_empty(obj):
     """ Check that the content of the object instance has been filled with
@@ -197,17 +193,20 @@ def test_initial_registration(mock_find_articles):
             "The date should have the format mm/yy"
 
 @pytest.mark.django_db
+@patch('inventory.services.lookup', side_effect=get_lookup_mock)
 @patch('inventory.services.find_articles', side_effect=find_articles_mock)
-def test_filter_brands(mock_find_articles):
-    fill_db()
+def test_filter_brands(mock_find_articles, mock_lookup):
+    for elem in services.AS24WSSearch().get_lookup_data():
+        mixer.blend('inventory.Enumeration', **elem)
     vehicles = services.AS24WSSearch().list_vehicles()
     brands = services.filter_brands(vehicles)
     assert isinstance(brands, dict), "Should return a dictionary"
     assert all([value for value in brands.values()]), \
             "No value should be equal to nothing"
 
-def test_get_enumerations():
-    result = get_lookup_mock()
+@patch('inventory.services.lookup', side_effect=get_lookup_mock)
+def test_get_enumerations(mock_lookup):
+    result = services.AS24WSSearch().get_lookup_data()
     assert isinstance(result, list), "Should return a dict"
     assert isinstance(result[0], dict), \
             "The elements of the list should be dict"

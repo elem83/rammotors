@@ -113,15 +113,15 @@ def lookup(culture_id='fr-BE'):
     response = requests.post(URL_LOOKUP, headers=HEADER_LOOKUP, \
                                 data=soap_request,\
                             auth=(USERNAME, PASSWORD))
-    return response.content
+    return response
 
 def get_article_details(vehicle_id):
     """
     Implementation of the GetArticleDetails from WSDL Autoscout24
     """
     context = {'culture_id': CULTURE_ID, 'vehicle_id': vehicle_id}
-    response = requests.post(URL, headers=HEADER_VEHICLE_DETAILS,
-                                data=SOAP_VEHICLE_DETAILS.format(**context),
+    response = requests.post(URL, headers=HEADER_VEHICLE_DETAILS,\
+                                data=SOAP_VEHICLE_DETAILS.format(**context),\
                                 auth=(USERNAME, PASSWORD))
     return response
 
@@ -130,8 +130,8 @@ def find_articles():
     Implementation of the find_articles from WSDL Autoscout24
     """
     context = {'dealer_id': SELLER_ID, 'culture_id': CULTURE_ID}
-    response = requests.post(URL, headers=HEADER,
-                                data=SOAP.format(**context),
+    response = requests.post(URL, headers=HEADER,\
+                                data=SOAP.format(**context),\
                                 auth=(USERNAME, PASSWORD))
     return response
 
@@ -227,7 +227,7 @@ class AS24WSSearch(object):
             enum :: [{'name': name, 'item_id': item_id, 'text': item_text},...]
             """
 
-        return [self._get_elem(elem) for elem in self._parse_xml(lookup())]
+        return [self._get_elem(elem) for elem in self._parse_xml(lookup().content)]
 
     def _parse_xml(self, soap_response):
         """ Parse the XML received from the lookup
