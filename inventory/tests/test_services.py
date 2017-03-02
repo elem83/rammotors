@@ -6,6 +6,9 @@ from xml.etree import ElementTree
 from re import search
 from unittest.mock import patch
 
+import requests
+import requests_mock
+
 import pytest
 
 from mixer.backend.django import mixer
@@ -69,16 +72,19 @@ def test_uri(fixture_soap):
         check('anything')
 
 def get_article_mock(*args, **kwargs):
-    class FakeResponse(object):
-        pass
-    response = FakeResponse()
-    response.status_code = 200
+    status_code = 200
     if args[0] == 'notinlist':
-        response.content = \
-        open('inventory/tests/soap_vehicle_details_response_nothing.xml').read()
+        content = str.encode(\
+        open('inventory/tests/soap_vehicle_details_response_nothing.xml').read())
     else:
-        response.content = \
-        open('inventory/tests/soap_vehicle_details_response.xml').read()
+        content = str.encode(\
+        open('inventory/tests/soap_vehicle_details_response.xml').read())
+
+    with requests_mock.Mocker() as m:
+        m.get('https://api.mock_scout.com', status_code=status_code, \
+              content = content)
+        response = requests.get('https://api.mock_scout.com')
+
     return response
 
 def find_articles_mock(*args, **kwargs):
@@ -111,9 +117,10 @@ def test_find_articles(fixture_soap):
     assert response.content.endswith('</s:Envelope>\n'), \
             "The Soap response should finished with FindArticles ..."
 
+@patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_etree_vehicles(fixture_soap):
     etree_vehicles = \
-            fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+            services.AS24WSSearch()._etree_vehicles(services.find_articles())
     assert isinstance(etree_vehicles, list), "Should be a list"
     assert isinstance(etree_vehicles[0], ElementTree.Element), \
             "Should be a ElementTree"
