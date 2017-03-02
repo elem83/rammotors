@@ -25,7 +25,7 @@ def db_enum():
 
 @patch('inventory.services.lookup', side_effect=get_lookup_mock)
 @patch('inventory.services.find_articles', side_effect=find_articles_mock)
-def test_vehicles_url_resolve(mock_find_articles, mock_lookup):
+def test_vehicles_list(mock_find_articles, mock_lookup):
     """Resolve the vehicles URL"""
     found = resolve('/')
     assert found.func == views.vehicles_list, \
@@ -41,8 +41,22 @@ def test_vehicles_grid(mock_find_articles, mock_lookup):
 
 @patch('inventory.services.lookup', side_effect=get_lookup_mock)
 @patch('inventory.services.find_articles', side_effect=find_articles_mock)
-def test_anonymous(mock_find_articles, mock_lookup, db_enum):
+def test_list_anonymous(mock_find_articles, mock_lookup, db_enum):
     request = RequestFactory().get('/')
+    response = views.vehicles_list(request)
+    assert response.status_code == 200, \
+            "Should be callable by anyone"
+    assert response.content.startswith(b'\n<!DOCTYPE html>'), \
+        "Should return a valid HTML5"
+    assert response.content.endswith(b'</html>\n'), \
+        "Should return a valid HTML5"
+    assert b'<title>Ram Motors</title>' in response.content, \
+        "Should contain the title expected"
+
+@patch('inventory.services.lookup', side_effect=get_lookup_mock)
+@patch('inventory.services.find_articles', side_effect=find_articles_mock)
+def test_list_anonymous(mock_find_articles, mock_lookup, db_enum):
+    request = RequestFactory().get('/grid/')
     response = views.vehicles_list(request)
     assert response.status_code == 200, \
             "Should be callable by anyone"
