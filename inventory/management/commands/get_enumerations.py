@@ -10,5 +10,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """ Mandatory method """
+        Enumeration.objects.all().delete()
         for elem in AS24WSSearch().get_lookup_data():
             Enumeration.objects.create(**elem)

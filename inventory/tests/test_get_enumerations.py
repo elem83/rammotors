@@ -1,5 +1,7 @@
 # pylint: disable=missing-docstring, unused-argument, undefined-variable
 
+from unittest.mock import patch
+
 import pytest # pylint: disable=unused-import
 
 from inventory.models import Enumeration
