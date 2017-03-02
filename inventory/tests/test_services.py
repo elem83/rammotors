@@ -104,11 +104,11 @@ def test_get_article_details(fixture_soap):
 @patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_find_articles(fixture_soap):
     """Testing the wsdl query to fetch the list of cars"""
-    assert fixture_soap['response'].status_code == 200, "Should return 200"
-    assert fixture_soap['response'].content.startswith(b'<s:Envelope'), \
+    response = services.find_articles()
+    assert response.status_code == 200, "Should return 200"
+    assert response.content.startswith('<s:Envelope'), \
             "The Soap response should start with the Envelope tag"
-    assert fixture_soap['response'].content.endswith(\
-        b'</FindArticlesResponse></s:Body></s:Envelope>'), \
+    assert response.content.endswith('</s:Envelope>\n'), \
             "The Soap response should finished with FindArticles ..."
 
 def test_etree_vehicles(fixture_soap):
