@@ -39,16 +39,14 @@ def test_anonymous(mock_find_articles, mock_lookup, db_enum):
     response = vehicles_list(request)
     assert response.status_code == 200, \
             "Should be callable by anyone"
+    assert response.content.startswith(b'\n<!DOCTYPE html>'), \
+        "Should return a valid HTML5"
+    assert response.content.endswith(b'</html>\n'), \
+        "Should return a valid HTML5"
+    assert b'<title>Ram Motors</title>' in response.content, \
+        "Should contain the title expected"
 
 """
-@patch('inventory.services.get_article_details', side_effect=get_article_mock)
-def test_vehicles_return_html():
-    request = HttpRequest()
-    response = vehicles_list(request)
-    self.assertTrue(response.content.startswith(b'\n<!DOCTYPE html>'))
-    self.assertIn(b'<title>Ram Motors</title>', response.content)
-    self.assertTrue(response.content.endswith(b'</html>\n'))
-
 def test_vehicles_return_html2():
     request = HttpRequest()
     response = vehicles_list(request)
