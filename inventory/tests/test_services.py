@@ -121,7 +121,7 @@ def test_find_articles(fixture_soap):
 @patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_etree_vehicles(fixture_soap):
     etree_vehicles = \
-            services.AS24WSSearch()._etree_vehicles(services.find_articles().content)
+    services.AS24WSSearch()._etree_vehicles(services.find_articles().content)
     assert isinstance(etree_vehicles, list), "Should be a list"
     assert isinstance(etree_vehicles[0], ElementTree.Element), \
             "Should be a ElementTree"
@@ -135,10 +135,11 @@ def test_vehicle_factory(fixture_soap):
     assert isinstance(vehicle.brand_id, str), \
             "Brand should be filled with a value"
 
+@patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_vehicles_factory(fixture_soap):
     etree_vehicles = \
-        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
-    vehicles = fixture_soap['as']._vehicles_factory(etree_vehicles)
+    services.AS24WSSearch()._etree_vehicles(services.find_articles().content)
+    vehicles = services.AS24WSSearch()._vehicles_factory(etree_vehicles)
     assert check_obj_not_empty(vehicles[0]), \
             "The first vehicle of the list should not be empty"
     assert all(check_obj_not_empty(obj) for obj in vehicles), \
