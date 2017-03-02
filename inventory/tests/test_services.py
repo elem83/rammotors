@@ -154,14 +154,15 @@ def test_attr_lookup(fixture_soap):
     assert services.AS24WSSearch()._attr_lookup(etree_vehicles[0], 'a:not_exist') == \
             '', "Should be the empty string"
 
+@patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_equipments_factory(fixture_soap):
     etree_vehicles = \
-        fixture_soap['as']._etree_vehicles(fixture_soap['response'].content)
+    services.AS24WSSearch()._etree_vehicles(services.find_articles().content)
 
     etree_equipment_ids = \
             etree_vehicles[0].findall('a:equipments/a:equipment_id',\
-                                    fixture_soap['as'].name_spaces)
-    result = fixture_soap['as']._equipments_factory(\
+                                    services.AS24WSSearch().name_spaces)
+    result = services.AS24WSSearch()._equipments_factory(\
                                             etree_equipment_ids)
     assert isinstance(result, list), "Should be an instance of list"
     assert all(isinstance(int(item), int) for item in result), \
