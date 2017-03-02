@@ -8,10 +8,9 @@ import pytest # pylint: disable=unused-import
 
 from django.urls import resolve
 from django.test import RequestFactory
-from django.http import HttpRequest
 #from django.template.loader import render_to_string
 
-from inventory.views import vehicles_list
+from inventory import views
 from inventory import services
 from inventory.tests.test_services import (get_lookup_mock, find_articles_mock,
                                            get_article_mock)
@@ -29,14 +28,22 @@ def db_enum():
 def test_vehicles_url_resolve(mock_find_articles, mock_lookup):
     """Resolve the vehicles URL"""
     found = resolve('/')
-    assert found.func == vehicles_list, \
+    assert found.func == views.vehicles_list, \
+            "Should find the list of vehicles"
+
+@patch('inventory.services.lookup', side_effect=get_lookup_mock)
+@patch('inventory.services.find_articles', side_effect=find_articles_mock)
+def test_vehicles_grid(mock_find_articles, mock_lookup):
+    """Resolve the vehicles URL"""
+    found = resolve('/grid/')
+    assert found.func == views.vehicles_grid, \
             "Should find the list of vehicles"
 
 @patch('inventory.services.lookup', side_effect=get_lookup_mock)
 @patch('inventory.services.find_articles', side_effect=find_articles_mock)
 def test_anonymous(mock_find_articles, mock_lookup, db_enum):
     request = RequestFactory().get('/')
-    response = vehicles_list(request)
+    response = views.vehicles_list(request)
     assert response.status_code == 200, \
             "Should be callable by anyone"
     assert response.content.startswith(b'\n<!DOCTYPE html>'), \
