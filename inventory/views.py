@@ -34,25 +34,6 @@ def vehicles_grid(request):
     }
     return render(request, 'inventory/grid_cars.html', context)
 
-class VehicleDetails(View):
-    """ Class based view for details """
-    def get(self, request, vehicle_id):
-        """ Get rewrite """
-        autoscout = services.AS24WSSearch()
-        vehicles = autoscout.list_vehicles()
-        vehicle = autoscout.details_vehicle(vehicle_id)
-        uri_images_big = autoscout.uri_images('big')
-        uri_images_main = autoscout.uri_images('main')
-        uri_images_thumb = autoscout.uri_images('thumb')
-        context = {\
-            'vehicle': vehicle,
-            'vehicles': vehicles,
-            'uri_images_big': uri_images_big,
-            'uri_images_thumb': uri_images_thumb,
-            'uri_images_main': uri_images_main\
-        }
-        return render(request, 'inventory/details_car.html', context)
-
 def vehicle_details(request, vehicle_id):
     """ Return the detail of a vehicle """
     autoscout = services.AS24WSSearch()

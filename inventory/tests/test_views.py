@@ -66,19 +66,13 @@ def test_list_anonymous(mock_find_articles, mock_lookup, db_enum):
     assert b'<title>Ram Motors</title>' in response.content, \
         "Should contain the title expected"
 
-"""
-def test_vehicles_return_html2():
-    request = HttpRequest()
-    response = vehicles_list(request)
-    autoscout = services.AS24WSSearch()
-    images_uri = autoscout.uri_images('main')
-    vehicles = autoscout.list_vehicles()
-    brands = services.filter_brands(vehicles)
-    context = {\
-        'vehicles': vehicles,
-        'images_uri': images_uri,
-        'brands': brands\
-    }
-    expected_html = render_to_string('inventory/list_cars.html', context)
-    self.assertEqual(response.content.decode(), expected_html)
-"""
+@patch('inventory.services.lookup', side_effect=get_lookup_mock)
+@patch('inventory.services.get_article_details', side_effect=get_article_mock)
+def test_vehicles_details(mock_get_article_details, db_enum):
+    found = resolve('/car/306739943')
+    assert found.func == views.vehicle_details, \
+            "Should find the vehicles details"
+    request = RequestFactory().get('/car/306739943')
+    response = views.vehicle_details(request, 306739943)
+    assert response.status_code == 200, \
+            "Should be callable by anyone"
