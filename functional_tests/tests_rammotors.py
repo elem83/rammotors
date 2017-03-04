@@ -15,14 +15,15 @@ def browser(request):
     selenium = webdriver.Firefox()
     selenium.implicitly_wait(3)
     selenium.set_window_size(1000, 800)
+    browser.get('http://localhost:8000')
     def teardown():
         selenium.quit()
     request.addfinalizer(teardown)
     return selenium
 
+# def test_list_cars(browser):
 def test_browsing_check(browser):
     """ Docstring """
-    browser.get('http://localhost:8000')
 
     assert 'Ram Motors' in browser.title,\
     'Browse title was: ' + browser.title
