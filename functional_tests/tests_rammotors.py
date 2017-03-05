@@ -53,9 +53,10 @@ def move_to(browser, css_selector):
     browser.find_element_by_css_selector(css_selector).click()
 
 def test_pages(browser):
-    # Test on homepage
     reset(browser)
     assert_title(browser)
+
+    # Test on homepage
     assert_reported_vs_visible(browser, 'list-product-description')
 
     # Test on grid page
@@ -68,8 +69,9 @@ def test_pages(browser):
 
 
 def test_filters(browser):
-    # Test on homepage
     reset(browser)
+
+    # Test on homepage
     filters = browser.find_elements_by_class_name('li > label.checkbox')
     for f in filters:
         f.click()
