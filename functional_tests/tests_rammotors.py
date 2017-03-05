@@ -71,6 +71,8 @@ def test_filters(browser):
 
     wait_for_count(browser, 'list-product-description')
     assert_reported_vs_listed(browser, 'list-product-description')
+    browser.find_element_by_id('reset').click()
+    assert_reported_vs_listed(browser, 'list-product-description')
 
     move_to(browser, 'ul.list-inline a[href="/grid/"]')
     assert_reported_vs_listed(browser, 'product-description')
