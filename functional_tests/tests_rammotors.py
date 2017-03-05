@@ -23,13 +23,10 @@ def browser(request):
 reported_cars = lambda browser: \
         int(browser.find_element_by_id('count_car').text)
 
-def visible_cars(browser, css_selector): \
+def visible_cars(browser, css_selector):
     return len([x for x in \
         browser.find_elements_by_class_name(css_selector) \
         if x.is_displayed()])
-
-def reset(browser):
-    browser.get('http://localhost:8000')
 
 def assert_title(browser):
     assert 'Ram Motors' in browser.title,\
@@ -45,45 +42,45 @@ def assert_reported_vs_visible(browser, css_selector):
     assert visible_cars(browser, css_selector) == reported_cars(browser), \
     "The number of cars reported should be equal to the number of cars display"
 
-def move_to(browser, css_selector):
-    WebDriverWait(browser, 10).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, css_selector))
-    )
+# def move_to(browser, css_selector):
+#    WebDriverWait(browser, 10).until(
+#        EC.element_to_be_clickable((By.CSS_SELECTOR, css_selector))
+#    )
 
-    browser.find_element_by_css_selector(css_selector).click()
+def test_links(browser):
+    browser.get('http://localhost:8000/grid/')
 
-def test_pages(browser):
-    reset(browser)
+    browser.find_element_by_css_selector('ul.list-inline a[href="/grid/"]').click()
+    browser.find_element_by_css_selector('ul.list-inline a[href="/"]').click()
+
+def test_list_pages(browser):
+    browser.get('http://localhost:8000')
     assert_title(browser)
 
-    # Test on homepage
+    # Test entry page
     assert_reported_vs_visible(browser, 'list-product-description')
 
-    # Test on grid page
-    move_to(browser, 'ul.list-inline a[href="/grid/"]')
-    assert_reported_vs_visible(browser, 'product-description')
-
-    # Test on list page
-    move_to(browser, 'ul.list-inline a[href="/"]')
-    assert_reported_vs_visible(browser, 'list-product-description')
-
-
-def test_filters(browser):
-    reset(browser)
-
-    # Test on homepage
-    filters = browser.find_elements_by_class_name('li > label.checkbox')
+    # Test filters
+    filters = browser.find_elements_by_css_selector('li > label.checkbox')
+    assert len(filters) != 0, 'The number of filters should not be null'
     for f in filters:
         f.click()
+        wait_for_count(browser, 'list-product-description')
         assert_reported_vs_visible(browser, 'list-product-description')
 
     browser.find_element_by_id('reset').click()
     assert_reported_vs_visible(browser, 'list-product-description')
 
-    # Test on grid page
-    move_to(browser, 'ul.list-inline a[href="/grid/"]')
+def test_grid_pages(browser):
+    browser.get('http://localhost:8000/grid/')
+    assert_title(browser)
+
+    # Test entry page
     assert_reported_vs_visible(browser, 'product-description')
-    filters = browser.find_elements_by_class_name('li > label.checkbox')
+
+    # Test filters
+    filters = browser.find_elements_by_css_selector('li > label.checkbox')
+    assert len(filters) != 0, 'The number of filters should not be null'
     for f in filters:
         f.click()
         wait_for_count(browser, 'product-description')
