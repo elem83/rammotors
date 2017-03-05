@@ -58,13 +58,22 @@ def test_browsing_check(browser):
     assert_title(browser)
     assert_reported_vs_listed(browser, 'list-product-description')
     move_to(browser, 'ul.list-inline a[href="/grid/"]')
-    assert_reported_vs_listed(browser, 'div.filter-results div.col-md-4')
+    assert_reported_vs_listed(browser, 'product-description')
     move_to(browser, 'ul.list-inline a[href="/"]')
     assert_reported_vs_listed(browser, 'list-product-description')
 
 
 def test_filters(browser):
     reset(browser)
-    move_to(browser, 'li > label.checkbox')
+    filters = browser.find_elements_by_class_name('li > label.checkbox')
+    for f in filters:
+        f.click()
+
     wait_for_count(browser, 'list-product-description')
     assert_reported_vs_listed(browser, 'list-product-description')
+
+    move_to(browser, 'ul.list-inline a[href="/grid/"]')
+    assert_reported_vs_listed(browser, 'product-description')
+    filters = browser.find_elements_by_class_name('li > label.checkbox')
+    for f in filters:
+        f.click()
