@@ -88,7 +88,6 @@ def test_list_pages(browser):
     assert all(elems[i][1] <= elems[i+1][1] for i in range(len(elems)-1)), \
         "The list should be sorted"
 
-
 def test_grid_pages(browser):
     browser.get('http://localhost:8000/grid/')
     assert_title(browser)
@@ -107,3 +106,19 @@ def test_grid_pages(browser):
     browser.find_element_by_id('reset').click()
     wait_for_count(browser, 'product-description')
     assert_reported_vs_visible(browser, 'product-description')
+
+    # Test sort
+    browser.find_element_by_id('sort_criteria').click()
+    browser.find_element_by_css_selector('li[data-sort-by="km"]').click()
+
+    WebDriverWait(browser, 10).until(\
+    lambda browser:\
+        EC.visibility_of_element_located((By.CLASS_NAME, 'km')) \
+        and visible_cars(browser, 'product-description') == reported_cars(browser))
+
+    elems_raw = [(x.location['x'], x.location['y'], int(x.text.replace(",", ""))) for x in \
+             browser.find_elements_by_class_name('km')]
+
+    elems = sorted(elems_raw, key=lambda xy_km: xy_km[2])
+    assert all(elems[i][2] <= elems[i+1][2] for i in range(len(elems)-1)), \
+        "The list should be sorted"
