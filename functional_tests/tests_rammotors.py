@@ -41,7 +41,7 @@ def wait_for_count(browser, css_selector):
         EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector)) \
         and visible_cars(browser, css_selector) == reported_cars(browser))
 
-def assert_reported_vs_listed(browser, css_selector):
+def assert_reported_vs_visible(browser, css_selector):
     assert visible_cars(browser, css_selector) == reported_cars(browser), \
     "The number of cars reported should be equal to the number of cars display"
 
@@ -52,30 +52,42 @@ def move_to(browser, css_selector):
 
     browser.find_element_by_css_selector(css_selector).click()
 
-def test_browsing_check(browser):
-    """ Docstring """
+def test_pages(browser):
+    # Test on homepage
     reset(browser)
     assert_title(browser)
-    assert_reported_vs_listed(browser, 'list-product-description')
+    assert_reported_vs_visible(browser, 'list-product-description')
+
+    # Test on grid page
     move_to(browser, 'ul.list-inline a[href="/grid/"]')
-    assert_reported_vs_listed(browser, 'product-description')
+    assert_reported_vs_visible(browser, 'product-description')
+
+    # Test on list page
     move_to(browser, 'ul.list-inline a[href="/"]')
-    assert_reported_vs_listed(browser, 'list-product-description')
+    assert_reported_vs_visible(browser, 'list-product-description')
 
 
 def test_filters(browser):
+    # Test on homepage
     reset(browser)
     filters = browser.find_elements_by_class_name('li > label.checkbox')
     for f in filters:
         f.click()
+        assert_reported_vs_visible(browser, 'list-product-description')
 
-    wait_for_count(browser, 'list-product-description')
-    assert_reported_vs_listed(browser, 'list-product-description')
     browser.find_element_by_id('reset').click()
-    assert_reported_vs_listed(browser, 'list-product-description')
+    assert_reported_vs_visible(browser, 'list-product-description')
 
+    # Test on grid page
     move_to(browser, 'ul.list-inline a[href="/grid/"]')
-    assert_reported_vs_listed(browser, 'product-description')
+    assert_reported_vs_visible(browser, 'product-description')
     filters = browser.find_elements_by_class_name('li > label.checkbox')
     for f in filters:
         f.click()
+        wait_for_count(browser, 'product-description')
+        assert_reported_vs_visible(browser, 'product-description')
+    """
+    browser.find_element_by_id('reset').click()
+    wait_for_count(browser, 'product-description')
+    assert_reported_vs_visible(browser, 'product-description')
+    """
