@@ -25,7 +25,7 @@ reported_cars = lambda browser: \
 
 def visible_cars(browser, css_selector): \
     return len([x for x in \
-        browser.find_elements_by_class_name('list-product-description') \
+        browser.find_elements_by_class_name(css_selector) \
         if x.is_displayed()])
 
 def reset(browser):
@@ -86,8 +86,7 @@ def test_filters(browser):
         f.click()
         wait_for_count(browser, 'product-description')
         assert_reported_vs_visible(browser, 'product-description')
-    """
+
     browser.find_element_by_id('reset').click()
     wait_for_count(browser, 'product-description')
     assert_reported_vs_visible(browser, 'product-description')
-    """
