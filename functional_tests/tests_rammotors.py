@@ -75,8 +75,12 @@ def test_list_pages(browser):
     # Test sort
     browser.find_element_by_id('sort_criteria').click()
     browser.find_element_by_css_selector('li[data-sort-by="km"]').click()
-    import time
-    time.sleep(10)
+
+    WebDriverWait(browser, 10).until(\
+    lambda browser:\
+        EC.visibility_of_element_located((By.CLASS_NAME, 'km')) \
+        and visible_cars(browser, 'list-product-description') == reported_cars(browser))
+
     elems_raw = [(x.location['y'], int(x.text.replace(",", ""))) for x in \
              browser.find_elements_by_class_name('km')]
 
