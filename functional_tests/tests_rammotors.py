@@ -35,6 +35,12 @@ def assert_title(browser):
     assert 'Ram Motors' in browser.title,\
     'Browse title was: ' + browser.title
 
+def wait_for_count(browser, css_selector):
+    WebDriverWait(browser, 10).until(\
+    lambda browser:\
+        EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector)) \
+        and visible_cars(browser, css_selector) == reported_cars(browser))
+
 def assert_reported_vs_listed(browser, css_selector):
     assert visible_cars(browser, css_selector) == reported_cars(browser), \
     "The number of cars reported should be equal to the number of cars display"
@@ -56,9 +62,9 @@ def test_browsing_check(browser):
     move_to(browser, 'ul.list-inline a[href="/"]')
     assert_reported_vs_listed(browser, 'list-product-description')
 
+
 def test_filters(browser):
     reset(browser)
     move_to(browser, 'li > label.checkbox')
-    import time
-    time.sleep(4)
+    wait_for_count(browser, 'list-product-description')
     assert_reported_vs_listed(browser, 'list-product-description')
