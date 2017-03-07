@@ -38,6 +38,9 @@ $(document).ready(function(){
     var filterValue = $( this ).attr('data-filter');
     var count = $(this).attr('data-count');
     $('#count_car').html(count);
+    if (count == 1) {
+      $('#pluralize_count_car').html('')
+    }
     $grid.isotope({ filter: filterValue });
     $list.isotope({ filter: filterValue });
   });

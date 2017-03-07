@@ -24,7 +24,8 @@ DATABASES = {
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = BASE_DIR.ancestor(2).child('static')
+
 STATICFILES_DIRS = [
-    BASE_DIR.ancestor(2).child('static'),
     BASE_DIR.child('static'),
 ]
