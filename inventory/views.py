@@ -4,6 +4,7 @@
 
 from django.shortcuts import render
 from django.views.generic import View
+from django.http.response import (Http404, HttpResponse)
 
 from inventory import services
 
@@ -38,7 +39,11 @@ def vehicle_details(request, vehicle_id):
     """ Return the detail of a vehicle """
     autoscout = services.AS24WSSearch()
     vehicles = autoscout.list_vehicles()
-    vehicle = autoscout.details_vehicle(vehicle_id)
+    try:
+        vehicle = autoscout.details_vehicle(vehicle_id)
+    except IndexError:
+        raise Http404
+
     uri_images_big = autoscout.uri_images('big')
     uri_images_main = autoscout.uri_images('main')
     uri_images_thumb = autoscout.uri_images('thumb')

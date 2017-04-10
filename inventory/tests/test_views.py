@@ -76,3 +76,11 @@ def test_vehicles_details(mock_get_article_details, db_enum):
     response = views.vehicle_details(request, 306739943)
     assert response.status_code == 200, \
             "Should be callable by anyone"
+
+@patch('inventory.services.lookup', side_effect=get_lookup_mock)
+@patch('inventory.services.get_article_details', side_effect=get_article_mock)
+def test_vehicles_does_not_exist(mock_get_article_details, db_enum):
+    request = RequestFactory().get('/car/0')
+    response = views.vehicle_details(request, 0)
+    assert response.status_code == 404, \
+            "If the vehicle does not exist it should throw a 404 error page"
