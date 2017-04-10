@@ -125,4 +125,4 @@ def test_car_does_not_exists(browser):
     browser.get('http://localhost:8000/car/0')
 
     bodyText = browser.find_element_by_tag_name('body').text
-    assert "404 Error" in bodyText
+    assert "404" in bodyText

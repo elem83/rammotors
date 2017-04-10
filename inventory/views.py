@@ -3,8 +3,7 @@
 
 
 from django.shortcuts import render
-from django.views.generic import View
-from django.http.response import (Http404, HttpResponse)
+from django.http.response import Http404
 
 from inventory import services
 
@@ -42,7 +41,7 @@ def vehicle_details(request, vehicle_id):
     try:
         vehicle = autoscout.details_vehicle(vehicle_id)
     except IndexError:
-        raise Http404
+        raise Http404('The page does not exists')
 
     uri_images_big = autoscout.uri_images('big')
     uri_images_main = autoscout.uri_images('main')
@@ -56,3 +55,18 @@ def vehicle_details(request, vehicle_id):
     }
     return render(request, 'inventory/details_car.html', context)
 
+def reprises(request):
+    """ Return the html reprises """
+    return render(request, 'inventory/reprises.html')
+
+def inspection(request):
+    """ Return the html inspection """
+    return render(request, 'inventory/inspection.html')
+
+def contact(request):
+    """ Return the contact """
+    return render(request, 'inventory/contact.html')
+
+def horaire(request):
+    """ Return horaire """
+    return render(request, 'inventory/horaire.html')
