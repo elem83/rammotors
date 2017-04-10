@@ -7,7 +7,7 @@ from .base import *
 SECRET_KEY = '0qsd*-ysb@43fqy10*#&86c0iqko7s6=(3wo9dhh8p8jt_h2m0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
