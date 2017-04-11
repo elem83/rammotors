@@ -40,6 +40,8 @@ $(document).ready(function(){
     $('#count_car').html(count);
     if (count == 1) {
       $('#pluralize_count_car').html('')
+    } else {
+      $('#pluralize_count_car').html('s');
     }
     $grid.isotope({ filter: filterValue });
     $list.isotope({ filter: filterValue });
