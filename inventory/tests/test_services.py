@@ -218,3 +218,9 @@ def test__parse_xml():
     soap_response = open('inventory/tests/soap_lookup_response.xml').read()
     assert isinstance(services.AS24WSSearch()._parse_xml(soap_response), \
                      ElementTree.Element)
+
+def test_get_username_password_file():
+    username = services.USERNAME
+    password = services.PASSWORD
+    assert len(username) != 0
+    assert len(password) != 0

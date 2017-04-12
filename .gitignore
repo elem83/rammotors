@@ -3,3 +3,4 @@ __pycache__
 db.sqlite3
 geckodriver.log
 unify-v1.9.6
+inventory/config.py

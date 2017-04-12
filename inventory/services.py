@@ -12,13 +12,15 @@ from datetime import datetime
 import xml.etree.ElementTree as ET
 import requests
 
+
+from . import config
 from inventory.models import Enumeration
 
 
 URL = 'http://api.autoscout24.com/AS24_WS_Search'
 
-USERNAME = 'BE_2142129754'
-PASSWORD = 'netsarammo2017$'
+USERNAME = config.USERNAME
+PASSWORD = config.PASSWORD
 SELLER_ID = '2142129754'
 CULTURE_ID = 'fr-BE'
 
