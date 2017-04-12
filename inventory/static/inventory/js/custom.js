@@ -53,6 +53,11 @@ $(document).ready(function(){
     $list.isotope({ filter: filterValue });
     $( "input[name='optionsRadios']" ).prop('checked', false);
     $('#count_car').html(count_original);
+    if (count == 1) {
+      $('#pluralize_count_car').html('')
+    } else {
+      $('#pluralize_count_car').html('s');
+    }
   });
 
   // bind sort button click
