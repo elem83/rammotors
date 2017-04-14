@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).ancestor(3)
 
 
 ALLOWED_HOSTS = [
+    'rammotors.be',
+    'www.rammotors.be',
     'rammotors.netsamir.webfactional.com',
     'localhost',
     '127.0.0.1',
