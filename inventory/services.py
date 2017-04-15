@@ -47,6 +47,9 @@ SOAP = """<soapenv:Envelope
         <data:culture_id>{culture_id}</data:culture_id>
             <data:vehicle_search_parameters>
                <data:dealer_id>{dealer_id}</data:dealer_id>
+               <data:paging>
+               <data:results_per_page>100</data:results_per_page>
+               </data:paging>
             </data:vehicle_search_parameters>
          </web:request>
       </web:FindArticles>
