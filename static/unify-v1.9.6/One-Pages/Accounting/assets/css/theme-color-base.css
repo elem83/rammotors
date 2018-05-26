@@ -1,0 +1,106 @@
+/*
+* Version: 1.9.5
+* Base Color: #29d6e6;
+* Base Hover Color: #1cc6d6;
+*/
+
+/* Link Hover */
+a:hover {
+  color: #29d6e6;
+}
+
+/* Highlight */
+::-moz-selection {
+  background: #29d6e6;
+}
+::selection {
+  background: #29d6e6;
+}
+
+/* Buttons */
+.btn-u {
+  background: #29d6e6;
+}
+.btn-u:hover,
+.btn-u:focus {
+  background: #1cc6d6;
+}
+.btn-u.btn-brd:hover,
+.btn-u.btn-brd:focus {
+  background: #1cc6d6;
+}
+
+/* Global */
+.g-color-default { color: #29d6e6 !important; }
+
+.g-bg-default { background-color: #29d6e6 !important; }
+
+i.icon-color-default {
+  border-color: #29d6e6;
+}
+
+/* Navbar */
+.one-page-header .navbar-nav > li > a span[data-hover]:before {
+  color: #29d6e6;
+}
+.one-page-header .navbar-nav > .active > a span[data-hover],
+.one-page-header .navbar-nav > .active > a:hover span[data-hover],
+.one-page-header .navbar-nav > .active > a:focus span[data-hover],
+.one-page-header .dropdown-menu > .active > a span[data-hover],
+.one-page-header .dropdown-menu > .active > a:hover span[data-hover],
+.one-page-header .dropdown-menu > .active > a:focus span[data-hover],
+.one-page-header.top-nav-collapse .dropdown-menu > .active > a span[data-hover],
+.one-page-header.top-nav-collapse .dropdown-menu > .active > a:hover span[data-hover],
+.one-page-header.top-nav-collapse .dropdown-menu > .active > a:focus span[data-hover] {
+  color: #29d6e6;
+}
+@media (max-width: 991px) {
+  .one-page-header .navbar-nav > li > a:hover span[data-hover] {
+    color: #29d6e6;
+  }
+}
+
+/* Navbar Toggle */
+.one-page-header.navbar-default .navbar-toggle:hover .icon-bar,
+.one-page-header.top-nav-collapse .navbar-toggle:hover .icon-bar {
+  background: #29d6e6;
+}
+
+/* Promo section */
+@media (min-width: 1200px) {
+  .promo-section .slick-dots .slick-active {
+    color: #29d6e6;
+    border-color: #29d6e6;
+  }
+}
+
+/* Infoblocks */
+.infoblocks .slick-dots .slick-active {
+  color: #29d6e6;
+}
+.infoblocks .slick-dots .slick-active span {
+  border: 3px solid #29d6e6;
+}
+
+/* Testimonials Section */
+.testinomials-content .slick-dots li.slick-active {
+  background: #29d6e6;
+}
+
+.testimonials-item__author em {
+  color: #29d6e6;
+}
+
+/* Pricing Section */
+.pricing-item-header {
+  background: #29d6e6;
+}
+.pricing-list li.slick-active {
+  background: #29d6e6;
+}
+
+/* Contact Form */
+.sky-form__message-icon {
+  color: #29d6e6;
+  border-color: #29d6e6 !important;
+}
