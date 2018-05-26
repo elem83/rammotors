@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^reprises/$', views.reprises, name='reprises'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^horaire/$', views.horaire, name='horaire'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+ # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
