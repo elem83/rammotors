@@ -260,17 +260,22 @@ class AS24WSSearch(object):
         Input:
             size :: [big|main|small|thumbnails] :: String
 
+            [images_big] => https://prod.pictures.autoscout24.net/listing-images-wcf-compat/640x480/
+            [images_main] => https://prod.pictures.autoscout24.net/listing-images-wcf-compat/250x188/
+            [images_small] => https://prod.pictures.autoscout24.net/listing-images-wcf-compat/120x90/
+            [images_thumbnails] => https://prod.pictures.autoscout24.net/listing-images-wcf-compat/60x45/
+
         Return:
             uri :: String
         """
         if size == 'big':
-            return 'http://pic.autoscout24.net/images-big/'
+            return 'https://prod.pictures.autoscout24.net/listing-images-wcf-compat/640x480/'
         elif size == 'main':
-            return 'http://pic.autoscout24.net/images/'
+            return 'https://prod.pictures.autoscout24.net/listing-images-wcf-compat/250x188/'
         elif size == 'small':
-            return 'http://pic.autoscout24.net/images-small/'
+            return 'https://prod.pictures.autoscout24.net/listing-images-wcf-compat/120x90/'
         elif size == 'thumb':
-            return 'http://pic.autoscout24.net/thumbnails-big/'
+            return 'https://prod.pictures.autoscout24.net/listing-images-wcf-compat/60x45/'
         else:
             raise ValueError('Not a correct size parameter')
 
